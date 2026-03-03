@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+</head>
+<body>
+<h2>Order Masuk</h2>
 
+<table border="1" id="orders"></table>
+
+<script>
+const token = prompt("Masukkan ADMIN TOKEN")
+
+async function loadOrders(){
+  const res = await fetch("https://YOUR-WORKER.workers.dev/api/admin/orders", {
+    headers:{ Authorization:"Bearer "+token }
+  })
+  const data = await res.json()
+
+  let html="<tr><th>Invoice</th><th>Email</th><th>Status</th><th>Aksi</th></tr>"
+  data.orders.forEach(o=>{
+    html+=`<tr>
+      <td>${o.invoice}</td>
+      <td>${o.email}</td>
+      <td>${o.status}</td>
+      <td><button onclick="send('${o.invoice}')">KIRIM LICENSE</button></td>
+    </tr>`
+  })
+  document.getElementById("orders").innerHTML=html
+}
+
+async function send(invoice){
+  const res = await fetch("https://YOUR-WORKER.workers.dev/api/admin/send",{
+    method:"POST",
+    headers:{
+      Authorization:"Bearer "+token
+    },
+    body:JSON.stringify({invoice})
+  })
+  const data = await res.json()
+  alert("License: "+data.license)
+  loadOrders()
+}
+
+loadOrders()
+</script>
+</body>
+</html>
