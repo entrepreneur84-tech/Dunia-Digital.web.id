@@ -147,3 +147,65 @@ export default {
     return text("Dunia Digital API READY")
   }
   }
+import { json } from "./utils/response.js"
+
+export default {
+
+async fetch(req, env){
+
+const url = new URL(req.url)
+
+if(url.pathname === "/api/contact" && req.method === "POST"){
+
+const {name,email,message} = await req.json()
+
+const subject = `Pesan Baru Website Dunia Digital`
+
+const body = `
+Nama: ${name}
+
+Email: ${email}
+
+Pesan:
+
+${message}
+`
+
+await fetch("https://api.mailchannels.net/tx/v1/send",{
+method:"POST",
+headers:{
+"content-type":"application/json"
+},
+body:JSON.stringify({
+personalizations:[
+{
+to:[
+{email:"admin@dunia-digital.web.id"}
+]
+}
+],
+from:{
+email:"admin@dunia-digital.web.id",
+name:"Website Dunia Digital"
+},
+subject:subject,
+content:[
+{
+type:"text/plain",
+value:body
+}
+]
+})
+})
+
+return json({
+ok:true
+})
+
+}
+
+return new Response("Worker Running")
+
+}
+
+   }
