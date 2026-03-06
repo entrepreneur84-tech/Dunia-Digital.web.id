@@ -203,3 +203,114 @@ text-decoration:none;
 text-decoration:underline;
 
 }
+/* ===================================
+FLOATING CONTACT BUTTON PREMIUM
+=================================== */
+
+.contact-panel{
+
+position:fixed;
+
+bottom:95px;
+
+right:25px;
+
+background:#ffffff;
+
+padding:18px;
+
+border-radius:12px;
+
+box-shadow:0 10px 35px rgba(0,0,0,0.15);
+
+width:240px;
+
+font-size:14px;
+
+display:none;
+
+z-index:9999;
+
+font-family:Arial, sans-serif;
+
+}
+
+.contact-panel strong{
+
+font-size:16px;
+
+}
+
+.contact-panel a{
+
+display:block;
+
+margin-top:10px;
+
+color:#111;
+
+text-decoration:none;
+
+font-weight:500;
+
+}
+
+.contact-panel a:hover{
+
+text-decoration:underline;
+
+}
+
+/* ===================================
+WHATSAPP FLOAT BUTTON
+=================================== */
+
+.wa-float{
+
+position:fixed;
+
+bottom:25px;
+
+right:25px;
+
+background:#25D366;
+
+color:#fff;
+
+border-radius:50px;
+
+padding:14px 18px;
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+font-weight:600;
+
+text-decoration:none;
+
+box-shadow:0 6px 20px rgba(0,0,0,0.25);
+
+cursor:pointer;
+
+z-index:9999;
+
+font-family:Arial, sans-serif;
+
+}
+
+.wa-float img{
+
+width:24px;
+
+height:24px;
+
+}
+
+.wa-float:hover{
+
+background:#1ebe5d;
+
+  }
