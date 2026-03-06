@@ -1,81 +1,68 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Toko Ebook Premium | Dunia Digital</title>
 
-<link rel="stylesheet" href="/assets/css/style.css">
-
 <style>
 
-/* ================================
-STORE LAYOUT
-================================ */
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f5f5f5;
+margin:0;
+}
+
+header{
+background:#111;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-size:28px;
+}
+
+header p{
+opacity:0.8;
+font-size:14px;
+}
 
 .container{
-max-width:1200px;
+max-width:1100px;
 margin:auto;
 padding:40px 20px;
 }
 
-h1{
-text-align:center;
-margin-bottom:40px;
-}
-
-/* GRID */
-
 .ebook-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
-
-/* CARD */
 
 .ebook-card{
-
-background:#fff;
+background:white;
 border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.08);
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 overflow:hidden;
-transition:0.3s;
-
+position:relative;
 }
-
-.ebook-card:hover{
-transform:translateY(-5px);
-}
-
-/* IMAGE */
 
 .ebook-card img{
 width:100%;
-display:block;
 }
 
-/* INFO */
-
 .ebook-info{
-padding:20px;
+padding:18px;
 }
 
 .ebook-info h3{
-margin:10px 0;
+margin-top:0;
 font-size:18px;
 }
-
-.ebook-info p{
-font-size:14px;
-color:#555;
-margin-bottom:10px;
-}
-
-/* PRICE */
 
 .price-old{
 text-decoration:line-through;
@@ -85,161 +72,101 @@ font-size:14px;
 
 .price-new{
 color:#e91e63;
-font-size:20px;
 font-weight:bold;
+font-size:20px;
 }
 
-/* BADGE */
+.buy-btn{
+display:inline-block;
+margin-top:10px;
+padding:10px 15px;
+background:#25D366;
+color:white;
+border-radius:6px;
+text-decoration:none;
+font-size:14px;
+}
 
 .badge{
-
 position:absolute;
-background:#ff5722;
-color:white;
+top:10px;
+left:10px;
+padding:5px 10px;
 font-size:12px;
-padding:4px 10px;
-border-radius:4px;
-
+border-radius:5px;
+color:white;
 }
 
 .badge.best{
-background:#e91e63;
+background:#ff9800;
 }
 
 .badge.soon{
-background:#9e9e9e;
+background:#999;
 }
 
-/* CARD POSITION */
-
-.ebook-card{
-position:relative;
-}
-
-/* BUTTON */
-
-.buy-btn{
-
+.bundle-badge{
+background:#ff9800;
+color:white;
+padding:4px 10px;
+font-size:12px;
+border-radius:4px;
+margin-bottom:8px;
 display:inline-block;
-margin-top:12px;
-padding:10px 16px;
+}
 
+footer{
+margin-top:50px;
 background:#111;
 color:white;
-
-text-decoration:none;
-border-radius:5px;
-
-font-size:14px;
-
+padding:30px;
+text-align:center;
 }
 
-.buy-btn:hover{
-background:#333;
+footer a{
+color:#25D366;
+text-decoration:none;
+}
+
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+z-index:999;
+}
+
+.whatsapp-float img{
+width:32px;
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-<main class="container">
+<header>
 
-<h1>Toko Ebook Premium Dunia Digital</h1>
+<h1>Dunia Digital</h1>
+
+<p>Ebook Premium Pengembangan Diri & Kesadaran Spiritual</p>
+
+</header>
+
+
+<div class="container">
 
 <section class="ebook-grid">
 
-<!-- ====================================
-EBOOK 1
-==================================== -->
 
-<div class="ebook-card">
-
-<span class="badge best">Bestseller</span>
-
-<img src="/assets/img/ebooks/quantum-dzikir.jpg">
-
-<div class="ebook-info">
-
-<h3>Quantum Dzikir</h3>
-
-<p>Membangkitkan energi spiritual melalui dzikir kesadaran.</p>
-
-<span class="price-old">Rp199k</span><br>
-<span class="price-new">Rp100k</span>
-
-<br>
-
-<a href="/store/checkout.html?ebook=quantum-dzikir" class="buy-btn">
-Beli Ebook
-</a>
-
-</div>
-
-</div>
-
-
-<!-- ====================================
-EBOOK 2
-==================================== -->
-
-<div class="ebook-card">
-
-<img src="/assets/img/ebooks/quantum-syukur.jpg">
-
-<div class="ebook-info">
-
-<h3>Quantum Syukur</h3>
-
-<p>Membuka pintu kelimpahan dengan kesadaran syukur.</p>
-
-<span class="price-old">Rp199k</span><br>
-<span class="price-new">Rp100k</span>
-
-<br>
-
-<a href="/store/checkout.html?ebook=quantum-syukur" class="buy-btn">
-Beli Ebook
-</a>
-
-</div>
-
-</div>
-
-
-<!-- ====================================
-EBOOK 3
-==================================== -->
-
-<div class="ebook-card">
-
-<img src="/assets/img/ebooks/quantum-nur.jpg">
-
-<div class="ebook-info">
-
-<h3>Quantum Nur</h3>
-
-<p>Menemukan cahaya ilahi dalam kesadaran diri.</p>
-
-<span class="price-old">Rp199k</span><br>
-<span class="price-new">Rp100k</span>
-
-<br>
-
-<a href="/store/checkout.html?ebook=quantum-nur" class="buy-btn">
-Beli Ebook
-</a>
-
-</div>
-
-</div>
-
-
-<!-- ====================================
-BUNDLE PROMO
-==================================== -->
+<!-- BUNDLE -->
 
 <div class="ebook-card">
 
@@ -249,17 +176,22 @@ BUNDLE PROMO
 
 <div class="ebook-info">
 
+<span class="bundle-badge">Bundle Promo</span>
+
 <h3>Bundle Spiritual Awakening</h3>
 
-<p>3 Ebook terbaik untuk transformasi spiritual.</p>
+<p>3 Ebook terbaik untuk transformasi kesadaran diri dan spiritual.</p>
+
+<div>
 
 <span class="price-old">Rp597k</span><br>
 <span class="price-new">Rp250k</span>
 
-<br>
+</div>
 
-<a href="/store/checkout.html?bundle=awakening" class="buy-btn">
-Ambil Bundle
+<a class="buy-btn"
+href="https://wa.me/6285175313909?text=Saya%20ingin%20membeli%20Bundle%203%20Ebook%20Premium%20Rp250k">
+Beli via WhatsApp
 </a>
 
 </div>
@@ -267,9 +199,94 @@ Ambil Bundle
 </div>
 
 
-<!-- ====================================
-COMING SOON
-==================================== -->
+<!-- EBOOK 1 -->
+
+<div class="ebook-card">
+
+<img src="/assets/img/ebooks/quantum-ihsan.jpg">
+
+<div class="ebook-info">
+
+<h3>Quantum Ihsan</h3>
+
+<p>Rahasia kesadaran spiritual untuk hidup penuh makna.</p>
+
+<div>
+
+<span class="price-old">Rp199k</span><br>
+<span class="price-new">Rp100k</span>
+
+</div>
+
+<a class="buy-btn"
+href="https://wa.me/6285175313909?text=Saya%20ingin%20membeli%20ebook%20Quantum%20Ihsan">
+Beli via WhatsApp
+</a>
+
+</div>
+
+</div>
+
+
+<!-- EBOOK 2 -->
+
+<div class="ebook-card">
+
+<img src="/assets/img/ebooks/quantum-ilahiyah.jpg">
+
+<div class="ebook-info">
+
+<h3>Quantum Ilahiyah</h3>
+
+<p>Mengenal energi ketuhanan dalam kesadaran manusia.</p>
+
+<div>
+
+<span class="price-old">Rp199k</span><br>
+<span class="price-new">Rp100k</span>
+
+</div>
+
+<a class="buy-btn"
+href="https://wa.me/6285175313909?text=Saya%20ingin%20membeli%20ebook%20Quantum%20Ilahiyah">
+Beli via WhatsApp
+</a>
+
+</div>
+
+</div>
+
+
+<!-- EBOOK 3 -->
+
+<div class="ebook-card">
+
+<img src="/assets/img/ebooks/kuantum-ikhlas.jpg">
+
+<div class="ebook-info">
+
+<h3>Kuantum Ikhlas</h3>
+
+<p>Transformasi hati menuju ketenangan batin sejati.</p>
+
+<div>
+
+<span class="price-old">Rp199k</span><br>
+<span class="price-new">Rp100k</span>
+
+</div>
+
+<a class="buy-btn"
+href="https://wa.me/6285175313909?text=Saya%20ingin%20membeli%20ebook%20Kuantum%20Ikhlas">
+Beli via WhatsApp
+</a>
+
+</div>
+
+</div>
+
+
+<!-- COMING SOON -->
 
 <div class="ebook-card">
 
@@ -288,105 +305,41 @@ COMING SOON
 </div>
 
 
-<div class="ebook-card">
-
-<span class="badge soon">Coming Soon</span>
-
-<img src="/assets/img/ebooks/manunggal.jpg">
-
-<div class="ebook-info">
-
-<h3>Manunggal</h3>
-
-<p>Segera hadir.</p>
-
-</div>
+</section>
 
 </div>
 
 
-<div class="ebook-card">
+<footer>
 
-<span class="badge soon">Coming Soon</span>
+<p>Hubungi Admin:</p>
 
-<img src="/assets/img/ebooks/rahasia-mengenal-jatidiri.jpg">
+<p>
+WhatsApp: 
+<a href="https://wa.me/6285175313909">6285175313909</a>
+</p>
 
-<div class="ebook-info">
-
-<h3>Rahasia Mengenal Jatidiri</h3>
-
-<p>Segera hadir.</p>
-
-</div>
-
-</div>
-
-
-<div class="ebook-card">
-
-<span class="badge soon">Coming Soon</span>
-
-<img src="/assets/img/ebooks/law-of-spiritual-attraction.jpg">
-
-<div class="ebook-info">
-
-<h3>Law Of Spiritual Attraction</h3>
-
-<p>Segera hadir.</p>
-
-</div>
-
-</div>
-<!-- ===================================
-FLOATING CONTACT WHATSAPP
-=================================== -->
-
-<div class="contact-panel" id="contactPanel">
-
-<strong>Hubungi Kami</strong>
-
+<p>
+Email:
 <a href="mailto:admin@dunia-digital.web.id">
-📧 admin@dunia-digital.web.id
+admin@dunia-digital.web.id
 </a>
+</p>
 
-<a href="https://wa.me/6285175313909?text=Halo%20Admin%20Dunia-Digital,%20saya%20ingin%20bertanya%20tentang%20ebook%20premium" target="_blank">
-💬 Chat WhatsApp Admin
-</a>
+<p>© 2026 Dunia Digital</p>
 
-</div>
+</footer>
 
-<a class="wa-float" onclick="toggleContact()">
+
+<!-- WHATSAPP FLOAT -->
+
+<a class="whatsapp-float"
+href="https://wa.me/6285175313909"
+target="_blank">
 
 <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 
-Hubungi Kami
-
 </a>
 
-<script>
-
-function toggleContact(){
-
-var panel = document.getElementById("contactPanel");
-
-if(panel.style.display === "block"){
-
-panel.style.display = "none";
-
-}else{
-
-panel.style.display = "block";
-
-}
-
-}
-
-</script>
-
-</section>
-
-</main>
-
 </body>
-
-  </html>
+</html>
