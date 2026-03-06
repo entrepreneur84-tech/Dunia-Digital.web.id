@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Toko Ebook Premium | Dunia Digital</title>
 
@@ -12,12 +12,9 @@
 
 <style>
 
-body{
-font-family:Arial, sans-serif;
-background:#f4f6f8;
-margin:0;
-padding:0;
-}
+/* ================================
+STORE LAYOUT
+================================ */
 
 .container{
 max-width:1200px;
@@ -30,564 +27,322 @@ text-align:center;
 margin-bottom:40px;
 }
 
-.grid{
+/* GRID */
 
+.ebook-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
 }
 
-.ebook{
+/* CARD */
+
+.ebook-card{
 
 background:#fff;
 border-radius:10px;
 box-shadow:0 5px 20px rgba(0,0,0,0.08);
-padding:20px;
-text-align:center;
+overflow:hidden;
+transition:0.3s;
 
 }
 
-.ebook img{
+.ebook-card:hover{
+transform:translateY(-5px);
+}
 
+/* IMAGE */
+
+.ebook-card img{
 width:100%;
-height:260px;
-object-fit:cover;
-border-radius:6px;
-
+display:block;
 }
 
-.price{
+/* INFO */
 
+.ebook-info{
+padding:20px;
+}
+
+.ebook-info h3{
 margin:10px 0;
-
-}
-
-.normal{
-
-text-decoration:line-through;
-color:#999;
-
-}
-
-.promo{
-
-color:#e53935;
-font-weight:bold;
 font-size:18px;
-
 }
 
-.buy-btn{
-
-display:inline-block;
-margin-top:10px;
-padding:10px 18px;
-background:#111;
-color:#fff;
-text-decoration:none;
-border-radius:6px;
-
+.ebook-info p{
+font-size:14px;
+color:#555;
+margin-bottom:10px;
 }
 
-.buy-btn:hover{
+/* PRICE */
 
-background:#333;
-
+.price-old{
+text-decoration:line-through;
+color:#888;
+font-size:14px;
 }
+
+.price-new{
+color:#e91e63;
+font-size:20px;
+font-weight:bold;
+}
+
+/* BADGE */
 
 .badge{
 
 position:absolute;
-background:#e53935;
+background:#ff5722;
 color:white;
 font-size:12px;
-padding:5px 10px;
+padding:4px 10px;
 border-radius:4px;
 
 }
 
-.soon{
+.badge.best{
+background:#e91e63;
+}
 
-background:#aaa;
+.badge.soon{
+background:#9e9e9e;
+}
+
+/* CARD POSITION */
+
+.ebook-card{
+position:relative;
+}
+
+/* BUTTON */
+
+.buy-btn{
+
+display:inline-block;
+margin-top:12px;
+padding:10px 16px;
+
+background:#111;
 color:white;
-padding:10px 15px;
-border:none;
-border-radius:6px;
+
+text-decoration:none;
+border-radius:5px;
+
+font-size:14px;
 
 }
 
-.section{
-
-margin-bottom:60px;
-
+.buy-btn:hover{
+background:#333;
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<div class="container">
+<main class="container">
 
 <h1>Toko Ebook Premium Dunia Digital</h1>
-  <!-- =========================
-BUNDLE PROMO
-========================= -->
 
-<div class="section">
+<section class="ebook-grid">
 
-<h2>🔥 Promo Bundle Ebook Premium</h2>
+<!-- ====================================
+EBOOK 1
+==================================== -->
 
-<div class="grid">
+<div class="ebook-card">
 
-<div class="ebook">
-
-<img src="/assets/img/ebooks/bundle-premium.jpg">
-
-<h3>Bundle Spiritual Awakening</h3>
-
-<p>
-
-3 Ebook pilihan terbaik untuk membuka kesadaran diri
-dan meningkatkan kualitas spiritual hidup.
-
-</p>
-
-<ul style="text-align:left;font-size:14px">
-
-<li>Quantum Dzikir</li>
-<li>Quantum Syukur</li>
-<li>Navigasi Cahaya</li>
-
-</ul>
-
-<div class="price">
-
-<span class="normal">Rp597.000</span>
-
-<span class="promo">Rp250.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=bundle-spiritual">
-
-Beli Bundle
-
-</a>
-
-</div>
-
-
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/bundle-premium2.jpg">
-
-<h3>Bundle Kesadaran Diri</h3>
-
-<p>
-
-3 Ebook yang membantu memahami hakikat diri
-dan realitas kehidupan secara mendalam.
-
-</p>
-
-<ul style="text-align:left;font-size:14px">
-
-<li>Membongkar Realitas Hologram</li>
-<li>Menguak Potensi Diri Tanpa Batas</li>
-<li>Rahasia Membongkar Potensi Diri Tanpa Batas</li>
-
-</ul>
-
-<div class="price">
-
-<span class="normal">Rp597.000</span>
-
-<span class="promo">Rp250.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=bundle-kesadaran">
-
-Beli Bundle
-
-</a>
-
-</div>
-
-
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/bundle-premium3.jpg">
-
-<h3>Bundle Dzikir Spiritual</h3>
-
-<p>
-
-3 Ebook untuk meningkatkan kedalaman dzikir
-dan koneksi spiritual dengan Tuhan.
-
-</p>
-
-<ul style="text-align:left;font-size:14px">
-
-<li>Pasrah Itu Dzikir</li>
-<li>Zero Points Dzikir</li>
-<li>The Dzikir Of Powerful</li>
-
-</ul>
-
-<div class="price">
-
-<span class="normal">Rp597.000</span>
-
-<span class="promo">Rp250.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=bundle-dzikir">
-
-Beli Bundle
-
-</a>
-
-</div>
-
-</div>
-
-  </div>
-
-<!-- =========================
-EBOOK TERSEDIA
-========================= -->
-
-<div class="section">
-
-<h2>Ebook Premium</h2>
-
-<div class="grid">
-
-
-<!-- 1 -->
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/cara-berdamai.jpg">
-
-<h3>Cara Jitu Berdamai Dengan Diri Sendiri</h3>
-
-<div class="price">
-
-<span class="normal">Rp199.000</span>
-
-<span class="promo">Rp100.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=berdamai-diri">
-
-Beli Sekarang
-
-</a>
-
-</div>
-
-
-<!-- 2 -->
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/healing-dzikir.jpg">
-
-<h3>Healing Dzikir Of Powerful</h3>
-
-<div class="price">
-
-<span class="normal">Rp199.000</span>
-
-<span class="promo">Rp100.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=healing-dzikir">
-
-Beli Sekarang
-
-</a>
-
-</div>
-
-
-<!-- 3 -->
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/realitas-hologram.jpg">
-
-<h3>Membongkar Realitas Hologram</h3>
-
-<div class="price">
-
-<span class="normal">Rp199.000</span>
-
-<span class="promo">Rp100.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=realitas-hologram">
-
-Beli Sekarang
-
-</a>
-
-</div>
-
-
-<!-- 4 -->
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/potensi-diri.jpg">
-
-<h3>Menguak Potensi Diri Tanpa Batas</h3>
-
-<div class="price">
-
-<span class="normal">Rp199.000</span>
-
-<span class="promo">Rp100.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=potensi-diri">
-
-Beli Sekarang
-
-</a>
-
-</div>
-
-
-<!-- 5 -->
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/navigasi-cahaya.jpg">
-
-<h3>Navigasi Cahaya</h3>
-
-<div class="price">
-
-<span class="normal">Rp199.000</span>
-
-<span class="promo">Rp100.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=navigasi-cahaya">
-
-Beli Sekarang
-
-</a>
-
-</div>
-
-
-<!-- 6 -->
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/pasrah-dzikir.jpg">
-
-<h3>Pasrah Itu Dzikir</h3>
-
-<div class="price">
-
-<span class="normal">Rp199.000</span>
-
-<span class="promo">Rp100.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=pasrah-dzikir">
-
-Beli Sekarang
-
-</a>
-
-</div>
-
-
-<!-- 7 -->
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/quantum-syukur.jpg">
-
-<h3>Quantum Syukur</h3>
-
-<div class="price">
-
-<span class="normal">Rp199.000</span>
-
-<span class="promo">Rp100.000</span>
-
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=quantum-syukur">
-
-Beli Sekarang
-
-</a>
-
-</div>
-
-
-<!-- 8 -->
-
-<div class="ebook">
+<span class="badge best">Bestseller</span>
 
 <img src="/assets/img/ebooks/quantum-dzikir.jpg">
 
+<div class="ebook-info">
+
 <h3>Quantum Dzikir</h3>
 
-<div class="price">
+<p>Membangkitkan energi spiritual melalui dzikir kesadaran.</p>
 
-<span class="normal">Rp199.000</span>
+<span class="price-old">Rp199k</span><br>
+<span class="price-new">Rp100k</span>
 
-<span class="promo">Rp100.000</span>
+<br>
 
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=quantum-dzikir">
-
-Beli Sekarang
-
+<a href="/store/checkout.html?ebook=quantum-dzikir" class="buy-btn">
+Beli Ebook
 </a>
 
 </div>
 
+</div>
 
-<!-- 9 -->
 
-<div class="ebook">
+<!-- ====================================
+EBOOK 2
+==================================== -->
+
+<div class="ebook-card">
+
+<img src="/assets/img/ebooks/quantum-syukur.jpg">
+
+<div class="ebook-info">
+
+<h3>Quantum Syukur</h3>
+
+<p>Membuka pintu kelimpahan dengan kesadaran syukur.</p>
+
+<span class="price-old">Rp199k</span><br>
+<span class="price-new">Rp100k</span>
+
+<br>
+
+<a href="/store/checkout.html?ebook=quantum-syukur" class="buy-btn">
+Beli Ebook
+</a>
+
+</div>
+
+</div>
+
+
+<!-- ====================================
+EBOOK 3
+==================================== -->
+
+<div class="ebook-card">
 
 <img src="/assets/img/ebooks/quantum-nur.jpg">
 
+<div class="ebook-info">
+
 <h3>Quantum Nur</h3>
 
-<div class="price">
+<p>Menemukan cahaya ilahi dalam kesadaran diri.</p>
 
-<span class="normal">Rp199.000</span>
+<span class="price-old">Rp199k</span><br>
+<span class="price-new">Rp100k</span>
 
-<span class="promo">Rp100.000</span>
+<br>
 
-</div>
-
-<a class="buy-btn" href="/pages/store/checkout.html?id=quantum-nur">
-
-Beli Sekarang
-
+<a href="/store/checkout.html?ebook=quantum-nur" class="buy-btn">
+Beli Ebook
 </a>
 
 </div>
 
-
-<!-- 10 -->
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/tauhid-quantum.jpg">
-
-<h3>Tauhid Quantum</h3>
-
-<div class="price">
-
-<span class="normal">Rp199.000</span>
-
-<span class="promo">Rp100.000</span>
-
 </div>
 
-<a class="buy-btn" href="/pages/store/checkout.html?id=tauhid-quantum">
 
-Beli Sekarang
+<!-- ====================================
+BUNDLE PROMO
+==================================== -->
 
+<div class="ebook-card">
+
+<span class="badge best">Best Deal</span>
+
+<img src="/assets/img/ebooks/bundle-premium.jpg">
+
+<div class="ebook-info">
+
+<h3>Bundle Spiritual Awakening</h3>
+
+<p>3 Ebook terbaik untuk transformasi spiritual.</p>
+
+<span class="price-old">Rp597k</span><br>
+<span class="price-new">Rp250k</span>
+
+<br>
+
+<a href="/store/checkout.html?bundle=awakening" class="buy-btn">
+Ambil Bundle
 </a>
 
 </div>
 
-
-</div>
-
 </div>
 
 
-<!-- =========================
+<!-- ====================================
 COMING SOON
-========================= -->
+==================================== -->
 
-<div class="section">
+<div class="ebook-card">
 
-<h2>Segera Hadir</h2>
+<span class="badge soon">Coming Soon</span>
 
-<div class="grid">
+<img src="/assets/img/ebooks/hakikat-quantum-ihsan.jpg">
 
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/quantum-ihsan.jpg">
+<div class="ebook-info">
 
 <h3>Hakikat Quantum Ihsan</h3>
 
-<button class="soon">Coming Soon</button>
+<p>Segera hadir.</p>
+
+</div>
 
 </div>
 
 
-<div class="ebook">
+<div class="ebook-card">
+
+<span class="badge soon">Coming Soon</span>
 
 <img src="/assets/img/ebooks/manunggal.jpg">
 
+<div class="ebook-info">
+
 <h3>Manunggal</h3>
 
-<button class="soon">Coming Soon</button>
+<p>Segera hadir.</p>
+
+</div>
 
 </div>
 
 
-<div class="ebook">
+<div class="ebook-card">
 
-<img src="/assets/img/ebooks/spiritual-attraction.jpg">
+<span class="badge soon">Coming Soon</span>
 
-<h3>Law Of Spiritual Attraction</h3>
+<img src="/assets/img/ebooks/rahasia-mengenal-jatidiri.jpg">
 
-<button class="soon">Coming Soon</button>
-
-</div>
-
-
-<div class="ebook">
-
-<img src="/assets/img/ebooks/jatidiri.jpg">
+<div class="ebook-info">
 
 <h3>Rahasia Mengenal Jatidiri</h3>
 
-<button class="soon">Coming Soon</button>
+<p>Segera hadir.</p>
+
+</div>
 
 </div>
 
 
-</div>
+<div class="ebook-card">
+
+<span class="badge soon">Coming Soon</span>
+
+<img src="/assets/img/ebooks/law-of-spiritual-attraction.jpg">
+
+<div class="ebook-info">
+
+<h3>Law Of Spiritual Attraction</h3>
+
+<p>Segera hadir.</p>
 
 </div>
 
-
 </div>
+
+
+</section>
+
+</main>
 
 </body>
+
   </html>
