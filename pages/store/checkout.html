@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Checkout Ebook | Dunia Digital</title>
+
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<style>
+
+/* ===============================
+LAYOUT
+=============================== */
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+}
+
+/* CARD */
+
+.checkout-box{
+
+background:#fff;
+padding:30px;
+
+border-radius:10px;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+
+}
+
+/* FORM */
+
+.form-group{
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-bottom:6px;
+font-weight:600;
+}
+
+input{
+
+width:100%;
+padding:12px;
+
+border-radius:6px;
+border:1px solid #ddd;
+
+}
+
+/* BUTTON */
+
+.btn{
+
+display:block;
+
+width:100%;
+
+padding:14px;
+
+background:#111;
+color:white;
+
+border:none;
+border-radius:6px;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+.btn:hover{
+background:#333;
+}
+
+/* PRODUCT */
+
+.product-box{
+
+background:#fafafa;
+
+padding:20px;
+
+border-radius:8px;
+
+margin-bottom:25px;
+
+}
+
+.price-old{
+
+text-decoration:line-through;
+color:#888;
+
+}
+
+.price-new{
+
+color:#e91e63;
+
+font-size:22px;
+
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<main class="container">
+
+<h1>Checkout Ebook Premium</h1>
+
+<div class="checkout-box">
+
+<!-- =========================
+PRODUCT INFO
+========================= -->
+
+<div class="product-box">
+
+<h3 id="product-name">Memuat Produk...</h3>
+
+<div>
+
+<span class="price-old" id="price-old"></span><br>
+<span class="price-new" id="price-new"></span>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+FORM
+========================= -->
+
+<form id="checkoutForm">
+
+<div class="form-group">
+<label>Nama Lengkap</label>
+<input type="text" id="name" required>
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="email" required>
+</div>
+
+<div class="form-group">
+<label>No WhatsApp</label>
+<input type="text" id="wa" required>
+</div>
+
+<button class="btn" type="submit">
+Lanjutkan Pembayaran
+</button>
+
+</form>
+
+</div>
+
+</main>
+
+
+<script>
+
+/* =============================
+AMBIL PARAMETER URL
+============================= */
+
+const params = new URLSearchParams(window.location.search)
+
+const ebook = params.get("ebook")
+const bundle = params.get("bundle")
+
+/* =============================
+DATABASE PRODUK
+============================= */
+
+const products={
+
+"quantum-dzikir":{
+name:"Quantum Dzikir",
+old:"Rp199k",
+price:"Rp100k"
+},
+
+"quantum-syukur":{
+name:"Quantum Syukur",
+old:"Rp199k",
+price:"Rp100k"
+},
+
+"quantum-nur":{
+name:"Quantum Nur",
+old:"Rp199k",
+price:"Rp100k"
+},
+
+"awakening":{
+name:"Bundle Spiritual Awakening (3 Ebook)",
+old:"Rp597k",
+price:"Rp250k"
+}
+
+}
+
+/* =============================
+TAMPILKAN PRODUK
+============================= */
+
+let product
+
+if(bundle){
+product=products["awakening"]
+}else{
+product=products[ebook]
+}
+
+document.getElementById("product-name").innerText=product.name
+document.getElementById("price-old").innerText=product.old
+document.getElementById("price-new").innerText=product.price
+
+
+/* =============================
+FORM SUBMIT
+============================= */
+
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
+
+e.preventDefault()
+
+const name=document.getElementById("name").value
+const email=document.getElementById("email").value
+const wa=document.getElementById("wa").value
+
+/* SIMPAN DATA */
+
+localStorage.setItem("order_name",name)
+localStorage.setItem("order_email",email)
+localStorage.setItem("order_wa",wa)
+localStorage.setItem("order_product",product.name)
+
+/* REDIRECT */
+
+window.location="/pages/success.html"
+
+})
+
+</script>
+
+
+</body>
+
+  </html>
