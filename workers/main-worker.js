@@ -1,182 +1,59 @@
-import { json, text } from "./utils/response.js"
-import { generateInvoice, generateLicense } from "./utils/helpers.js"
-import { buildEmail } from "./utils/mailTemplate.js"
-import { buildWA } from "./utils/waTemplate.js"
-import { saveOrder, getAllOrders, updateOrder } from "./kv/orders.js"
-import { saveLicense, getLicense } from "./kv/licenses.js"
-import { checkAdminAuth } from "./security/adminAuth.js"
-import { makeQR } from "./utils/qr.js"
-
-export default {
-  async fetch(req, env) {
-    const url = new URL(req.url)
-
-    /* =======================
-       PUBLIC API
-    ======================= */
-
-    // CREATE ORDER (CHECKOUT)
-    if (url.pathname === "/api/order" && req.method === "POST") {
-      const body = await req.json()
-      const { name, email, phone, product, ebook, price } = body
-
-      const invoice = generateInvoice()
-
-      const order = {
-        invoice,
-        name,
-        email,
-        phone,
-        product,
-        ebook,
-        price,
-        status: "PENDING",
-        created: Date.now()
-      }
-
-      await saveOrder(env, order)
-
-      return json({
-        ok: true,
-        invoice,
-        redirect: "/pages/success.html?invoice=" + invoice
-      })
-    }
-
-    // CHECK LICENSE (VIEWER)
-    if (url.pathname === "/api/license" && req.method === "POST") {
-      const { license, fingerprint } = await req.json()
-      const data = await getLicense(env, license)
-
-      if (!data) {
-        return json({ ok: false, msg: "License tidak valid" }, 403)
-      }
-
-      if (Date.now() > data.expired) {
-        return json({ ok: false, msg: "License expired" }, 403)
-      }
-
-      // Bind fingerprint
-      if (!data.fingerprint) {
-        data.fingerprint = fingerprint
-        await saveLicense(env, data)
-      } else if (data.fingerprint !== fingerprint) {
-        return json({ ok: false, msg: "License digunakan di device lain" }, 403)
-      }
-
-      return json({ ok: true, ebook: data.ebook, product: data.product })
-    }
-
-    /* =======================
-       ADMIN API (PROTECTED)
-    ======================= */
-
-    // LIST ORDERS
-    if (url.pathname === "/api/admin/orders" && req.method === "GET") {
-      if (!checkAdminAuth(req, env)) {
-        return json({ ok: false, msg: "Unauthorized" }, 401)
-      }
-
-      const orders = await getAllOrders(env)
-      return json({ ok: true, orders })
-    }
-
-    // SEND LICENSE
-    if (url.pathname === "/api/admin/send" && req.method === "POST") {
-      if (!checkAdminAuth(req, env)) {
-        return json({ ok: false, msg: "Unauthorized" }, 401)
-      }
-
-      const { invoice } = await req.json()
-      const orders = await getAllOrders(env)
-      const order = orders.find(o => o.invoice === invoice)
-
-      if (!order) {
-        return json({ ok: false, msg: "Order tidak ditemukan" }, 404)
-      }
-
-      const license = generateLicense()
-      const viewer = `https://dunia-digital.web.id/pages/store/viewer.html?ebook=${encodeURIComponent(order.ebook)}&title=${encodeURIComponent(order.product)}&license=${license}`
-
-      const licenseData = {
-        email: order.email,
-        phone: order.phone,
-        product: order.product,
-        ebook: order.ebook,
-        license,
-        expired: Date.now() + (30 * 24 * 60 * 60 * 1000),
-        fingerprint: null,
-        created: Date.now()
-      }
-
-      await saveLicense(env, licenseData)
-
-      order.status = "SENT"
-      order.license = license
-      await updateOrder(env, invoice, order)
-
-      const emailMsg = buildEmail({
-        email: order.email,
-        product: order.product,
-        license,
-        link: viewer
-      })
-
-      const waMsg = buildWA({
-        phone: order.phone,
-        product: order.product,
-        license,
-        link: viewer
-      })
-
-      const qr = await makeQR(viewer)
-
-      return json({
-        ok: true,
-        license,
-        viewer,
-        email: emailMsg,
-        whatsapp: waMsg,
-        qr
-      })
-    }
-
-    /* =======================
-       DEFAULT
-    ======================= */
-    return text("Dunia Digital API READY")
-  }
-  }
-import { json } from "./utils/response.js"
-
 export default {
 
-async fetch(req, env){
+async fetch(req, env, ctx) {
 
 const url = new URL(req.url)
 
-if(url.pathname === "/api/contact" && req.method === "POST"){
+/* =========================
+CONTACT FORM API
+========================= */
 
-const {name,email,message} = await req.json()
+if (url.pathname === "/api/contact" && req.method === "POST") {
 
-const subject = `Pesan Baru Website Dunia Digital`
+try {
 
-const body = `
-Nama: ${name}
+const data = await req.json()
 
-Email: ${email}
+const name = (data.name || "").trim()
+const email = (data.email || "").trim()
+const message = (data.message || "").trim()
 
-Pesan:
+/* =========================
+VALIDATION
+========================= */
 
-${message}
-`
+if (!name || !email || !message) {
+
+return json({
+ok:false,
+error:"Semua field wajib diisi"
+},400)
+
+}
+
+if (name.length > 100 || email.length > 150 || message.length > 2000) {
+
+return json({
+ok:false,
+error:"Data terlalu panjang"
+},400)
+
+}
+
+/* =========================
+EMAIL KE ADMIN
+========================= */
 
 await fetch("https://api.mailchannels.net/tx/v1/send",{
+
 method:"POST",
+
 headers:{
 "content-type":"application/json"
 },
+
 body:JSON.stringify({
+
 personalizations:[
 {
 to:[
@@ -184,28 +61,151 @@ to:[
 ]
 }
 ],
+
 from:{
 email:"admin@dunia-digital.web.id",
 name:"Website Dunia Digital"
 },
-subject:subject,
+
+subject:"Pesan Baru dari Website Dunia Digital",
+
 content:[
 {
 type:"text/plain",
-value:body
+value:`
+
+Pesan baru dari website Dunia Digital
+
+Nama  : ${name}
+Email : ${email}
+
+Pesan :
+
+${message}
+
+--------------------------
+Dikirim dari:
+https://dunia-digital.web.id
+`
 }
 ]
+
 })
+
 })
+
+
+/* =========================
+AUTO REPLY KE PENGIRIM
+========================= */
+
+await fetch("https://api.mailchannels.net/tx/v1/send",{
+
+method:"POST",
+
+headers:{
+"content-type":"application/json"
+},
+
+body:JSON.stringify({
+
+personalizations:[
+{
+to:[
+{email:email}
+]
+}
+],
+
+from:{
+email:"admin@dunia-digital.web.id",
+name:"Tim Dunia Digital"
+},
+
+subject:"Pesan Anda Telah Kami Terima",
+
+content:[
+{
+type:"text/plain",
+value:`
+
+Halo ${name},
+
+Terima kasih telah menghubungi Dunia Digital.
+
+Pesan Anda telah kami terima dengan baik.
+Tim kami akan membalas pesan Anda secepat mungkin.
+
+Jika pesan Anda terkait:
+
+• Pembelian Ebook
+• Aktivasi Lisensi
+• Akses Download
+• Masalah akun
+
+Tim support akan segera membantu Anda.
+
+Website:
+https://dunia-digital.web.id
+
+Salam hangat,
+
+Tim Dunia Digital
+`
+}
+]
+
+})
+
+})
+
+
+/* =========================
+SUCCESS RESPONSE
+========================= */
 
 return json({
-ok:true
+ok:true,
+message:"Pesan berhasil dikirim"
 })
 
 }
+catch(err){
 
-return new Response("Worker Running")
+return json({
+ok:false,
+error:"Terjadi kesalahan server"
+},500)
 
 }
 
-   }
+}
+
+/* =========================
+404 API
+========================= */
+
+return new Response("Not Found",{status:404})
+
+}
+
+}
+
+/* =========================
+HELPER JSON RESPONSE
+========================= */
+
+function json(data,status=200){
+
+return new Response(JSON.stringify(data),{
+
+status:status,
+
+headers:{
+"Content-Type":"application/json",
+"Access-Control-Allow-Origin":"*"
+}
+
+})
+
+}
