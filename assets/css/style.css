@@ -441,3 +441,90 @@ border-radius:4px;
 .badge.soon{
 background:#ff9800;
 }
+/* ======================================
+   EBOOK STORE PREMIUM UPGRADE
+====================================== */
+
+/* Badge Best Seller */
+
+.badge.best{
+background:#e53935;
+}
+
+/* Badge Promo */
+
+.badge.promo{
+background:#00c853;
+}
+
+/* Badge Bundle */
+
+.badge.bundle{
+background:#673ab7;
+}
+
+/* Card hover upgrade */
+
+.ebook-card{
+overflow:hidden;
+}
+
+.ebook-card:hover img{
+transform:scale(1.05);
+}
+
+.ebook-card img{
+transition:transform .4s ease;
+}
+
+/* Title lebih rapi */
+
+.ebook-card h3{
+line-height:1.4;
+}
+
+/* Tombol beli premium */
+
+.btn-buy{
+font-weight:600;
+letter-spacing:.3px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-buy:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* Harga lebih premium */
+
+.price-normal{
+opacity:.7;
+}
+
+.price-promo{
+letter-spacing:.5px;
+}
+
+/* Responsive mobile */
+
+@media(max-width:768px){
+
+.store-title{
+font-size:26px;
+}
+
+.ebook-card{
+padding:12px;
+}
+
+.ebook-card h3{
+font-size:14px;
+}
+
+.btn-buy{
+font-size:13px;
+padding:9px 14px;
+}
+
+  }
