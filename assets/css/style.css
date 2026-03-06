@@ -1,1 +1,13 @@
+/* =========================
+BUNDLE BADGE
+========================= */
 
+.bundle-badge{
+background:#ff9800;
+color:white;
+padding:4px 10px;
+font-size:12px;
+border-radius:4px;
+margin-bottom:8px;
+display:inline-block;
+}
