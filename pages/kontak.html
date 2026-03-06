@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 <meta charset="UTF-8">
-<title>Kontak – Dunia Digital</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kontak Kami | Dunia Digital</title>
 
 <link rel="stylesheet" href="/assets/css/style.css">
 
 <style>
 
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#f6f7fb;
+font-family: Arial, sans-serif;
+background:#f5f7fb;
 margin:0;
-padding:0;
 }
 
 .container{
@@ -23,57 +24,84 @@ padding:40px 20px;
 }
 
 .card{
+
 background:#fff;
-padding:30px;
 border-radius:12px;
+padding:40px;
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
 }
 
 h1{
-margin-top:0;
+text-align:center;
+margin-bottom:10px;
 }
 
-input,textarea{
-width:100%;
-padding:12px;
-margin-top:8px;
+.subtitle{
+text-align:center;
+color:#666;
+margin-bottom:30px;
+}
+
+.form-group{
 margin-bottom:20px;
+}
+
+input, textarea{
+
+width:100%;
+padding:14px;
 border-radius:8px;
 border:1px solid #ddd;
-font-size:14px;
+font-size:15px;
+}
+
+textarea{
+min-height:140px;
+resize:vertical;
 }
 
 button{
-background:#1a73e8;
-color:white;
+
+width:100%;
+padding:15px;
 border:none;
-padding:12px 20px;
 border-radius:8px;
-font-size:15px;
+background:#4f46e5;
+color:white;
+font-size:16px;
 cursor:pointer;
+transition:0.2s;
+
 }
 
 button:hover{
-background:#0f5fd0;
+
+background:#4338ca;
+
+}
+
+button.loading{
+opacity:0.7;
+pointer-events:none;
 }
 
 .success{
-background:#e8f5e9;
-padding:12px;
-border-radius:8px;
-margin-top:20px;
 display:none;
+text-align:center;
+color:green;
+margin-top:20px;
 }
 
 .error{
-background:#ffebee;
-padding:12px;
-border-radius:8px;
-margin-top:20px;
 display:none;
+text-align:center;
+color:red;
+margin-top:20px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -82,34 +110,38 @@ display:none;
 
 <div class="card">
 
-<h1>Kontak Dunia Digital</h1>
+<h1>Hubungi Kami</h1>
 
-<p>
-Jika Anda memiliki pertanyaan tentang ebook, lisensi, atau kerjasama,
-silakan kirim pesan melalui form berikut.
+<p class="subtitle">
+Jika ada pertanyaan tentang ebook, akses download, atau kerjasama.
 </p>
 
 <form id="contactForm">
 
-<label>Nama</label>
-<input type="text" id="name" required>
+<div class="form-group">
+<input type="text" name="name" placeholder="Nama Anda" required>
+</div>
 
-<label>Email</label>
-<input type="email" id="email" required>
+<div class="form-group">
+<input type="email" name="email" placeholder="Email Anda" required>
+</div>
 
-<label>Pesan</label>
-<textarea id="message" rows="6" required></textarea>
+<div class="form-group">
+<textarea name="message" placeholder="Tulis pesan Anda..." required></textarea>
+</div>
 
-<button type="submit">Kirim Pesan</button>
+<button id="sendBtn">
+Kirim Pesan
+</button>
 
 </form>
 
-<div class="success" id="success">
-Pesan berhasil dikirim. Tim Dunia Digital akan segera membalas email Anda.
+<div class="success" id="successMsg">
+Pesan berhasil dikirim
 </div>
 
-<div class="error" id="error">
-Terjadi kesalahan saat mengirim pesan.
+<div class="error" id="errorMsg">
+Terjadi kesalahan
 </div>
 
 </div>
@@ -118,100 +150,65 @@ Terjadi kesalahan saat mengirim pesan.
 
 <script>
 
-document.getElementById("contactForm").addEventListener("submit",async function(e){
+const form = document.getElementById("contactForm")
+const btn = document.getElementById("sendBtn")
+
+form.addEventListener("submit",async(e)=>{
 
 e.preventDefault()
 
-const name = document.getElementById("name").value
-const email = document.getElementById("email").value
-const message = document.getElementById("message").value
+btn.classList.add("loading")
+btn.innerText="Mengirim..."
+
+const formData = new FormData(form)
+
+const data={
+name:formData.get("name"),
+email:formData.get("email"),
+message:formData.get("message")
+}
+
+try{
 
 const res = await fetch("/api/contact",{
 
 method:"POST",
-
 headers:{
 "Content-Type":"application/json"
 },
-
-body:JSON.stringify({
-name,
-email,
-message
-})
+body:JSON.stringify(data)
 
 })
 
-const data = await res.json()
+const result = await res.json()
 
-if(data.ok){
+if(result.ok){
 
-document.getElementById("success").style.display="block"
-
-document.getElementById("error").style.display="none"
-
-document.getElementById("contactForm").reset()
+window.location.href="/pages/success.html"
 
 }else{
 
-document.getElementById("error").style.display="block"
+showError()
 
 }
 
-})
-<div style="display:none">
-<label>Website</label>
-<input type="text" id="website">
-</div>
-  <script>
+}catch{
 
-document.getElementById("contactForm").addEventListener("submit", async function(e){
-
-e.preventDefault()
-
-const name = document.getElementById("name").value
-const email = document.getElementById("email").value
-const message = document.getElementById("message").value
-const website = document.getElementById("website").value
-
-if(website !== ""){
-alert("Spam terdeteksi")
-return
-}
-
-const res = await fetch("/api/contact",{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-name,
-email,
-message
-})
-
-})
-
-const data = await res.json()
-
-if(data.ok){
-
-document.getElementById("success").style.display="block"
-document.getElementById("error").style.display="none"
-document.getElementById("contactForm").reset()
-
-}else{
-
-document.getElementById("error").style.display="block"
+showError()
 
 }
 
 })
 
-</script>
+function showError(){
+
+btn.classList.remove("loading")
+btn.innerText="Kirim Pesan"
+
+document.getElementById("errorMsg").style.display="block"
+
+}
+
 </script>
 
 </body>
