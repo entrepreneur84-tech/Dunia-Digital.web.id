@@ -163,6 +163,55 @@ document.getElementById("error").style.display="block"
 <label>Website</label>
 <input type="text" id="website">
 </div>
+  <script>
+
+document.getElementById("contactForm").addEventListener("submit", async function(e){
+
+e.preventDefault()
+
+const name = document.getElementById("name").value
+const email = document.getElementById("email").value
+const message = document.getElementById("message").value
+const website = document.getElementById("website").value
+
+if(website !== ""){
+alert("Spam terdeteksi")
+return
+}
+
+const res = await fetch("/api/contact",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+name,
+email,
+message
+})
+
+})
+
+const data = await res.json()
+
+if(data.ok){
+
+document.getElementById("success").style.display="block"
+document.getElementById("error").style.display="none"
+document.getElementById("contactForm").reset()
+
+}else{
+
+document.getElementById("error").style.display="block"
+
+}
+
+})
+
+</script>
 </script>
 
 </body>
