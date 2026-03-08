@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Berhasil | Dunia Digital</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header style="text-align:center;padding:20px 0;background:#111;color:white;">
+<h1>Dunia Digital</h1>
+</header>
+
+<div style="max-width:700px;margin:80px auto;padding:40px;background:white;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08);text-align:center;">
+<h2>Terima Kasih!</h2>
+<p>Pembelian Anda berhasil dicatat.</p>
+<div id="order-summary"></div>
+
+<p style="margin-top:20px;font-size:13px;color:#666">
+Setiap ebook memiliki watermark nama pembeli.<br>
+Dilarang mendistribusikan ulang tanpa izin.
+</p>
+
+<p style="margin-top:20px;">
+Akses download ebook akan dikirim ke email Anda atau bisa melalui dashboard.
+</p>
+
+<a href="/pages/store/" class="cta-button">Kembali ke Store</a>
+</div>
+
+<footer style="text-align:center;padding:30px;background:#222;color:#ccc;">
+<p>© 2026 Dunia Digital</p>
+</footer>
+
+<script>
+const order = JSON.parse(localStorage.getItem("lastOrder")||"{}");
+if(order.product){
+document.getElementById("order-summary").innerHTML = `
+<p><b>Produk:</b> ${order.product}</p>
+<p><b>Nama:</b> ${order.name}</p>
+<p><b>Email:</b> ${order.email}</p>
+<p><b>WhatsApp:</b> ${order.wa}</p>
+<p><b>Tanggal:</b> ${order.tanggal}</p>
+`;
+}
+</script>
+</body>
+</html>
