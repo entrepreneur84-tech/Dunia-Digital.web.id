@@ -4,278 +4,63 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>Pesanan Berhasil | Dunia Digital</title>
+<title>Pembayaran Berhasil</title>
 
 <link rel="stylesheet" href="/assets/css/style.css">
 
-<style>
-
-/* =========================
-LAYOUT
-========================= */
-
-.container{
-
-max-width:800px;
-margin:auto;
-padding:40px 20px;
-
-}
-
-/* CARD */
-
-.success-box{
-
-background:#ffffff;
-
-padding:35px;
-
-border-radius:10px;
-
-box-shadow:0 6px 25px rgba(0,0,0,0.08);
-
-}
-
-/* TITLE */
-
-h1{
-
-text-align:center;
-
-margin-bottom:20px;
-
-color:#2e7d32;
-
-}
-
-/* INFO */
-
-.order-info{
-
-background:#f7f7f7;
-
-padding:20px;
-
-border-radius:8px;
-
-margin-top:20px;
-
-}
-
-/* PAYMENT */
-
-.payment-box{
-
-background:#fafafa;
-
-padding:20px;
-
-border-radius:8px;
-
-margin-top:25px;
-
-border:1px solid #eee;
-
-}
-
-.payment-box h3{
-
-margin-bottom:10px;
-
-}
-
-/* BUTTON */
-
-.btn{
-
-display:inline-block;
-
-margin-top:20px;
-
-padding:12px 20px;
-
-background:#111;
-
-color:#fff;
-
-text-decoration:none;
-
-border-radius:6px;
-
-}
-
-.btn:hover{
-
-background:#333;
-
-}
-
-.note{
-
-margin-top:20px;
-
-font-size:14px;
-
-color:#666;
-
-}
-
-</style>
-
 </head>
-
 
 <body>
 
-<main class="container">
-
-<div class="success-box">
-
-<h1>Pesanan Berhasil Dibuat</h1>
-
-<p style="text-align:center;">
-Terima kasih telah memesan <strong>Ebook Premium Dunia Digital</strong>.
-</p>
-
-<div class="order-info">
-
-<p><strong>Nama:</strong> <span id="name"></span></p>
-<p><strong>Email:</strong> <span id="email"></span></p>
-<p><strong>Produk:</strong> <span id="product"></span></p>
-
-</div>
-
-
-<div class="payment-box">
-
-<h3>Instruksi Pembayaran</h3>
-
-<p>Silakan lakukan pembayaran ke rekening berikut:</p>
+<h1>Terima Kasih</h1>
 
 <p>
 
-<strong>Bank Jago</strong><br>
-Kode Bank : 542<br>
-No Rekening : <strong>109896731184</strong><br>
-Atas Nama : <strong>Ahmad Barizi</strong>
+Pesanan ebook kamu sudah tercatat.
+
+Silakan transfer ke salah satu rekening berikut:
 
 </p>
 
-<br>
+<h3>SeaBank</h3>
 
 <p>
 
-<strong>SeaBank</strong><br>
-No Rekening : <strong>901981495649</strong><br>
-Atas Nama : <strong>Ahmad Barizi</strong>
+Nama : AHMAD BARIZI  
+No Rekening : 901981495649  
 
 </p>
 
-</div>
+<h3>Bank Jago</h3>
 
+<p>
 
-<div class="note">
+Nama : Ahmad Barizi  
+No Rekening : 109896731184  
 
-Setelah melakukan pembayaran, silakan kirim bukti transfer melalui WhatsApp agar tim kami dapat mengaktifkan akses download ebook Anda.
+</p>
 
-</div>
+<p>
 
-<a class="btn" id="waBtn" target="_blank">
-Kirim Bukti Pembayaran via WhatsApp
+Setelah transfer kirim bukti ke:
+
+</p>
+
+<p>
+
+WhatsApp  
+<a href="https://wa.me/6285175313909">
+6285175313909
 </a>
 
-</div>
+</p>
 
-</main>
+<p>
 
+Email  
+admin@dunia-digital.web.id
 
-<script>
-
-/* =========================
-AMBIL DATA ORDER
-========================= */
-
-const name = localStorage.getItem("order_name")
-const email = localStorage.getItem("order_email")
-const product = localStorage.getItem("order_product")
-const wa = localStorage.getItem("order_wa")
-
-document.getElementById("name").innerText=name
-document.getElementById("email").innerText=email
-document.getElementById("product").innerText=product
-
-
-/* =========================
-WHATSAPP LINK
-========================= */
-
-const adminWA="6285175313909" // GANTI NOMOR WA ADMIN
-
-const message=encodeURIComponent(
-
-`Halo admin Dunia Digital
-
-Saya sudah melakukan pemesanan ebook.
-
-Nama : ${name}
-Email : ${email}
-Produk : ${product}
-
-Berikut bukti pembayaran saya.`
-
-)
-
-document.getElementById("waBtn").href=
-`https://wa.me/${adminWA}?text=${message}`
-<!-- ===================================
-FLOATING CONTACT WHATSAPP
-=================================== -->
-
-<div class="contact-panel" id="contactPanel">
-
-<strong>Hubungi Kami</strong>
-
-<a href="mailto:admin@dunia-digital.web.id">
-📧 admin@dunia-digital.web.id
-</a>
-
-<a href="https://wa.me/6285175313909?text=Halo%20Admin%20Dunia-Digital,%20saya%20ingin%20bertanya%20tentang%20ebook%20premium" target="_blank">
-💬 Chat WhatsApp Admin
-</a>
-
-</div>
-
-<a class="wa-float" onclick="toggleContact()">
-
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-
-Hubungi Kami
-
-</a>
-
-<script>
-
-function toggleContact(){
-
-var panel = document.getElementById("contactPanel");
-
-if(panel.style.display === "block"){
-
-panel.style.display = "none";
-
-}else{
-
-panel.style.display = "block";
-
-}
-
-}
-
-</script>
-</script>
+</p>
 
 </body>
-
-  </html>
+</html>
