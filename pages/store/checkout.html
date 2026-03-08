@@ -4,38 +4,296 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Checkout Ebook</title>
+<title>Checkout | Dunia Digital</title>
 
 <link rel="stylesheet" href="/assets/css/style.css">
+
+<style>
+
+.checkout-container{
+max-width:900px;
+margin:80px auto;
+padding:40px;
+background:white;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.checkout-title{
+text-align:center;
+margin-bottom:30px;
+}
+
+.product-box{
+display:flex;
+gap:30px;
+align-items:center;
+margin-bottom:30px;
+}
+
+.product-box img{
+width:120px;
+border-radius:8px;
+}
+
+.price-normal{
+text-decoration:line-through;
+color:#888;
+}
+
+.price-promo{
+font-size:28px;
+color:#e60023;
+font-weight:bold;
+}
+
+.checkout-form input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:14px;
+}
+
+.pay-button{
+width:100%;
+padding:16px;
+background:#111;
+color:white;
+font-size:18px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.pay-button:hover{
+background:#333;
+}
+
+.payment-info{
+margin-top:30px;
+background:#f7f7f7;
+padding:25px;
+border-radius:10px;
+line-height:1.7;
+}
+
+.bank-box{
+background:white;
+padding:20px;
+border-radius:10px;
+margin-top:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.bank-title{
+font-weight:bold;
+font-size:16px;
+margin-bottom:10px;
+}
+
+.copy-btn{
+margin-top:8px;
+padding:6px 12px;
+font-size:13px;
+background:#111;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.copy-btn:hover{
+background:#333;
+}
+
+.notice{
+margin-top:25px;
+font-size:14px;
+}
+
+.whatsapp-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+background:#25D366;
+color:white;
+border-radius:6px;
+font-weight:bold;
+}
+
+.whatsapp-btn:hover{
+background:#1ebe5c;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<h1>Checkout Ebook</h1>
 
-<div id="product-info"></div>
+<header>
+<h1>Dunia Digital</h1>
+</header>
 
-<form id="checkout-form">
 
-<label>Nama</label>
-<input type="text" id="name" required>
 
-<label>Email</label>
-<input type="email" id="email" required>
+<div class="checkout-container">
 
-<button type="submit">
-Buat Pesanan
+<h2 class="checkout-title">
+Checkout Produk
+</h2>
+
+
+<div class="product-box">
+
+<img src="/img/ebooks/bundle-19.png">
+
+<div>
+
+<h3>Bundle 19 Ebook Premium</h3>
+
+<p class="price-normal">
+Harga Normal Rp3.781.000
+</p>
+
+<p class="price-promo">
+Rp1.500.000
+</p>
+
+</div>
+
+</div>
+
+
+
+<form class="checkout-form">
+
+<input type="text" placeholder="Nama Lengkap" required>
+
+<input type="email" placeholder="Email Aktif" required>
+
+<input type="text" placeholder="Nomor WhatsApp" required>
+
+<button type="button" class="pay-button">
+Saya Sudah Transfer
 </button>
 
 </form>
 
-<div id="payment-info"></div>
 
-<script src="/assets/js/checkout.js"></script>
+
+<div class="payment-info">
+
+<p><b>Silakan transfer ke salah satu rekening berikut:</b></p>
+
+
+<div class="bank-box">
+
+<div class="bank-title">
+Bank Seabank / Bank Kesejahteraan Ekonomi
+</div>
+
+<p>Nama: <b>AHMAD BARIZI</b></p>
+
+<p>
+No Rekening:
+<b id="rek1">901981495649</b>
+</p>
+
+<button class="copy-btn" onclick="copyRek('rek1')">
+Salin Nomor Rekening
+</button>
+
+<p>Kode Bank: 535</p>
+
+<p>Swift: SSPIIDJA</p>
+
+</div>
+
+
+
+<div class="bank-box">
+
+<div class="bank-title">
+Bank Jago
+</div>
+
+<p>Nama: <b>Ahmad Barizi</b></p>
+
+<p>
+No Rekening:
+<b id="rek2">109896731184</b>
+</p>
+
+<button class="copy-btn" onclick="copyRek('rek2')">
+Salin Nomor Rekening
+</button>
+
+<p>Kode Bank: 542</p>
+
+<p>Swift/BIC: ARTOIDJA</p>
+
+</div>
+
+
+
+<div class="notice">
+
+<p>
+Transfer dapat dilakukan dari bank apa saja atau e-wallet yang mendukung transfer bank.
+</p>
+
+<p>
+Setelah transfer, kirim bukti pembayaran melalui WhatsApp agar pesanan dapat diproses.
+</p>
+
+<a
+href="https://wa.me/6285175313909?text=Halo%20Admin%20Dunia%20Digital%2C%20saya%20sudah%20transfer%20untuk%20pembelian%20Bundle%2019%20Ebook."
+class="whatsapp-btn">
+
+Kirim Bukti Pembayaran via WhatsApp
+
+</a>
+
+<p style="margin-top:15px;">
+atau kirim ke email:
+<b>admin@dunia-digital.web.id</b>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<footer style="text-align:center;padding:30px">
+© 2026 Dunia Digital
+</footer>
+
+
+
+<script>
+
+function copyRek(id){
+
+var text = document.getElementById(id).innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Nomor rekening berhasil disalin");
+
+}
+
+</script>
+
+
 
 </body>
-
 </html>
