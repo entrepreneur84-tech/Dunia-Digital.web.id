@@ -1,43 +1,55 @@
 // workers/routes/download.js
 
 import { getDownload } from "../kv/downloads.js";
-import { jsonResponse } from "../utils/response.js";
+import { getOrder } from "../kv/orders.js";
+import { jsonResponse, errorResponse, streamFile } from "../utils/response.js";
+import { applyWatermark } from "../utils/pdfWatermark.js";
 
 /**
- * handleDownload
- * Endpoint: /download?orderId=xxx&fileId=xxx
+ * Handle GET /download?orderId=xxx&fileId=yyy
  */
 export async function handleDownload(request, env) {
-  const url = new URL(request.url);
-  const orderId = url.searchParams.get("orderId");
-  const fileId = url.searchParams.get("fileId");
+  try {
+    const url = new URL(request.url);
+    const orderId = url.searchParams.get("orderId");
+    const fileId = url.searchParams.get("fileId");
 
-  if (!orderId || !fileId) {
-    return jsonResponse({ success: false, message: "Order ID atau File ID tidak ditemukan." }, 400);
+    if (!orderId || !fileId) {
+      return errorResponse("Parameter orderId/fileId tidak lengkap", 400);
+    }
+
+    // Ambil data download dari KV
+    const downloadData = await getDownload(env.DOWNLOADS, orderId, fileId);
+
+    if (!downloadData) {
+      return errorResponse("Link download tidak valid atau sudah kadaluarsa", 404);
+    }
+
+    // Cek waktu kadaluarsa (24 jam)
+    const now = Date.now();
+    const diff = now - downloadData.created;
+    const maxTime = 24 * 60 * 60 * 1000;
+
+    if (diff > maxTime) {
+      return errorResponse("Link download sudah kadaluarsa", 410);
+    }
+
+    // Ambil order
+    const order = await getOrder(env.ORDERS, orderId);
+    if (!order || order.status !== "completed") {
+      return errorResponse("Order belum dikonfirmasi atau tidak ditemukan", 403);
+    }
+
+    // File path sesuai fileId
+    const filePath = `/ebooks/${fileId}.pdf`;
+
+    // Apply watermark nama pembeli
+    const pdfBuffer = await applyWatermark(filePath, order.buyerName);
+
+    return streamFile(pdfBuffer, `${fileId}.pdf`);
+
+  } catch (err) {
+    console.error("Gagal memproses download:", err);
+    return errorResponse("Terjadi kesalahan server", 500);
   }
-
-  // Ambil data download dari KV
-  const downloadData = await getDownload(env.DOWNLOADS, orderId, fileId);
-
-  if (!downloadData) {
-    return jsonResponse({ success: false, message: "Link download tidak valid atau sudah kadaluwarsa." }, 404);
-  }
-
-  // Cek apakah link masih aktif (misal 24 jam)
-  const created = downloadData.created;
-  const now = Date.now();
-  const diffHours = (now - created) / (1000 * 60 * 60);
-  if (diffHours > 24) {
-    return jsonResponse({ success: false, message: "Link download telah kadaluwarsa." }, 403);
-  }
-
-  // URL asli file di KV
-  const fileKey = downloadData.fileKey;
-  const buyerName = downloadData.buyerName || "Pembeli";
-
-  // === Generate file PDF dengan watermark nama pembeli ===
-  // Bisa langsung redirect ke Worker KV atau generate via PDF Worker
-  const fileUrl = `/downloads/${fileKey}?watermark=${encodeURIComponent(buyerName)}`;
-
-  return jsonResponse({ success: true, downloadUrl: fileUrl });
-   }
+}
