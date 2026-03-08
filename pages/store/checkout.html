@@ -7,165 +7,98 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 <style>
 .checkout-container{
-max-width:900px;
-margin:80px auto;
-padding:40px;
-background:white;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-.checkout-title{
-text-align:center;
-margin-bottom:30px;
-}
-.product-box{
-display:flex;
-gap:30px;
-align-items:center;
-margin-bottom:30px;
-flex-wrap:wrap;
-}
-.product-box img{
-width:120px;
-border-radius:8px;
-}
-.price-normal{
-text-decoration:line-through;
-color:#888;
-}
-.price-promo{
-font-size:28px;
-color:#e60023;
-font-weight:bold;
-}
-.checkout-form{
-margin-top:30px;
-}
-.checkout-form input{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-border:1px solid #ddd;
-border-radius:6px;
-font-size:14px;
-}
-.pay-button{
-width:100%;
-padding:16px;
-background:#111;
-color:white;
-font-size:18px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-transition:0.25s;
-}
-.pay-button:hover{
-background:#333;
-}
-.payment-info{
-margin-top:30px;
-background:#f7f7f7;
-padding:20px;
-border-radius:8px;
-font-size:14px;
-}
+max-width:900px;margin:80px auto;padding:40px;background:white;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.checkout-title{text-align:center;margin-bottom:30px;}
+.product-box{display:flex;gap:30px;align-items:center;margin-bottom:30px;}
+.product-box img{width:120px;border-radius:8px;}
+.price-normal{text-decoration:line-through;color:#888;}
+.price-promo{font-size:28px;color:#e60023;font-weight:bold;}
+.checkout-form{margin-top:30px;}
+.checkout-form input{width:100%;padding:12px;margin-bottom:15px;border:1px solid #ddd;border-radius:6px;font-size:14px;}
+.pay-button{width:100%;padding:16px;background:#111;color:white;font-size:18px;border:none;border-radius:8px;cursor:pointer;}
+.pay-button:hover{background:#333;}
+.payment-info{margin-top:30px;background:#f7f7f7;padding:20px;border-radius:8px;font-size:14px;}
 </style>
 </head>
 <body>
-
-<header>
-<h1 style="text-align:center;padding:20px 0;background:#111;color:white;">Dunia Digital - Checkout</h1>
+<header style="text-align:center;padding:20px 0;background:#111;color:white;">
+<h1>Dunia Digital</h1>
 </header>
 
 <div class="checkout-container">
-
 <h2 class="checkout-title">Checkout Produk</h2>
 
-<div class="product-box" id="product-box">
-<img src="/img/ebooks/bundle-19.png" id="product-img">
+<div id="product-box" class="product-box">
+<img src="">
 <div>
-<h3 id="product-title">Bundle 19 Ebook Premium</h3>
-<p class="price-normal" id="price-normal">Harga Normal Rp3.781.000</p>
-<p class="price-promo" id="price-promo">Rp1.500.000</p>
+<h3 id="product-title"></h3>
+<p class="price-normal" id="price-normal"></p>
+<p class="price-promo" id="price-promo"></p>
 </div>
 </div>
 
 <form class="checkout-form" id="checkout-form">
-<input type="text" placeholder="Nama Lengkap" required name="name">
-<input type="email" placeholder="Email Aktif" required name="email">
-<input type="text" placeholder="Nomor WhatsApp" required name="whatsapp">
-<button type="submit" class="pay-button">Bayar Sekarang</button>
+<input type="text" placeholder="Nama Lengkap" id="name" required>
+<input type="email" placeholder="Email Aktif" id="email" required>
+<input type="text" placeholder="Nomor WhatsApp" id="wa" required>
+<button class="pay-button">Bayar Sekarang</button>
 </form>
 
 <div class="payment-info">
-<h3>Info Pembayaran & Bank:</h3>
-<p><b>Bank Seabank / Bank Kesejahteraan Ekonomi</b></p>
-<p>Nama: AHMAD BARIZI<br>No. Rek: 901981495649<br>Kode Bank: 535<br>Swift: SSPIIDJA</p>
-
-<p><b>Bank Jago</b></p>
-<p>Nama: Ahmad Barizi<br>No. Rek: 109896731184<br>Kode Bank: 542<br>Swift/BIC: ARTOIDJA</p>
-
-<p>Walaupun transfer pakai bank lain atau e-wallet, konfirmasi pembayaran tetap melalui WhatsApp/Email kami.</p>
-<p>WA: 6285175313909 | Email: admin@dunia-digital.web.id</p>
+<p><b>Pembayaran melalui Bank:</b></p>
+<ul>
+<li>Seabank / Bank Kesejahteraan Ekonomi: Ahmad Barizi - 901981495649 - Kode bank 535 - Swift SSPIIDJA</li>
+<li>Bank Jago: Ahmad Barizi - 109896731184 - Kode bank 542 - Swift/BIC ARTOIDJA</li>
+<li>Atau bank / e-wallet lain diterima</li>
+</ul>
+<p>Setelah pembayaran, ebook akan dikirim ke email Anda.</p>
 </div>
-
 </div>
 
 <footer style="text-align:center;padding:30px;background:#222;color:#ccc;">
-© 2026 Dunia Digital. All Rights Reserved
+<p>© 2026 Dunia Digital</p>
 </footer>
 
 <script>
-// Data produk
+// Ambil parameter product
+const params = new URLSearchParams(window.location.search);
+const product = params.get('product');
+
 const products = {
 "bundle-19-ebook":{
 title:"Bundle 19 Ebook Premium",
-img:"/img/ebooks/bundle-19.png",
-priceNormal:3781000,
-pricePromo:1500000
+priceNormal:"Rp3.781.000",
+pricePromo:"Rp1.500.000",
+img:"/assets/img/bundle-19.png"
 },
 "bundle-3-ebook":{
 title:"Bundle 3 Ebook Premium",
-img:"/img/ebooks/bundle-3.png",
-priceNormal:597000,
-pricePromo:225000
-},
-"ebook-quantum-zikir":{
-title:"Quantum Zikir",
-img:"/img/ebooks/quantum-zikir.png",
-priceNormal:199000,
-pricePromo:100000
-},
-"ebook-tauhid-quantum":{
-title:"Tauhid Quantum",
-img:"/img/ebooks/tauhid-quantum.png",
-priceNormal:199000,
-pricePromo:100000
-},
-// tambahkan semua ebook lain sesuai file img + nama id
+priceNormal:"Rp597.000",
+pricePromo:"Rp225.000",
+img:"/assets/img/bundle-3.png"
+}
 };
 
-// Ambil query param product
-const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get('product') || 'bundle-19-ebook';
-const product = products[productId];
-
-// Update halaman sesuai produk
-if(product){
-document.getElementById('product-title').innerText = product.title;
-document.getElementById('product-img').src = product.img;
-document.getElementById('price-normal').innerText = 'Harga Normal Rp'+product.priceNormal.toLocaleString();
-document.getElementById('price-promo').innerText = 'Rp'+product.pricePromo.toLocaleString();
+if(products[product]){
+document.getElementById("product-title").innerText = products[product].title;
+document.getElementById("price-normal").innerText = products[product].priceNormal;
+document.getElementById("price-promo").innerText = products[product].pricePromo;
+document.querySelector("#product-box img").src = products[product].img;
 }
 
-// Form submit dummy (langsung redirect ke success.html)
-document.getElementById('checkout-form').addEventListener('submit', function(e){
+// Submit form
+document.getElementById("checkout-form").addEventListener("submit",function(e){
 e.preventDefault();
-alert('Terima kasih! Data pembayaran dicatat. Klik OK untuk lanjut.');
-window.location.href = "/pages/success.html";
+const order = {
+product:products[product].title,
+name:document.getElementById("name").value,
+email:document.getElementById("email").value,
+wa:document.getElementById("wa").value,
+tanggal:new Date().toLocaleString()
+};
+localStorage.setItem("lastOrder",JSON.stringify(order));
+window.location.href="/pages/store/success.html";
 });
 </script>
-
 </body>
 </html>
