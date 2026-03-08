@@ -14,6 +14,25 @@
 
 <style>
 
+body{
+font-family:Arial, sans-serif;
+margin:0;
+padding:0;
+}
+
+header{
+padding:20px;
+background:#111;
+color:white;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:0 10px;
+text-decoration:none;
+}
+
 .bundle-hero{
 text-align:center;
 padding:80px 20px;
@@ -67,9 +86,7 @@ border:1px solid #eee;
 border-radius:10px;
 background:white;
 }
-<div id="promo-countdown" style="margin-top:20px;font-size:20px;font-weight:bold;color:#e60023;">
-Promo berakhir dalam: <span id="timer"></span>
-</div>
+
 .ebook-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -85,6 +102,47 @@ border-radius:8px;
 background:white;
 }
 
+.testimoni{
+background:#f8f8f8;
+padding:70px 20px;
+text-align:center;
+}
+
+.testimoni-grid{
+max-width:900px;
+margin:auto;
+margin-top:40px;
+display:grid;
+gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.testimoni-item{
+background:white;
+padding:25px;
+border-radius:10px;
+}
+
+.faq{
+padding:70px 20px;
+max-width:800px;
+margin:auto;
+}
+
+.cta-final{
+text-align:center;
+background:#111;
+color:white;
+padding:70px 20px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:#222;
+color:white;
+}
+
 </style>
 
 </head>
@@ -96,19 +154,15 @@ background:white;
 <h1>Dunia Digital</h1>
 
 <nav>
-
 <a href="/">Home</a>
 <a href="/pages/store/">Store</a>
 <a href="/pages/blog/">Blog</a>
-
 </nav>
 
 </header>
 
 
-<!-- =========================
-BUNDLE 19 EBOOK
-========================= -->
+<!-- BUNDLE 19 -->
 
 <section class="bundle-hero">
 
@@ -117,10 +171,7 @@ BUNDLE 19 EBOOK
 </h2>
 
 <p>
-
-Koleksi lengkap ebook spiritual tentang dzikir,
-kesadaran, dan potensi diri.
-
+Koleksi lengkap ebook spiritual tentang dzikir, kesadaran, dan potensi diri.
 </p>
 
 <p class="bundle-price-normal">
@@ -135,33 +186,28 @@ Rp1.500.000
 Hemat Rp2.281.000
 </p>
 
+<div id="promo-countdown">
+Promo berakhir dalam: <span id="timer"></span>
+</div>
+
 <a class="cta-button"
 href="/pages/store/checkout.html?product=bundle-19-ebook">
-
 Ambil Bundle Sekarang
-
 </a>
 
 </section>
 
 
-<!-- =========================
-BUNDLE 3 EBOOK
-========================= -->
+<!-- BUNDLE 3 -->
 
 <section class="bundle-section">
 
 <div class="bundle-box">
 
-<h2>
-⭐ Bundle 3 Ebook Premium
-</h2>
+<h2>⭐ Bundle 3 Ebook Premium</h2>
 
 <p>
-
-3 ebook spiritual pilihan untuk membuka
-kesadaran dan potensi diri.
-
+3 ebook spiritual pilihan untuk membuka kesadaran dan potensi diri.
 </p>
 
 <p class="bundle-price-normal">
@@ -178,9 +224,7 @@ Hemat Rp372.000
 
 <a class="cta-button"
 href="/pages/store/checkout.html?product=bundle-3-ebook">
-
 Ambil Bundle 3 Ebook
-
 </a>
 
 </div>
@@ -188,9 +232,7 @@ Ambil Bundle 3 Ebook
 </section>
 
 
-<!-- =========================
-DAFTAR 19 EBOOK
-========================= -->
+<!-- LIST EBOOK -->
 
 <section>
 
@@ -219,125 +261,86 @@ DAFTAR 19 EBOOK
 <div class="ebook-item">Membongkar Realitas Hologram</div>
 <div class="ebook-item">Cara Berdamai Dengan Diri</div>
 <div class="ebook-item">Dzikir Supreme Power</div>
-<div id="promo-countdown" style="margin-top:20px;font-size:20px;font-weight:bold;color:#e60023;">
-Promo berakhir dalam: <span id="timer"></span>
-                                                   </div>
+
 </div>
 
 </section>
 
 
-<section style="text-align:center;padding:60px 20px;">
+<!-- TESTIMONI -->
 
-<h2>
-
-Kenapa Bundle Ini Sangat Berharga?
-
-</h2>
-
-<p>
-
-✓ Semua materi spiritual dalam satu paket  
-✓ Memahami dzikir dari sudut pandang quantum  
-✓ Membuka kesadaran dan potensi diri  
-✓ Panduan perjalanan spiritual modern  
-
-</p>
-
-<a class="cta-button"
-href="/pages/store/checkout.html?product=bundle-19-ebook">
-
-Dapatkan Bundle Sekarang
-
-</a>
-
-</section>
-
-
-<footer style="text-align:center;padding:30px;">
-
-<p>
-
-© 2026 Dunia Digital.Inc
-
-</p>
-<section style="background:#f8f8f8;padding:70px 20px;text-align:center;">
+<section class="testimoni">
 
 <h2>Apa Kata Pembaca</h2>
 
-<div style="max-width:900px;margin:auto;margin-top:40px;display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));">
+<div class="testimoni-grid">
 
-<div style="background:white;padding:25px;border-radius:10px;">
-<p>
-"Ebook Quantum Zikir benar-benar membuka cara pandang saya tentang dzikir dan kesadaran."
-</p>
-<b>— Ahmad R.</b>
+<div class="testimoni-item">
+"Ebook Quantum Zikir membuka cara pandang saya tentang dzikir."
+<br><b>— Ahmad R.</b>
 </div>
 
-<div style="background:white;padding:25px;border-radius:10px;">
-<p>
-"Sangat dalam dan mencerahkan. Materinya berbeda dari buku spiritual biasa."
-</p>
-<b>— Fajar H.</b>
+<div class="testimoni-item">
+"Sangat dalam dan mencerahkan."
+<br><b>— Fajar H.</b>
 </div>
 
-<div style="background:white;padding:25px;border-radius:10px;">
-<p>
-"Saya merasa mendapatkan perspektif baru tentang tauhid dan realitas."
-</p>
-<b>— Siti N.</b>
+<div class="testimoni-item">
+"Perspektif baru tentang tauhid dan realitas."
+<br><b>— Siti N.</b>
 </div>
-<section style="padding:70px 20px;max-width:800px;margin:auto;">
+
+</div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section class="faq">
 
 <h2 style="text-align:center;">Pertanyaan Yang Sering Ditanyakan</h2>
 
-<div style="margin-top:40px;">
-
-<h3>Bagaimana cara mendapatkan ebook setelah membeli?</h3>
+<h3>Bagaimana cara mendapatkan ebook?</h3>
 <p>
-Setelah pembayaran dikonfirmasi, kamu akan menerima akses download ebook melalui email atau dashboard.
+Setelah pembayaran dikonfirmasi, link download akan dikirim.
 </p>
 
 <h3>Apakah ebook bisa dibaca di HP?</h3>
 <p>
-Ya. Ebook dalam format PDF dan dapat dibaca di HP, tablet, atau laptop.
+Ya, format PDF bisa dibuka di HP atau laptop.
 </p>
 
-<h3>Apakah ada batas waktu download?</h3>
+<h3>Berapa lama link download aktif?</h3>
 <p>
-Link download aktif selama 24 jam setelah pembelian.
+Link aktif selama 24 jam.
 </p>
-
-<h3>Apakah boleh dibagikan ke orang lain?</h3>
-<p>
-Ebook hanya untuk penggunaan pribadi dan tidak diperbolehkan untuk disebarkan ulang.
-</p>
-
-</div>
 
 </section>
-</div>
-<section style="text-align:center;background:#111;color:white;padding:70px 20px;">
+
+
+<!-- CTA FINAL -->
+
+<section class="cta-final">
 
 <h2>Mulai Perjalanan Spiritual Kamu Hari Ini</h2>
 
-<p>
-
-Dapatkan seluruh koleksi ebook spiritual premium Dunia Digital.
-
-</p>
+<p>Dapatkan seluruh koleksi ebook spiritual premium.</p>
 
 <a class="cta-button"
 style="background:white;color:black"
 href="/pages/store/checkout.html?product=bundle-19-ebook">
-
 Ambil Bundle Sekarang
-
 </a>
 
 </section>
-</section>
+
+
+<footer>
+© 2026 Dunia Digital Inc
 </footer>
+
+
 <script>
 
 function startCountdown(){
@@ -348,12 +351,11 @@ end.setHours(end.getHours()+24)
 function update(){
 
 const now = new Date()
-
 const diff = end - now
 
-const hours = Math.floor(diff / (1000*60*60))
-const minutes = Math.floor((diff % (1000*60*60)) / (1000*60))
-const seconds = Math.floor((diff % (1000*60)) / 1000)
+const hours = Math.floor(diff/(1000*60*60))
+const minutes = Math.floor((diff%(1000*60*60))/(1000*60))
+const seconds = Math.floor((diff%(1000*60))/1000)
 
 document.getElementById("timer").innerText =
 hours+"h "+minutes+"m "+seconds+"s"
@@ -367,6 +369,6 @@ setInterval(update,1000)
 startCountdown()
 
 </script>
-</body>
 
-  </html>
+</body>
+</html>
