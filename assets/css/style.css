@@ -14,7 +14,39 @@ display:inline-block;
 /* =========================
 EBOOK GRID
 ========================= */
+.ebook-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:30px;
+padding:50px;
+max-width:1200px;
+margin:auto;
+}
 
+.ebook-item{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.ebook-item:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+
+.ebook-item img{
+width:100%;
+display:block;
+}
+
+.ebook-title{
+padding:15px;
+font-size:15px;
+font-weight:bold;
+text-align:center;
+  }
 .ebook-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
