@@ -1,87 +1,56 @@
 /**
  * workers/kv/orders.js
- * Helper untuk menyimpan & mengambil order dari KV
+ * Helper KV Orders
  */
 
-const KV_ORDERS = "ORDERS"; // Binding KV di wrangler.toml
+import { generateId } from "../utils/helpers.js";
+
+const KV_NAMESPACE = "ORDERS"; // pastikan binding di wrangler.toml sama
 
 /**
  * Simpan order baru ke KV
- * @param {Object} orderData
- * @param {string} orderData.nama - Nama pembeli
- * @param {string} orderData.email - Email pembeli
- * @param {string} orderData.whatsapp - Nomor WhatsApp
- * @param {string} orderData.produk - Produk atau bundle
- * @param {number} orderData.harga - Harga final
+ * @param {Object} orderData - { nama, email, whatsapp, produk, harga }
  * @returns {string} orderId
  */
 export async function saveOrder(orderData) {
-  const orderId = `order_${Date.now()}`; // ID unik sederhana
+  const orderId = generateId("order_"); // contoh: order_1678912345678
+  const createdAt = Date.now();
+
   const order = {
     id: orderId,
     ...orderData,
     status: "pending",
-    createdAt: new Date().toISOString()
+    createdAt
   };
 
-  try {
-    await ORDERS.put(orderId, JSON.stringify(order));
-    return orderId;
-  } catch (err) {
-    console.error("Gagal simpan order:", err.message);
-    throw new Error("Tidak bisa menyimpan order");
-  }
+  await KV_NAMESPACE.put(orderId, JSON.stringify(order));
+
+  return orderId;
 }
 
 /**
- * Ambil order berdasarkan ID
+ * Ambil order dari KV berdasarkan ID
  * @param {string} orderId
- * @returns {Object|null} order
+ * @returns {Object|null}
  */
 export async function getOrder(orderId) {
-  try {
-    const data = await ORDERS.get(orderId);
-    return data ? JSON.parse(data) : null;
-  } catch (err) {
-    console.error("Gagal ambil order:", err.message);
-    return null;
-  }
+  const data = await KV_NAMESPACE.get(orderId);
+  if (!data) return null;
+  return JSON.parse(data);
 }
 
 /**
- * Ambil semua order (untuk dashboard admin)
- * WARNING: Hanya untuk jumlah order sedikit, tidak scalable
- * @returns {Array<Object>} daftar order
+ * Ambil semua order (opsional untuk dashboard admin)
+ * @returns {Array}
  */
-export async function getAllOrders() {
+export async function getAllOrders(listKeys = []) {
+  const keys = listKeys.length ? listKeys : await KV_NAMESPACE.list({ limit: 1000 });
   const orders = [];
-  try {
-    const list = await ORDERS.list(); // daftar semua key
-    for (const key of list.keys) {
-      const data = await ORDERS.get(key.name);
-      if (data) orders.push(JSON.parse(data));
-    }
-    return orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-  } catch (err) {
-    console.error("Gagal ambil semua order:", err.message);
-    return [];
-  }
-}
 
-/**
- * Update status order
- * @param {string} orderId
- * @param {string} status - contoh: "paid", "pending", "cancelled"
- */
-export async function updateOrderStatus(orderId, status) {
-  try {
-    const order = await getOrder(orderId);
-    if (!order) return null;
-    order.status = status;
-    await ORDERS.put(orderId, JSON.stringify(order));
-    return order;
-  } catch (err) {
-    console.error("Gagal update status order:", err.message);
-    return null;
+  for (const key of keys.keys) {
+    const item = await KV_NAMESPACE.get(key.name);
+    if (item) orders.push(JSON.parse(item));
   }
+
+  return orders.sort((a, b) => b.createdAt - a.createdAt); // terbaru di atas
 }
