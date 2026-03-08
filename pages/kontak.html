@@ -2,214 +2,40 @@
 <html lang="id">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kontak Kami | Dunia Digital</title>
+<meta charset="UTF-8">
+<title>Kontak | Dunia Digital</title>
 
 <link rel="stylesheet" href="/assets/css/style.css">
-
-<style>
-
-body{
-font-family: Arial, sans-serif;
-background:#f5f7fb;
-margin:0;
-}
-
-.container{
-max-width:700px;
-margin:auto;
-padding:40px 20px;
-}
-
-.card{
-
-background:#fff;
-border-radius:12px;
-padding:40px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-
-}
-
-h1{
-text-align:center;
-margin-bottom:10px;
-}
-
-.subtitle{
-text-align:center;
-color:#666;
-margin-bottom:30px;
-}
-
-.form-group{
-margin-bottom:20px;
-}
-
-input, textarea{
-
-width:100%;
-padding:14px;
-border-radius:8px;
-border:1px solid #ddd;
-font-size:15px;
-}
-
-textarea{
-min-height:140px;
-resize:vertical;
-}
-
-button{
-
-width:100%;
-padding:15px;
-border:none;
-border-radius:8px;
-background:#4f46e5;
-color:white;
-font-size:16px;
-cursor:pointer;
-transition:0.2s;
-
-}
-
-button:hover{
-
-background:#4338ca;
-
-}
-
-button.loading{
-opacity:0.7;
-pointer-events:none;
-}
-
-.success{
-display:none;
-text-align:center;
-color:green;
-margin-top:20px;
-}
-
-.error{
-display:none;
-text-align:center;
-color:red;
-margin-top:20px;
-}
-
-</style>
 
 </head>
 
 <body>
 
-<div class="container">
+<h1>Kontak</h1>
 
-<div class="card">
+<p>
 
-<h1>Hubungi Kami</h1>
+Jika ada pertanyaan atau masalah download ebook,
+silakan hubungi kami.
 
-<p class="subtitle">
-Jika ada pertanyaan tentang ebook, akses download, atau kerjasama.
 </p>
 
-<form id="contactForm">
+<h3>WhatsApp</h3>
 
-<div class="form-group">
-<input type="text" name="name" placeholder="Nama Anda" required>
-</div>
+<a href="https://wa.me/6285175313909">
 
-<div class="form-group">
-<input type="email" name="email" placeholder="Email Anda" required>
-</div>
+6285175313909
 
-<div class="form-group">
-<textarea name="message" placeholder="Tulis pesan Anda..." required></textarea>
-</div>
+</a>
 
-<button id="sendBtn">
-Kirim Pesan
-</button>
+<h3>Email</h3>
 
-</form>
+<p>
 
-<div class="success" id="successMsg">
-Pesan berhasil dikirim
-</div>
+admin@dunia-digital.web.id
 
-<div class="error" id="errorMsg">
-Terjadi kesalahan
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-const form = document.getElementById("contactForm")
-const btn = document.getElementById("sendBtn")
-
-form.addEventListener("submit",async(e)=>{
-
-e.preventDefault()
-
-btn.classList.add("loading")
-btn.innerText="Mengirim..."
-
-const formData = new FormData(form)
-
-const data={
-name:formData.get("name"),
-email:formData.get("email"),
-message:formData.get("message")
-}
-
-try{
-
-const res = await fetch("/api/contact",{
-
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify(data)
-
-})
-
-const result = await res.json()
-
-if(result.ok){
-
-window.location.href="/pages/success.html"
-
-}else{
-
-showError()
-
-}
-
-}catch{
-
-showError()
-
-}
-
-})
-
-function showError(){
-
-btn.classList.remove("loading")
-btn.innerText="Kirim Pesan"
-
-document.getElementById("errorMsg").style.display="block"
-
-}
-
-</script>
+</p>
 
 </body>
 </html>
