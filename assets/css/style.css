@@ -600,3 +600,37 @@ padding:9px 14px;
 }
 
   }
+/* =========================
+EBOOK SLIDER
+========================= */
+
+.ebook-slider{
+overflow:hidden;
+padding:60px 0;
+background:#fafafa;
+}
+
+.slider-track{
+display:flex;
+gap:30px;
+animation:scrollSlider 25s linear infinite;
+width:max-content;
+}
+
+.slider-track img{
+width:180px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+@keyframes scrollSlider{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+
+  }
