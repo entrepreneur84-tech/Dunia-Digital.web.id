@@ -1,19 +1,31 @@
-export async function handleDashboardOrders(request, env) {
+import { getOrders } from "../kv/orders.js";
+import { jsonResponse } from "../utils/response.js";
 
- const list = await env.ORDERS.list()
+/**
+ * handleDashboard
+ * Endpoint untuk fetch semua order (admin)
+ * @param {Request} request
+ * @param {Env} env
+ * @returns {Response}
+ */
+export async function handleDashboard(request, env) {
+  try {
+    // Cek method
+    if (request.method !== "GET") {
+      return jsonResponse({ error: "Method not allowed" }, 405);
+    }
 
- const orders = []
+    // Ambil semua order dari KV
+    const orders = await getOrders(env);
 
- for (const key of list.keys) {
+    // Sorting terbaru dulu
+    orders.sort((a, b) => b.created - a.created);
 
-  const data = await env.ORDERS.get(key.name, "json")
+    // Return JSON
+    return jsonResponse({ success: true, orders });
 
-  orders.push(data)
-
- }
-
- return new Response(JSON.stringify(orders), {
-  headers: { "Content-Type": "application/json" }
- })
-
+  } catch (err) {
+    console.error("Dashboard Error:", err);
+    return jsonResponse({ success: false, message: err.message }, 500);
+  }
 }
