@@ -302,6 +302,36 @@ window.location.href="/pages/success.html"
 }
 
 </script>
+  <script>
+
+var price = 1500000
+
+document.getElementById("coupon").addEventListener("change",function(){
+
+var code = this.value.toLowerCase()
+
+if(code=="promo50"){
+
+price = price * 0.5
+
+alert("Kupon diskon 50% berhasil digunakan")
+
+}
+
+if(code=="ebook100"){
+
+price = price - 100000
+
+alert("Diskon Rp100.000 diterapkan")
+
+}
+
+document.getElementById("final-price").innerText =
+"Rp"+price.toLocaleString("id-ID")
+
+})
+
+  </script>
 </script>
 
 
