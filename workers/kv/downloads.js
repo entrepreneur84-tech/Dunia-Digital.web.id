@@ -1,53 +1,62 @@
-// workers/kv/downloads.js
+/**
+ * workers/kv/downloads.js
+ * Helper KV Download Links
+ */
+
+import { generateId } from "../utils/helpers.js";
+
+const KV_NAMESPACE = "DOWNLOADS"; // pastikan binding di wrangler.toml sama
 
 /**
- * Simpan link download di KV
- * @param {KVNamespace} KV_DOWNLOADS - binding KV Worker
- * @param {string} orderId - ID order
- * @param {string} fileId - ID file ebook
- * @param {string} fileKey - nama file di KV
- * @param {string} buyerName - nama pembeli
+ * Buat link download baru untuk order
+ * @param {string} orderId
+ * @param {Array} fileIds - daftar fileId ebook
+ * @returns {string} downloadId
  */
-export async function saveDownload(KV_DOWNLOADS, orderId, fileId, fileKey, buyerName) {
-  const key = `${orderId}:${fileId}`;
+export async function createDownloadLink(orderId, fileIds = []) {
+  const downloadId = generateId("dl_"); // contoh: dl_1678912345678
+  const createdAt = Date.now();
+  const expiresAt = createdAt + 24 * 60 * 60 * 1000; // link aktif 24 jam
+
   const data = {
-    fileKey,
-    buyerName,
-    created: Date.now()
+    downloadId,
+    orderId,
+    files: fileIds,
+    createdAt,
+    expiresAt,
+    used: false
   };
 
-  await KV_DOWNLOADS.put(key, JSON.stringify(data));
-  return data;
+  await KV_NAMESPACE.put(downloadId, JSON.stringify(data));
+
+  return downloadId;
 }
 
 /**
- * Ambil link download dari KV
- * @param {KVNamespace} KV_DOWNLOADS - binding KV Worker
- * @param {string} orderId - ID order
- * @param {string} fileId - ID file ebook
- * @returns {object|null} data download atau null jika tidak ada
+ * Ambil link download berdasarkan ID
+ * @param {string} downloadId
+ * @returns {Object|null}
  */
-export async function getDownload(KV_DOWNLOADS, orderId, fileId) {
-  const key = `${orderId}:${fileId}`;
-  const value = await KV_DOWNLOADS.get(key);
+export async function getDownloadLink(downloadId) {
+  const data = await KV_NAMESPACE.get(downloadId);
+  if (!data) return null;
 
-  if (!value) return null;
+  const obj = JSON.parse(data);
 
-  try {
-    return JSON.parse(value);
-  } catch (err) {
-    console.error("Gagal parse download KV:", err);
-    return null;
-  }
+  // jika sudah expired
+  if (Date.now() > obj.expiresAt) return null;
+
+  return obj;
 }
 
 /**
- * Hapus link download dari KV
- * @param {KVNamespace} KV_DOWNLOADS
- * @param {string} orderId
- * @param {string} fileId
+ * Tandai link download sudah digunakan
+ * @param {string} downloadId
  */
-export async function deleteDownload(KV_DOWNLOADS, orderId, fileId) {
-  const key = `${orderId}:${fileId}`;
-  await KV_DOWNLOADS.delete(key);
+export async function markDownloadUsed(downloadId) {
+  const obj = await getDownloadLink(downloadId);
+  if (!obj) return;
+
+  obj.used = true;
+  await KV_NAMESPACE.put(downloadId, JSON.stringify(obj));
 }
