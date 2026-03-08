@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout Sukses | Dunia Digital</title>
+<title>Pembelian Sukses | Dunia Digital</title>
 <link rel="stylesheet" href="/assets/css/style.css">
 <style>
 .success-container{
-max-width:900px;
+max-width:800px;
 margin:80px auto;
 padding:40px;
 background:white;
@@ -15,45 +15,44 @@ border-radius:12px;
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
 text-align:center;
 }
-
-.success-container h1{
-font-size:32px;
+.success-title{
+font-size:28px;
 margin-bottom:20px;
 color:#1a7f37;
 }
-
-.success-container p{
+.success-message{
 font-size:16px;
-margin-bottom:15px;
-color:#555;
+margin-bottom:30px;
+line-height:1.5;
+color:#333;
 }
-
-.download-button{
-display:inline-block;
-margin-top:20px;
-padding:16px 32px;
-background:#111;
-color:white;
-font-size:18px;
-border-radius:8px;
-text-decoration:none;
-transition:0.25s;
-}
-
-.download-button:hover{
-background:#333;
-}
-
-.payment-info{
-margin-top:30px;
+.bank-info{
+text-align:left;
 background:#f7f7f7;
 padding:20px;
-border-radius:8px;
-text-align:left;
-font-size:14px;
+border-radius:10px;
+margin:20px 0;
+font-size:15px;
 }
-
-.watermark-note{
+.bank-info b{
+color:#111;
+}
+.cta-button{
+display:inline-block;
+margin-top:20px;
+padding:16px 30px;
+background:#111;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:16px;
+transition:0.25s;
+}
+.cta-button:hover{
+background:#333;
+transform:translateY(-2px);
+}
+.note{
 margin-top:20px;
 font-size:13px;
 color:#666;
@@ -62,45 +61,44 @@ color:#666;
 </head>
 <body>
 
-<header>
-<h1 style="text-align:center;padding:20px 0;background:#111;color:white;">Dunia Digital - Checkout Sukses</h1>
+<header style="text-align:center;padding:20px 0;background:#111;color:white;">
+<h1>Dunia Digital</h1>
 </header>
 
 <div class="success-container">
-<h1>🎉 Pembayaran Berhasil!</h1>
-<p>Terima kasih telah membeli ebook premium Dunia Digital.</p>
-<p>Silakan download ebook Anda di bawah ini:</p>
+<h2 class="success-title">🎉 Pembelian Sukses!</h2>
+<p class="success-message">
+Terima kasih telah membeli bundle ebook premium Dunia Digital.<br>
+Silakan lakukan pembayaran melalui salah satu rekening di bawah ini jika belum transfer.
+</p>
 
-<a href="/downloads/bundle-19-ebook.zip" class="download-button">Download Bundle 19 Ebook</a>
-<a href="/downloads/bundle-3-ebook.zip" class="download-button" style="margin-left:10px;">Download Bundle 3 Ebook</a>
-
-<div class="watermark-note">
-<p>Setiap ebook memiliki <b>watermark nama pembeli</b>. Dilarang mendistribusikan ulang tanpa izin.</p>
+<div class="bank-info">
+<h3>Transfer Bank Seabank / Bank Kesejahteraan Ekonomi</h3>
+<p><b>Atas Nama:</b> AHMAD BARIZI<br>
+<b>Nomor Rekening:</b> 901981495649<br>
+<b>Kode Bank:</b> 535<br>
+<b>Swift:</b> SSPIIDJA</p>
 </div>
 
-<div class="payment-info">
-<h3>Info Pembayaran & Bank:</h3>
-<p><b>Bank Seabank / Bank Kesejahteraan Ekonomi</b></p>
-<p>Nama: AHMAD BARIZI<br>
-No. Rek: 901981495649<br>
-Kode Bank: 535<br>
-Swift: SSPIIDJA</p>
-
-<p><b>Bank Jago</b></p>
-<p>Nama: Ahmad Barizi<br>
-No. Rek: 109896731184<br>
-Kode Bank: 542<br>
-Swift/BIC: ARTOIDJA</p>
-
-<p>Walaupun transfer pakai bank lain atau e-wallet, konfirmasi pembayaran tetap melalui WhatsApp/Email kami.</p>
-<p>WA: 6285175313909 | Email: admin@dunia-digital.web.id</p>
+<div class="bank-info">
+<h3>Bank Jago / Wallet lain</h3>
+<p><b>Atas Nama:</b> Ahmad Barizi<br>
+<b>Nomor Rekening:</b> 109896731184<br>
+<b>Kode Bank:</b> 542<br>
+<b>Swift/BIC:</b> ARTOIDJA</p>
+<p>Walaupun transfer via bank lain atau wallet apa saja tetap diterima.</p>
 </div>
 
-<a href="/pages/store/index.html" class="download-button" style="margin-top:30px;background:#1a7f37;">Kembali ke Store</a>
+<p class="note">
+Setiap ebook memiliki watermark nama pembeli.<br>
+Dilarang mendistribusikan ulang tanpa izin.
+</p>
+
+<a class="cta-button" href="/pages/store/">Kembali ke Toko</a>
 </div>
 
 <footer style="text-align:center;padding:30px;background:#222;color:#ccc;">
-© 2026 Dunia Digital. All Rights Reserved
+<p>© 2026 Dunia Digital</p>
 </footer>
 
 </body>
