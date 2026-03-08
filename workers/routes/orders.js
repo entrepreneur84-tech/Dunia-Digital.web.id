@@ -1,50 +1,96 @@
 // workers/routes/orders.js
-import { jsonResponse } from "../utils/response.js";
-import { generateId } from "../utils/helpers.js";
+
+import { saveDownload } from "../kv/downloads.js";
 import { sendNotification } from "../utils/notify.js";
+import { jsonResponse, errorResponse } from "../utils/response.js";
+import { generateId } from "../utils/helpers.js";
 
-export async function handleOrders(request, env) {
-  if (request.method !== "POST") {
-    return jsonResponse({ error: "Method not allowed" }, 405);
-  }
-
+/**
+ * Handle POST /orders
+ * Body JSON:
+ * {
+ *   buyerName: string,
+ *   email: string,
+ *   whatsapp: string,
+ *   product: string | "bundle-19-ebook" | "bundle-3-ebook"
+ * }
+ */
+export async function handleOrder(request, env) {
   try {
-    const data = await request.json();
-
-    // Validasi field wajib
-    const { name, email, whatsapp, productId } = data;
-    if (!name || !email || !whatsapp || !productId) {
-      return jsonResponse({ error: "Data pembeli tidak lengkap" }, 400);
+    if (request.method !== "POST") {
+      return errorResponse("Method not allowed", 405);
     }
 
-    // Generate order ID unik
-    const orderId = generateId(8);
+    const data = await request.json();
+    const { buyerName, email, whatsapp, product } = data;
 
-    // Data order lengkap
+    if (!buyerName || !email || !whatsapp || !product) {
+      return errorResponse("Data pembeli tidak lengkap", 400);
+    }
+
+    const orderId = generateId("order_");
+    const created = Date.now();
+
+    // Tentukan produk yang dibeli
+    let productList = [];
+
+    if (product === "bundle-19-ebook") {
+      productList = [
+        "quantum-zikir","tauhid-quantum","quantum-nur","quantum-ruh",
+        "quantum-syukur","zero-points-zikir","the-art-of-surrender",
+        "the-radiance-within","the-untouchable","pasrah-itu-zikir",
+        "powerful-dhikr-healing","rahasiakode-realitas",
+        "navigasi-cahaya","ksatria-spiritual","membongkar-potensi-diri",
+        "menguak-potensi-tanpa-batas","membongkar-realitas-hologram",
+        "cara-berdamai-dengan-diri","dzikir-supreme-power"
+      ];
+    } else if (product === "bundle-3-ebook") {
+      productList = [
+        "quantum-zikir","tauhid-quantum","quantum-nur"
+      ];
+    } else {
+      productList = [product];
+    }
+
+    // Simpan order di KV ORDERS
     const orderData = {
       orderId,
-      name,
+      buyerName,
       email,
       whatsapp,
-      productId,
-      status: "pending",
-      createdAt: new Date().toISOString()
+      product,
+      productList,
+      created,
+      status: "pending"
     };
 
-    // Simpan ke KV ORDERS
     await env.ORDERS.put(orderId, JSON.stringify(orderData));
 
-    // Kirim notifikasi ke admin
-    const adminWA = "6285175313909";
-    const adminEmail = "admin@dunia-digital.web.id";
+    // Simpan link download di KV DOWNLOADS
+    const downloads = [];
+    for (const fileId of productList) {
+      const downloadData = await saveDownload(env.DOWNLOADS, orderId, fileId, fileId, buyerName);
+      downloads.push(downloadData);
+    }
 
-    const message = `Order Baru!\nID: ${orderId}\nNama: ${name}\nEmail: ${email}\nWA: ${whatsapp}\nProduk: ${productId}`;
-    await sendNotification({ whatsapp: adminWA, email: adminEmail, message });
+    // Kirim notifikasi WA/email
+    await sendNotification({
+      to: whatsapp,
+      email,
+      buyerName,
+      orderId,
+      product,
+      productList
+    });
 
-    return jsonResponse({ success: true, orderId, message: "Order berhasil dibuat" });
+    return jsonResponse({
+      success: true,
+      orderId,
+      downloads
+    });
 
   } catch (err) {
-    console.error("Order error:", err);
-    return jsonResponse({ error: "Terjadi kesalahan server" }, 500);
+    console.error("Gagal membuat order:", err);
+    return errorResponse("Terjadi kesalahan server", 500);
   }
 }
