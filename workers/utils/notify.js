@@ -1,33 +1,65 @@
-// workers/utils/notify.js
+/**
+ * workers/utils/notify.js
+ * Helper Notifikasi Order via WhatsApp & Email
+ */
+
+import { sendEmail } from "./mail.js";   // helper email, bisa kamu buat terpisah
+import { sendWhatsApp } from "./wa.js";  // helper WA, bisa pakai API gateway
+
+// Konfigurasi admin
+const ADMIN_EMAIL = "admin@dunia-digital.web.id";
+const ADMIN_WA = "6285175313909";
 
 /**
- * sendNotification
- * Mengirim notifikasi ke WhatsApp dan email admin
- * @param {Object} param0 
- * @param {string} param0.whatsapp - nomor WA admin
- * @param {string} param0.email - email admin
- * @param {string} param0.message - isi notifikasi
+ * Kirim notifikasi order baru ke admin
+ * @param {Object} orderData
  */
-export async function sendNotification({ whatsapp, email, message }) {
-  try {
-    // === WhatsApp API ===
-    // Misal pakai WA gateway atau Twilio API (sesuaikan dengan konfigurasi)
-    // Contoh pseudo-code:
-    if (whatsapp) {
-      // fetch("https://api.whatsapp.com/send?phone=62xxx&text=message") dst
-      console.log(`WA Notification to ${whatsapp}:\n${message}`);
-    }
+export async function notifyAdmin(orderData) {
+  const { nama, email, product, total, orderId } = orderData;
 
-    // === Email API ===
-    // Misal pakai SendGrid, Mailgun, atau SMTP
-    if (email) {
-      // fetch ke API email
-      console.log(`Email Notification to ${email}:\n${message}`);
-    }
+  const message = `
+Order Baru Masuk
+-------------------------
+ID Order: ${orderId}
+Nama: ${nama}
+Email: ${email}
+Produk: ${product}
+Total: Rp${total.toLocaleString()}
+-------------------------
+`;
 
-    return true;
-  } catch (err) {
-    console.error("Notification error:", err);
-    return false;
+  // Kirim WA
+  await sendWhatsApp(ADMIN_WA, message);
+
+  // Kirim Email
+  await sendEmail(ADMIN_EMAIL, "Order Baru - Dunia Digital", message);
+}
+
+/**
+ * Kirim notifikasi ke pembeli
+ * @param {Object} orderData
+ */
+export async function notifyCustomer(orderData, downloadLink = "") {
+  const { nama, email, product, total, orderId } = orderData;
+
+  const message = `
+Halo ${nama},
+
+Terima kasih telah membeli ${product}.
+Order ID: ${orderId}
+Total: Rp${total.toLocaleString()}
+
+${downloadLink ? `Link download ebook: ${downloadLink}` : ""}
+
+Salam hangat,
+Dunia Digital
+`;
+
+  // Kirim WA jika nomor tersedia
+  if (orderData.wa) {
+    await sendWhatsApp(orderData.wa, message);
   }
+
+  // Kirim Email
+  await sendEmail(email, "Konfirmasi Order - Dunia Digital", message);
 }
