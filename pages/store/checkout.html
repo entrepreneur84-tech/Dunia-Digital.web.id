@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Checkout | Dunia Digital</title>
-
 <link rel="stylesheet" href="/assets/css/style.css">
-
 <style>
-
 .checkout-container{
 max-width:900px;
 margin:80px auto;
@@ -23,7 +17,10 @@ box-shadow:0 10px 30px rgba(0,0,0,0.08);
 
 .checkout-title{
 text-align:center;
-margin-bottom:30px;
+margin-bottom:40px;
+font-size:28px;
+font-weight:700;
+color:#111;
 }
 
 .product-box{
@@ -31,11 +28,16 @@ display:flex;
 gap:30px;
 align-items:center;
 margin-bottom:30px;
+flex-wrap:wrap;
 }
 
 .product-box img{
 width:120px;
 border-radius:8px;
+}
+
+.product-info h3{
+margin-bottom:10px;
 }
 
 .price-normal{
@@ -49,7 +51,12 @@ color:#e60023;
 font-weight:bold;
 }
 
-.checkout-form input{
+.checkout-form{
+margin-top:30px;
+}
+
+.checkout-form input,
+.checkout-form select{
 width:100%;
 padding:12px;
 margin-bottom:15px;
@@ -67,6 +74,7 @@ font-size:18px;
 border:none;
 border-radius:8px;
 cursor:pointer;
+transition:0.25s;
 }
 
 .pay-button:hover{
@@ -76,265 +84,80 @@ background:#333;
 .payment-info{
 margin-top:30px;
 background:#f7f7f7;
-padding:25px;
-border-radius:10px;
-line-height:1.7;
-}
-
-.bank-box{
-background:white;
 padding:20px;
-border-radius:10px;
-margin-top:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-}
-
-.bank-title{
-font-weight:bold;
-font-size:16px;
-margin-bottom:10px;
-}
-
-.copy-btn{
-margin-top:8px;
-padding:6px 12px;
-font-size:13px;
-background:#111;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
-
-.copy-btn:hover{
-background:#333;
-}
-
-.notice{
-margin-top:25px;
+border-radius:8px;
 font-size:14px;
 }
 
-.whatsapp-btn{
-display:inline-block;
-margin-top:15px;
-padding:12px 20px;
-background:#25D366;
-color:white;
-border-radius:6px;
-font-weight:bold;
+.payment-info b{
+display:block;
+margin-bottom:6px;
 }
 
-.whatsapp-btn:hover{
-background:#1ebe5c;
+.watermark-note{
+margin-top:20px;
+font-size:13px;
+color:#666;
 }
 
 </style>
-
 </head>
-
 <body>
-
 
 <header>
 <h1>Dunia Digital</h1>
 </header>
 
-
-
 <div class="checkout-container">
 
-<h2 class="checkout-title">
-Checkout Produk
-</h2>
-
+<h2 class="checkout-title">Checkout Produk</h2>
 
 <div class="product-box">
-
-<img src="/img/ebooks/bundle-19.png">
-
-<div>
-
+<img src="/img/ebooks/bundle-19.png" alt="Bundle 19 Ebook Premium">
+<div class="product-info">
 <h3>Bundle 19 Ebook Premium</h3>
-
-<p class="price-normal">
-Harga Normal Rp3.781.000
-</p>
-
-<p class="price-promo">
-Rp1.500.000
-</p>
-
+<p class="price-normal">Rp3.781.000</p>
+<p class="price-promo">Rp1.500.000</p>
+</div>
 </div>
 
-</div>
+<form class="checkout-form" action="/pages/success.html" method="GET">
+<input type="text" name="nama" placeholder="Nama Lengkap" required>
+<input type="email" name="email" placeholder="Email Aktif" required>
+<input type="text" name="wa" placeholder="Nomor WhatsApp" required>
 
+<select name="payment-method" required>
+<option value="">Pilih Metode Pembayaran</option>
+<option value="seabank">Bank Seabank / Bank Kesejahteraan Ekonomi</option>
+<option value="jago">Bank Jago</option>
+<option value="lain">Bank / Wallet Lain</option>
+</select>
 
-
-<form class="checkout-form">
-
-<input type="text" placeholder="Nama Lengkap" required>
-
-<input type="email" placeholder="Email Aktif" required>
-
-<input type="text" placeholder="Nomor WhatsApp" required>
-
-<button type="button" class="pay-button">
-Saya Sudah Transfer
-</button>
-
+<button type="submit" class="pay-button">Bayar Sekarang</button>
 </form>
 
-
-
 <div class="payment-info">
+<p><b>Informasi Pembayaran Bank:</b></p>
 
-<p><b>Silakan transfer ke salah satu rekening berikut:</b></p>
+<p><b>Bank Seabank / Bank Kesejahteraan Ekonomi</b></p>
+<p>AHMAD BARIZI | 901981495649 | Kode Bank 535 | Swift: SSPIIDJA</p>
 
+<p><b>Bank Jago</b></p>
+<p>AHMAD BARIZI | 109896731184 | Kode Bank 542 | Swift/BIC: ARTOIDJA</p>
 
-<div class="bank-box">
+<p><b>Catatan:</b></p>
+<p>Setelah melakukan transfer, konfirmasi ke WhatsApp <b>+6285175313909</b> atau email <b>admin@dunia-digital.web.id</b>.</p>
 
-<div class="bank-title">
-Bank Seabank / Bank Kesejahteraan Ekonomi
-</div>
-
-<p>Nama: <b>AHMAD BARIZI</b></p>
-
-<p>
-No Rekening:
-<b id="rek1">901981495649</b>
+<p class="watermark-note">
+Setiap ebook memiliki watermark nama pembeli. Dilarang mendistribusikan ulang tanpa izin.
 </p>
-
-<button class="copy-btn" onclick="copyRek('rek1')">
-Salin Nomor Rekening
-</button>
-
-<p>Kode Bank: 535</p>
-
-<p>Swift: SSPIIDJA</p>
-
-</div>
-
-
-
-<div class="bank-box">
-
-<div class="bank-title">
-Bank Jago
-</div>
-
-<p>Nama: <b>Ahmad Barizi</b></p>
-
-<p>
-No Rekening:
-<b id="rek2">109896731184</b>
-</p>
-
-<button class="copy-btn" onclick="copyRek('rek2')">
-Salin Nomor Rekening
-</button>
-
-<p>Kode Bank: 542</p>
-
-<p>Swift/BIC: ARTOIDJA</p>
-
-</div>
-
-
-
-<div class="notice">
-
-<p>
-Transfer dapat dilakukan dari bank apa saja atau e-wallet yang mendukung transfer bank.
-</p>
-
-<p>
-Setelah transfer, kirim bukti pembayaran melalui WhatsApp agar pesanan dapat diproses.
-</p>
-
-<a
-href="https://wa.me/6285175313909?text=Halo%20Admin%20Dunia%20Digital%2C%20saya%20sudah%20transfer%20untuk%20pembelian%20Bundle%2019%20Ebook."
-class="whatsapp-btn">
-<input type="text" id="coupon"
-placeholder="Kode Kupon (jika ada)">
-Kirim Bukti Pembayaran via WhatsApp
-
-</a>
-
-<p style="margin-top:15px;">
-atau kirim ke email:
-<b>admin@dunia-digital.web.id</b>
-</p>
-
 </div>
 
 </div>
 
-</div>
-
-
-
-<footer style="text-align:center;padding:30px">
-© 2026 Dunia Digital
+<footer style="text-align:center;padding:30px;">
+© 2026 Dunia Digital. All Rights Reserved.
 </footer>
-
-
-
-<script>
-
-function copyRek(id){
-
-var text = document.getElementById(id).innerText;
-
-navigator.clipboard.writeText(text);
-
-alert("Nomor rekening berhasil disalin");
-
-}
-<script>
-
-document.querySelector(".pay-button").onclick=function(){
-
-alert("Terima kasih. Silakan kirim bukti transfer.");
-
-window.location.href="/pages/success.html"
-
-}
-
-</script>
-  <script>
-
-var price = 1500000
-
-document.getElementById("coupon").addEventListener("change",function(){
-
-var code = this.value.toLowerCase()
-
-if(code=="promo50"){
-
-price = price * 0.5
-
-alert("Kupon diskon 50% berhasil digunakan")
-
-}
-
-if(code=="ebook100"){
-
-price = price - 100000
-
-alert("Diskon Rp100.000 diterapkan")
-
-}
-
-document.getElementById("final-price").innerText =
-"Rp"+price.toLocaleString("id-ID")
-
-})
-
-  </script>
-</script>
-
-
 
 </body>
 </html>
