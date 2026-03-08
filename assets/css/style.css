@@ -21,7 +21,47 @@ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 gap:30px;
 margin-top:40px;
 }
+.product-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+margin-top:30px;
+}
 
+.product-card{
+border:1px solid #eee;
+padding:20px;
+border-radius:10px;
+text-align:center;
+background:white;
+}
+
+.product-card img{
+width:100%;
+border-radius:6px;
+}
+
+.price-normal{
+text-decoration:line-through;
+color:#888;
+font-size:14px;
+}
+
+.price-promo{
+color:#e60023;
+font-weight:bold;
+font-size:20px;
+}
+
+.btn-buy{
+display:inline-block;
+margin-top:10px;
+padding:10px 16px;
+background:#111;
+color:white;
+text-decoration:none;
+border-radius:6px;
+  }
 /* =========================
 EBOOK CARD
 ========================= */
