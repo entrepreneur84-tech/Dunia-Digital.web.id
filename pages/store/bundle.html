@@ -219,7 +219,9 @@ DAFTAR 19 EBOOK
 <div class="ebook-item">Membongkar Realitas Hologram</div>
 <div class="ebook-item">Cara Berdamai Dengan Diri</div>
 <div class="ebook-item">Dzikir Supreme Power</div>
-
+<div id="promo-countdown" style="margin-top:20px;font-size:20px;font-weight:bold;color:#e60023;">
+Promo berakhir dalam: <span id="timer"></span>
+                                                   </div>
 </div>
 
 </section>
@@ -259,9 +261,66 @@ Dapatkan Bundle Sekarang
 © 2026 Dunia Digital.Inc
 
 </p>
+<section style="background:#f8f8f8;padding:70px 20px;text-align:center;">
 
+<h2>Apa Kata Pembaca</h2>
+
+<div style="max-width:900px;margin:auto;margin-top:40px;display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));">
+
+<div style="background:white;padding:25px;border-radius:10px;">
+<p>
+"Ebook Quantum Zikir benar-benar membuka cara pandang saya tentang dzikir dan kesadaran."
+</p>
+<b>— Ahmad R.</b>
+</div>
+
+<div style="background:white;padding:25px;border-radius:10px;">
+<p>
+"Sangat dalam dan mencerahkan. Materinya berbeda dari buku spiritual biasa."
+</p>
+<b>— Fajar H.</b>
+</div>
+
+<div style="background:white;padding:25px;border-radius:10px;">
+<p>
+"Saya merasa mendapatkan perspektif baru tentang tauhid dan realitas."
+</p>
+<b>— Siti N.</b>
+</div>
+
+</div>
+
+</section>
 </footer>
+<script>
 
+function startCountdown(){
+
+const end = new Date()
+end.setHours(end.getHours()+24)
+
+function update(){
+
+const now = new Date()
+
+const diff = end - now
+
+const hours = Math.floor(diff / (1000*60*60))
+const minutes = Math.floor((diff % (1000*60*60)) / (1000*60))
+const seconds = Math.floor((diff % (1000*60)) / 1000)
+
+document.getElementById("timer").innerText =
+hours+"h "+minutes+"m "+seconds+"s"
+
+}
+
+setInterval(update,1000)
+
+}
+
+startCountdown()
+
+</script>
 </body>
 
   </html>
