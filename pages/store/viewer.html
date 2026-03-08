@@ -1,32 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
 <head>
-  <title>Viewer Ebook</title>
+
+<meta charset="UTF-8">
+
+<title>Baca Ebook</title>
+
+<link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
+
 <body>
-<h2>Masukkan License</h2>
 
-<input id="license" placeholder="LICENSE">
-<button onclick="openBook()">Buka Ebook</button>
+<h1>Ebook Viewer</h1>
 
-<div id="book"></div>
+<iframe
+id="ebook-frame"
+width="100%"
+height="800px">
+</iframe>
 
 <script>
-async function openBook(){
-  const license = document.getElementById("license").value
-  const fingerprint = navigator.userAgent
 
-  const res = await fetch("https://YOUR-WORKER.workers.dev/api/license", {
-    method:"POST",
-    body: JSON.stringify({ license, fingerprint })
-  })
-  const data = await res.json()
+const params = new URLSearchParams(window.location.search)
 
-  if(!data.ok){ alert(data.msg); return }
+const file = params.get("file")
 
-  document.getElementById("book").innerHTML =
-    "<iframe src='"+data.ebook+"' width='100%' height='600'></iframe>"
-}
+document.getElementById("ebook-frame").src =
+"/api/download?file=" + file
+
 </script>
+
 </body>
+
 </html>
