@@ -1,96 +1,78 @@
-// workers/routes/orders.js
-
-import { saveDownload } from "../kv/downloads.js";
-import { sendNotification } from "../utils/notify.js";
-import { jsonResponse, errorResponse } from "../utils/response.js";
-import { generateId } from "../utils/helpers.js";
-
 /**
- * Handle POST /orders
- * Body JSON:
- * {
- *   buyerName: string,
- *   email: string,
- *   whatsapp: string,
- *   product: string | "bundle-19-ebook" | "bundle-3-ebook"
- * }
+ * workers/routes/orders.js
+ * Endpoint untuk membuat order baru
  */
-export async function handleOrder(request, env) {
+
+import { saveOrder } from "../kv/orders.js";
+import { sendWhatsApp, sendEmail } from "../utils/notify.js";
+
+export async function handleOrders(request, env) {
+  if (request.method !== "POST") {
+    return new Response(JSON.stringify({ error: "Method not allowed" }), {
+      status: 405,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   try {
-    if (request.method !== "POST") {
-      return errorResponse("Method not allowed", 405);
-    }
-
     const data = await request.json();
-    const { buyerName, email, whatsapp, product } = data;
 
-    if (!buyerName || !email || !whatsapp || !product) {
-      return errorResponse("Data pembeli tidak lengkap", 400);
+    // Validasi data wajib
+    const { nama, email, whatsapp, produk, harga } = data;
+    if (!nama || !email || !whatsapp || !produk || !harga) {
+      return new Response(JSON.stringify({ error: "Data tidak lengkap" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
-    const orderId = generateId("order_");
-    const created = Date.now();
-
-    // Tentukan produk yang dibeli
-    let productList = [];
-
-    if (product === "bundle-19-ebook") {
-      productList = [
-        "quantum-zikir","tauhid-quantum","quantum-nur","quantum-ruh",
-        "quantum-syukur","zero-points-zikir","the-art-of-surrender",
-        "the-radiance-within","the-untouchable","pasrah-itu-zikir",
-        "powerful-dhikr-healing","rahasiakode-realitas",
-        "navigasi-cahaya","ksatria-spiritual","membongkar-potensi-diri",
-        "menguak-potensi-tanpa-batas","membongkar-realitas-hologram",
-        "cara-berdamai-dengan-diri","dzikir-supreme-power"
-      ];
-    } else if (product === "bundle-3-ebook") {
-      productList = [
-        "quantum-zikir","tauhid-quantum","quantum-nur"
-      ];
-    } else {
-      productList = [product];
-    }
-
-    // Simpan order di KV ORDERS
-    const orderData = {
-      orderId,
-      buyerName,
+    // Simpan order ke KV
+    const orderId = await saveOrder(env, {
+      nama,
       email,
       whatsapp,
-      product,
-      productList,
-      created,
-      status: "pending"
-    };
-
-    await env.ORDERS.put(orderId, JSON.stringify(orderData));
-
-    // Simpan link download di KV DOWNLOADS
-    const downloads = [];
-    for (const fileId of productList) {
-      const downloadData = await saveDownload(env.DOWNLOADS, orderId, fileId, fileId, buyerName);
-      downloads.push(downloadData);
-    }
-
-    // Kirim notifikasi WA/email
-    await sendNotification({
-      to: whatsapp,
-      email,
-      buyerName,
-      orderId,
-      product,
-      productList
+      produk,
+      harga,
+      status: "pending", // status awal
     });
 
-    return jsonResponse({
+    // Kirim notifikasi ke WhatsApp admin
+    await sendWhatsApp({
+      to: "6285175313909", // admin
+      message: `Order Baru ✅\nID: ${orderId}\nNama: ${nama}\nProduk: ${produk}\nHarga: Rp${harga.toLocaleString()}`
+    });
+
+    // Kirim notifikasi ke email admin
+    await sendEmail({
+      to: "admin@dunia-digital.web.id",
+      subject: `Order Baru: ${produk}`,
+      html: `
+        <p>Order ID: <b>${orderId}</b></p>
+        <p>Nama: ${nama}</p>
+        <p>Email: ${email}</p>
+        <p>WhatsApp: ${whatsapp}</p>
+        <p>Produk: ${produk}</p>
+        <p>Harga: Rp${harga.toLocaleString()}</p>
+        <p>Status: pending</p>
+      `
+    });
+
+    // Response ke front-end
+    return new Response(JSON.stringify({
       success: true,
       orderId,
-      downloads
+      message: "Order berhasil dibuat. Silahkan lakukan pembayaran."
+    }), {
+      headers: { "Content-Type": "application/json" }
     });
 
   } catch (err) {
-    console.error("Gagal membuat order:", err);
-    return errorResponse("Terjadi kesalahan server", 500);
+    return new Response(JSON.stringify({
+      error: "Terjadi kesalahan server",
+      detail: err.message
+    }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
   }
 }
