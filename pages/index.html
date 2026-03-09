@@ -200,6 +200,98 @@ footer{background:#222;color:#ccc;text-align:center;padding:30px;font-size:14px;
 setTimeout(function(){document.getElementById("promo-popup").classList.add("show");},5000);
 function closePopup(){document.getElementById("promo-popup").classList.remove("show");}
 </script>
+<!-- POPUP PROMO -->
 
+<div id="promoPopup" class="promo-overlay">
+
+<div class="promo-box">
+
+<button class="promo-close" onclick="closePromo()">✕</button>
+
+<h3>Promo Spesial Hari Ini</h3>
+
+<p>Dapatkan diskon ebook premium spiritual.</p>
+
+<a href="/pages/store/checkout.html" class="promo-btn">
+Ambil Promo Sekarang
+</a>
+
+</div>
+
+</div>
+
+<style>
+
+.promo-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.promo-box{
+background:white;
+padding:30px;
+border-radius:10px;
+text-align:center;
+max-width:320px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.promo-close{
+position:absolute;
+margin-left:280px;
+margin-top:-10px;
+border:none;
+background:none;
+font-size:20px;
+cursor:pointer;
+}
+
+.promo-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+background:#111;
+color:white;
+border-radius:6px;
+text-decoration:none;
+}
+
+.promo-btn:hover{
+background:#333;
+}
+
+</style>
+
+<script>
+
+function closePromo(){
+document.getElementById("promoPopup").style.display="none";
+}
+
+window.onload=function(){
+
+if(!localStorage.getItem("promoShown")){
+
+setTimeout(function(){
+
+document.getElementById("promoPopup").style.display="flex";
+
+localStorage.setItem("promoShown","yes");
+
+},5000);
+
+}
+
+}
+
+</script>
 </body>
 </html>
