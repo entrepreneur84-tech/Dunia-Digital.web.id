@@ -3,191 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dunia Digital - Koleksi Ebook Premium</title>
-<meta name="description" content="Dapatkan 19 ebook spiritual premium tentang dzikir, kesadaran, dan potensi diri dengan harga promo spesial.">
+<title>Dunia Digital | Bundle Ebook Premium</title>
+<meta name="description" content="Dapatkan koleksi lengkap ebook spiritual premium Dunia Digital dengan harga promo spesial.">
 <link rel="stylesheet" href="/assets/css/style.css">
 <style>
 /* =========================
-BUNDLE HERO
+GLOBAL + BUNDLE + GRID + SLIDER
 ========================= */
-.bundle-hero{
-text-align:center;
-padding:80px 20px;
-background:linear-gradient(180deg,#fafafa,#f2f2f2);
-}
-.bundle-title{
-font-size:36px;
-margin-bottom:10px;
-}
-.bundle-price-normal{
-text-decoration:line-through;
-color:#777;
-font-size:20px;
-}
-.bundle-price-promo{
-font-size:42px;
-color:#e60023;
-font-weight:bold;
-margin:10px 0;
-}
-.bundle-save{
-color:green;
-font-weight:bold;
-}
-/* CTA Button */
-.cta-button{
-display:inline-block;
-margin-top:20px;
-padding:16px 30px;
-background:#111;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-size:18px;
-transition:0.25s;
-}
-.cta-button:hover{
-background:#333;
-transform:translateY(-2px);
-}
-/* BUNDLE BOX */
-.bundle-section{
-padding:70px 20px;
-text-align:center;
-}
-.bundle-box{
-max-width:600px;
-margin:auto;
-padding:40px;
-border:1px solid #eee;
-border-radius:10px;
-background:white;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-/* EBOOK GRID */
-.ebook-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-padding:40px;
-max-width:1200px;
-margin:auto;
-}
-.ebook-item{
-border:1px solid #eee;
-padding:20px;
-text-align:center;
-border-radius:8px;
-background:white;
-transition:0.3s;
-}
-.ebook-item:hover{
-transform:translateY(-6px);
-box-shadow:0 15px 30px rgba(0,0,0,0.15);
-}
-.ebook-item img{
-width:100%;
-height:260px;
-object-fit:cover;
-display:block;
-border-radius:8px;
-}
-.ebook-title{
-padding:10px;
-text-align:center;
-font-size:15px;
-font-weight:bold;
-}
-/* SLIDER */
-.ebook-slider{
-overflow:hidden;
-padding:60px 0;
-background:#fafafa;
-}
-.slider-track{
-display:flex;
-gap:30px;
-animation:scrollSlider 25s linear infinite;
-width:max-content;
-}
-.slider-track img{
-width:180px;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-@keyframes scrollSlider{
-0%{transform:translateX(0);}
-100%{transform:translateX(-50%);}
-}
-/* PROMO POPUP */
-.promo-popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:2000;
-visibility:hidden;
-opacity:0;
-transition:0.3s;
-}
-.promo-popup.show{
-visibility:visible;
-opacity:1;
-}
-.popup-box{
-background:white;
-padding:40px;
-border-radius:12px;
-text-align:center;
-max-width:400px;
-position:relative;
-box-shadow:0 20px 50px rgba(0,0,0,0.3);
-}
-.popup-close{
-position:absolute;
-top:10px;
-right:15px;
-cursor:pointer;
-font-size:20px;
-}
-/* STICKY BUTTON */
-.sticky-buy{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#e60023;
-color:white;
-padding:14px 25px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-z-index:999;
-box-shadow:0 5px 20px rgba(0,0,0,0.3);
-transition:0.25s;
-}
-.sticky-buy:hover{
-background:#c1001c;
-transform:translateY(-2px);
-}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;margin:0;padding:0;color:#333;line-height:1.6;background:#fff;}
+h1,h2,h3{font-weight:700;}
+a{text-decoration:none;}
+header{background:#111;color:white;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+header h1{font-size:22px;}
+nav a{color:white;margin-left:20px;font-size:15px;opacity:0.9;transition:0.2s;}
+nav a:hover{opacity:1;}
+.bundle-hero{text-align:center;padding:80px 20px;background:linear-gradient(180deg,#fafafa,#f2f2f2);}
+.bundle-title{font-size:38px;margin-bottom:15px;}
+.bundle-hero p{font-size:18px;margin-bottom:10px;}
+.bundle-price-normal{text-decoration:line-through;color:#888;font-size:20px;}
+.bundle-price-promo{font-size:48px;color:#e60023;font-weight:800;margin:10px 0;}
+.bundle-save{color:#1a7f37;font-weight:700;font-size:18px;}
+.cta-button{display:inline-block;margin-top:25px;padding:16px 32px;background:#111;color:white;font-size:18px;border-radius:8px;transition:0.25s;}
+.cta-button:hover{background:#333;transform:translateY(-2px);}
+.bundle-section{padding:80px 20px;background:#fff;text-align:center;}
+.bundle-box{max-width:600px;margin:auto;padding:45px;border-radius:12px;background:white;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.bundle-box h2{margin-bottom:15px;}
+.ebook-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;padding:60px 20px;max-width:1200px;margin:auto;}
+.ebook-item{background:white;border-radius:12px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.08);transition:0.3s;text-align:center;}
+.ebook-item:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.18);}
+.ebook-item img{width:100%;height:260px;object-fit:cover;display:block;}
+.ebook-title{padding:15px;font-weight:600;font-size:15px;}
+.ebook-slider{overflow:hidden;padding:60px 0;background:#fafafa;}
+.slider-track{display:flex;gap:30px;animation:scrollSlider 30s linear infinite;width:max-content;}
+.slider-track img{width:180px;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+@keyframes scrollSlider{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.sticky-buy{position:fixed;bottom:20px;right:20px;background:#e60023;color:white;padding:16px 22px;font-size:18px;border-radius:10px;text-decoration:none;z-index:1000;box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+.promo-popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;justify-content:center;align-items:center;z-index:2000;visibility:hidden;opacity:0;transition:0.3s;}
+.promo-popup.show{visibility:visible;opacity:1;}
+.popup-box{background:white;padding:40px;border-radius:12px;text-align:center;max-width:400px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,0.3);}
+.popup-close{position:absolute;top:10px;right:15px;cursor:pointer;font-size:20px;}
+.testimoni{background:#f8f8f8;padding:80px 20px;text-align:center;}
+.testimoni h2{margin-bottom:30px;}
+.testimoni-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
+.testimoni-item{background:white;padding:30px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.08);font-size:15px;}
+.faq{padding:80px 20px;max-width:800px;margin:auto;}
+.faq h2{text-align:center;margin-bottom:40px;}
+.faq h3{margin-top:25px;font-size:18px;}
+.faq p{margin-top:6px;color:#555;}
+.cta-final{background:#111;color:white;text-align:center;padding:80px 20px;}
+.cta-final h2{font-size:32px;margin-bottom:15px;}
+.cta-final p{margin-bottom:20px;font-size:18px;}
+footer{background:#222;color:#ccc;text-align:center;padding:30px;font-size:14px;}
+@media(max-width:768px){.bundle-title{font-size:28px;}.bundle-price-promo{font-size:36px;}header{flex-direction:column;text-align:center;}nav{margin-top:10px;}nav a{margin:0 8px;}}
 </style>
 </head>
 <body>
 
-<header style="text-align:center;padding:20px 0;background:#111;color:white;">
+<header>
 <h1>Dunia Digital</h1>
 <nav>
-<a href="/">Home</a> |
-<a href="/pages/store/">Store</a> |
+<a href="/">Home</a>
+<a href="/pages/store/">Store</a>
 <a href="/pages/blog/">Blog</a>
 </nav>
 </header>
 
-<!-- BUNDLE HERO -->
+<!-- HERO BUNDLE 19 -->
 <section class="bundle-hero">
 <h2 class="bundle-title">🔥 BEST VALUE — Bundle 19 Ebook Premium</h2>
 <p>Koleksi lengkap ebook spiritual tentang dzikir, kesadaran, dan potensi diri.</p>
@@ -197,7 +78,7 @@ transform:translateY(-2px);
 <a class="cta-button" href="/pages/store/checkout.html?product=bundle-19-ebook">Ambil Bundle Sekarang</a>
 </section>
 
-<!-- BUNDLE 3 EBOOK -->
+<!-- BUNDLE 3 -->
 <section class="bundle-section">
 <div class="bundle-box">
 <h2>⭐ Bundle 3 Ebook Premium</h2>
@@ -209,45 +90,78 @@ transform:translateY(-2px);
 </div>
 </section>
 
-<!-- SLIDER PREVIEW -->
-<section class="ebook-slider">
-<h2 style="text-align:center;margin-bottom:30px;">Preview Koleksi Ebook</h2>
-<div class="slider-track">
-<img src="/img/ebooks/quantum-zikir.png">
-<img src="/img/ebooks/tauhid-quantum.png">
-<img src="/img/ebooks/quantum-nur.png">
-<img src="/img/ebooks/quantum-ruh.png">
-<img src="/img/ebooks/quantum-syukur.png">
-<img src="/img/ebooks/zero-point-zikir.png">
-<!-- Tambahkan semua cover png ebook lainnya -->
+<!-- GRID 23 EBOOK -->
+<section>
+<h2 style="text-align:center;margin-top:40px;">Koleksi Lengkap Ebook Premium</h2>
+<div class="ebook-grid">
+<div class="ebook-item"><img src="/assets/img/ebooks/quantum-zikir.png"><div class="ebook-title">Quantum Zikir</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/tauhid-quantum.png"><div class="ebook-title">Tauhid Quantum</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/quantum-nur.png"><div class="ebook-title">Quantum Nur</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/quantum-ruh.png"><div class="ebook-title">Quantum Ruh</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/quantum-syukur.png"><div class="ebook-title">Quantum Syukur</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/zero-point-zikir.png"><div class="ebook-title">Zero Points Zikir</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/the-art-of-surrender.png"><div class="ebook-title">The Art of Surrender</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/the-radiance-within.png"><div class="ebook-title">The Radiance Within</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/the-untouchable.png"><div class="ebook-title">The Untouchable</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/pasrah-itu-zikir.png"><div class="ebook-title">Pasrah Itu Zikir</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/powerful-dhikr-healing.png"><div class="ebook-title">Powerful Dhikr Healing</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/rahasia-kode-sumber-realitas.png"><div class="ebook-title">Rahasia Kode Sumber Realitas</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/navigasi-cahaya.png"><div class="ebook-title">Navigasi Cahaya</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/ksatria-spiritual.png"><div class="ebook-title">Ksatria Spiritual</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/membongkar-potensi-diri.png"><div class="ebook-title">Membongkar Potensi Diri</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/menguak-potensi-tanpa-batas.png"><div class="ebook-title">Menguak Potensi Tanpa Batas</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/membongkar-realitas-hologram.png"><div class="ebook-title">Membongkar Realitas Hologram</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/cara-berdamai-dengan-diri.png"><div class="ebook-title">Cara Berdamai Dengan Diri</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/dzikir-supreme-power.png"><div class="ebook-title">Dzikir Supreme Power</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/low-of-spiritual-attraction.png"><div class="ebook-title">Low Of Spiritual Attraction</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/samudra-tanpa-batas.png"><div class="ebook-title">Samudra Tanpa Batas</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/hakikat-quantum-ihsan.png"><div class="ebook-title">Hakikat Quantum Ihsan</div></div>
+<div class="ebook-item"><img src="/assets/img/ebooks/quantum-syukur.png"><div class="ebook-title">Quantum Syukur</div></div>
 </div>
 </section>
 
-<!-- DAFTAR 19 EBOOK -->
-<section>
-<h2 style="text-align:center;margin-top:40px;">19 Ebook Yang Kamu Dapatkan</h2>
-<div class="ebook-grid">
-<div class="ebook-item"><img src="/img/ebooks/quantum-zikir.png"><div class="ebook-title">Quantum Zikir</div></div>
-<div class="ebook-item"><img src="/img/ebooks/tauhid-quantum.png"><div class="ebook-title">Tauhid Quantum</div></div>
-<div class="ebook-item"><img src="/img/ebooks/quantum-nur.png"><div class="ebook-title">Quantum Nur</div></div>
-<div class="ebook-item"><img src="/img/ebooks/quantum-ruh.png"><div class="ebook-title">Quantum Ruh</div></div>
-<div class="ebook-item"><img src="/img/ebooks/quantum-syukur.png"><div class="ebook-title">Quantum Syukur</div></div>
-<div class="ebook-item"><img src="/img/ebooks/zero-point-zikir.png"><div class="ebook-title">Zero Points Zikir</div></div>
-<div class="ebook-item"><img src="/img/ebooks/art-of-surrender.png"><div class="ebook-title">The Art of Surrender</div></div>
-<div class="ebook-item"><img src="/img/ebooks/the-radiance-within.png"><div class="ebook-title">The Radiance Within</div></div>
-<div class="ebook-item"><img src="/img/ebooks/the-untouchable.png"><div class="ebook-title">The Untouchable</div></div>
-<div class="ebook-item"><img src="/img/ebooks/pasrah-itu-zikir.png"><div class="ebook-title">Pasrah Itu Zikir</div></div>
-<div class="ebook-item"><img src="/img/ebooks/powerful-dhikr-healing.png"><div class="ebook-title">Powerful Dhikr Healing</div></div>
-<div class="ebook-item"><img src="/img/ebooks/rahasia-kode-sumber.png"><div class="ebook-title">Rahasia Kode Sumber Realitas</div></div>
-<div class="ebook-item"><img src="/img/ebooks/navigasi-cahaya.png"><div class="ebook-title">Navigasi Cahaya</div></div>
-<div class="ebook-item"><img src="/img/ebooks/ksatria-spiritual.png"><div class="ebook-title">Ksatria Spiritual</div></div>
-<div class="ebook-item"><img src="/img/ebooks/membongkar-potensi-diri.png"><div class="ebook-title">Membongkar Potensi Diri</div></div>
-<div class="ebook-item"><img src="/img/ebooks/menguak-potensi.png"><div class="ebook-title">Menguak Potensi Tanpa Batas</div></div>
-<div class="ebook-item"><img src="/img/ebooks/membongkar-realitas.png"><div class="ebook-title">Membongkar Realitas Hologram</div></div>
-<div class="ebook-item"><img src="/img/ebooks/berdamai-diri.png"><div class="ebook-title">Cara Berdamai Dengan Diri</div></div>
-<div class="ebook-item"><img src="/img/ebooks/dzikir-supreme.png"><div class="ebook-title">Dzikir Supreme Power</div></div>
+<!-- SLIDER -->
+<section class="ebook-slider">
+<h2 style="text-align:center;margin-bottom:30px;">Preview Koleksi Ebook Premium</h2>
+<div class="slider-track">
+<img src="/assets/img/ebooks/quantum-zikir.png">
+<img src="/assets/img/ebooks/tauhid-quantum.png">
+<img src="/assets/img/ebooks/quantum-nur.png">
+<img src="/assets/img/ebooks/quantum-ruh.png">
+<img src="/assets/img/ebooks/quantum-syukur.png">
+<img src="/assets/img/ebooks/zero-point-zikir.png">
+<img src="/assets/img/ebooks/the-art-of-surrender.png">
+<img src="/assets/img/ebooks/the-radiance-within.png">
+<img src="/assets/img/ebooks/the-untouchable.png">
+<img src="/assets/img/ebooks/pasrah-itu-zikir.png">
+<img src="/assets/img/ebooks/powerful-dhikr-healing.png">
+<img src="/assets/img/ebooks/rahasia-kode-sumber-realitas.png">
+<img src="/assets/img/ebooks/navigasi-cahaya.png">
+<img src="/assets/img/ebooks/ksatria-spiritual.png">
+<img src="/assets/img/ebooks/membongkar-potensi-diri.png">
+<img src="/assets/img/ebooks/menguak-potensi-tanpa-batas.png">
+<img src="/assets/img/ebooks/membongkar-realitas-hologram.png">
+<img src="/assets/img/ebooks/cara-berdamai-dengan-diri.png">
+<img src="/assets/img/ebooks/dzikir-supreme-power.png">
+<img src="/assets/img/ebooks/low-of-spiritual-attraction.png">
+<img src="/assets/img/ebooks/samudra-tanpa-batas.png">
+<img src="/assets/img/ebooks/hakikat-quantum-ihsan.png">
+<img src="/assets/img/ebooks/quantum-syukur.png">
 </div>
 </section>
+
+<!-- STICKY BUY BUTTON -->
+<a href="/pages/store/checkout.html?product=bundle-19-ebook" class="sticky-buy">🔥 Ambil Bundle Ebook</a>
+
+<!-- PROMO POPUP -->
+<div id="promo-popup" class="promo-popup">
+<div class="popup-box">
+<span class="popup-close" onclick="closePopup()">✕</span>
+<h2>Promo Spesial Hari Ini</h2>
+<p>Dapatkan Bundle 19 Ebook Premium dengan harga promo.</p>
+<a href="/pages/store/checkout.html?product=bundle-19-ebook" class="cta-button">Ambil Promo Sekarang</a>
+</div>
+</div>
 
 <!-- TESTIMONI -->
 <section class="testimoni">
@@ -273,31 +187,18 @@ transform:translateY(-2px);
 </section>
 
 <!-- CTA FINAL -->
-<section class="cta-final" style="background:#111;color:white;text-align:center;padding:70px 20px;">
+<section class="cta-final">
 <h2>Mulai Perjalanan Spiritual Kamu Hari Ini</h2>
 <p>Dapatkan seluruh koleksi ebook spiritual premium Dunia Digital.</p>
 <a class="cta-button" style="background:white;color:black" href="/pages/store/checkout.html?product=bundle-19-ebook">Ambil Bundle Sekarang</a>
 </section>
 
-<!-- PROMO POPUP -->
-<div id="promo-popup" class="promo-popup">
-<div class="popup-box">
-<span class="popup-close" onclick="closePopup()">✕</span>
-<h2>Promo Spesial Hari Ini</h2>
-<p>Dapatkan Bundle 19 Ebook Premium dengan harga promo.</p>
-<a href="/pages/store/checkout.html?product=bundle-19-ebook" class="cta-button">Ambil Promo Sekarang</a>
-</div>
-</div>
+<footer>© 2026 Dunia Digital.Inc</footer>
 
-<!-- STICKY BUTTON -->
-<a href="/pages/store/checkout.html?product=bundle-19-ebook" class="sticky-buy">🔥 Ambil Bundle Ebook</a>
-
+<!-- SCRIPT PROMO -->
 <script>
-// Promo popup otomatis
-setTimeout(()=>{document.getElementById("promo-popup").classList.add("show")},5000);
+setTimeout(function(){document.getElementById("promo-popup").classList.add("show");},5000);
 function closePopup(){document.getElementById("promo-popup").classList.remove("show");}
-
-// Countdown slider bisa ditambahkan jika ingin
 </script>
 
 </body>
