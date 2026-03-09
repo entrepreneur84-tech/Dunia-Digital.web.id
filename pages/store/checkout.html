@@ -1,104 +1,55 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout | Dunia Digital</title>
-<link rel="stylesheet" href="/assets/css/style.css">
-<style>
-.checkout-container{
-max-width:900px;margin:80px auto;padding:40px;background:white;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
-.checkout-title{text-align:center;margin-bottom:30px;}
-.product-box{display:flex;gap:30px;align-items:center;margin-bottom:30px;}
-.product-box img{width:120px;border-radius:8px;}
-.price-normal{text-decoration:line-through;color:#888;}
-.price-promo{font-size:28px;color:#e60023;font-weight:bold;}
-.checkout-form{margin-top:30px;}
-.checkout-form input{width:100%;padding:12px;margin-bottom:15px;border:1px solid #ddd;border-radius:6px;font-size:14px;}
-.pay-button{width:100%;padding:16px;background:#111;color:white;font-size:18px;border:none;border-radius:8px;cursor:pointer;}
-.pay-button:hover{background:#333;}
-.payment-info{margin-top:30px;background:#f7f7f7;padding:20px;border-radius:8px;font-size:14px;}
-</style>
+
+<title>Checkout Ebook</title>
+
+<link rel="stylesheet" href="/assets/css/checkout.css">
+
 </head>
+
 <body>
-<header style="text-align:center;padding:20px 0;background:#111;color:white;">
-<h1>Dunia Digital</h1>
-</header>
 
-<div class="checkout-container">
-<h2 class="checkout-title">Checkout Produk</h2>
+<div class="checkout-wrapper">
 
-<div id="product-box" class="product-box">
-<img src="">
-<div>
-<h3 id="product-title"></h3>
-<p class="price-normal" id="price-normal"></p>
-<p class="price-promo" id="price-promo"></p>
-</div>
+<div class="checkout-grid">
+
+<div class="product-image">
+<img id="product-image" src="">
 </div>
 
-<form class="checkout-form" id="checkout-form">
-<input type="text" placeholder="Nama Lengkap" id="name" required>
-<input type="email" placeholder="Email Aktif" id="email" required>
-<input type="text" placeholder="Nomor WhatsApp" id="wa" required>
-<button class="pay-button">Bayar Sekarang</button>
-</form>
+<div class="product-detail">
 
-<div class="payment-info">
-<p><b>Pembayaran melalui Bank:</b></p>
-<ul>
-<li>Seabank / Bank Kesejahteraan Ekonomi: Ahmad Barizi - 901981495649 - Kode bank 535 - Swift SSPIIDJA</li>
-<li>Bank Jago: Ahmad Barizi - 109896731184 - Kode bank 542 - Swift/BIC ARTOIDJA</li>
-<li>Atau bank / e-wallet lain diterima</li>
-</ul>
-<p>Setelah pembayaran, ebook akan dikirim ke email Anda.</p>
+<h1 id="product-title" class="product-title"></h1>
+
+<p id="product-desc" class="product-desc"></p>
+
+<div class="price-normal" id="price-normal"></div>
+
+<div class="price-promo" id="price-promo"></div>
+
+<div class="price-save">Harga promo terbatas</div>
+
+<a id="buy-button" class="buy-button">
+Beli Sekarang
+</a>
+
+<div class="info-box">
+✔ File PDF<br>
+✔ Bisa dibaca di HP / Laptop<br>
+✔ Akses download setelah pembayaran
 </div>
+
 </div>
 
-<footer style="text-align:center;padding:30px;background:#222;color:#ccc;">
-<p>© 2026 Dunia Digital</p>
-</footer>
+</div>
 
-<script>
-// Ambil parameter product
-const params = new URLSearchParams(window.location.search);
-const product = params.get('product');
+</div>
 
-const products = {
-"bundle-19-ebook":{
-title:"Bundle 19 Ebook Premium",
-priceNormal:"Rp3.781.000",
-pricePromo:"Rp1.500.000",
-img:"/assets/img/bundle-19.png"
-},
-"bundle-3-ebook":{
-title:"Bundle 3 Ebook Premium",
-priceNormal:"Rp597.000",
-pricePromo:"Rp225.000",
-img:"/assets/img/bundle-3.png"
-}
-};
+<script src="/assets/js/checkout.js"></script>
 
-if(products[product]){
-document.getElementById("product-title").innerText = products[product].title;
-document.getElementById("price-normal").innerText = products[product].priceNormal;
-document.getElementById("price-promo").innerText = products[product].pricePromo;
-document.querySelector("#product-box img").src = products[product].img;
-}
-
-// Submit form
-document.getElementById("checkout-form").addEventListener("submit",function(e){
-e.preventDefault();
-const order = {
-product:products[product].title,
-name:document.getElementById("name").value,
-email:document.getElementById("email").value,
-wa:document.getElementById("wa").value,
-tanggal:new Date().toLocaleString()
-};
-localStorage.setItem("lastOrder",JSON.stringify(order));
-window.location.href="/pages/store/success.html";
-});
-</script>
 </body>
 </html>
