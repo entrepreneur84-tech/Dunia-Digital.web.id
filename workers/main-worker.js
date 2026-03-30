@@ -1,7 +1,10 @@
 export default {
   async fetch(request) {
 
-    if (request.method === "POST" && new URL(request.url).pathname === "/order") {
+    const url = new URL(request.url);
+
+    // ORDER (WA NOTIF)
+    if (request.method === "POST" && url.pathname === "/order") {
 
       const data = await request.json();
 
@@ -13,10 +16,10 @@ Email: ${data.email}`;
       await fetch("https://api.fonnte.com/send", {
         method: "POST",
         headers: {
-          "Authorization": "TOKEN_KAMU"
+          "Authorization": "ISI_TOKEN_FONNTE_KAMU"
         },
         body: new URLSearchParams({
-          target: "628xxxxxxxxxx",
+          target: "6285175313909",
           message: pesan
         })
       });
@@ -24,6 +27,12 @@ Email: ${data.email}`;
       return new Response(JSON.stringify({ status: "ok" }), {
         headers: { "Content-Type": "application/json" }
       });
+    }
+
+    // DOWNLOAD PROTECTED
+    if (url.pathname === "/download") {
+
+      return fetch("https://your-domain.com/assets/ebook/ebook-premium.pdf");
     }
 
     return new Response("Not found", { status: 404 });
