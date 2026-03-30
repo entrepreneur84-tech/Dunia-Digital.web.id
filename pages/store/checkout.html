@@ -3,53 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <title>Beli Ebook Premium</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .bank-box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background: #000;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .status {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>🔥 Akses Ebook Premium Sekarang</h1>
-<p>Dapatkan insight yang bisa langsung kamu praktekkan.</p>
+<div class="container">
 
-<hr>
+  <h1>🔥 Akses Ebook Premium</h1>
+  <p>Dapatkan insight praktis yang bisa langsung kamu gunakan.</p>
 
-<h2>💳 Pembayaran Transfer</h2>
+  <h3>💳 Transfer ke:</h3>
 
-<div style="border:1px solid #ddd; padding:15px; border-radius:10px;">
-  <h3>SeaBank</h3>
-  <p>a.n <b>AHMAD BARIZI</b></p>
-  <p><b>901981495649</b></p>
-  <button onclick="copyRek('901981495649')">Salin</button>
+  <div class="bank-box">
+    <b>SeaBank</b><br>
+    a.n AHMAD BARIZI<br>
+    <b>901981495649</b><br><br>
+    <button onclick="copyRek('901981495649')">Salin Rekening</button>
+  </div>
+
+  <div class="bank-box">
+    <b>Bank Jago</b><br>
+    a.n Ahmad Barizi<br>
+    <b>109896731184</b><br><br>
+    <button onclick="copyRek('109896731184')">Salin Rekening</button>
+  </div>
+
+  <p style="color:green;">
+    ✔ Transfer → isi form → langsung download  
+    ✔ Proses cepat & otomatis
+  </p>
+
+  <hr>
+
+  <h3>✅ Konfirmasi Pembayaran</h3>
+
+  <form id="checkoutForm">
+    <input type="text" id="nama" placeholder="Nama" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="file" id="bukti">
+
+    <p class="note">
+      🔒 Aman & tanpa spam • ⚡ Akses langsung setelah klik
+    </p>
+
+    <button type="submit">
+      Saya sudah bayar & ambil ebook
+    </button>
+  </form>
+
+  <p id="status" class="status"></p>
+
 </div>
-
-<br>
-
-<div style="border:1px solid #ddd; padding:15px; border-radius:10px;">
-  <h3>Bank Jago</h3>
-  <p>a.n <b>Ahmad Barizi</b></p>
-  <p><b>109896731184</b></p>
-  <button onclick="copyRek('109896731184')">Salin</button>
-</div>
-
-<p style="color:green;">
-✔ Transfer → isi form → langsung download  
-✔ Proses cepat & otomatis
-</p>
-
-<hr>
-
-<h2>✅ Konfirmasi Pembayaran</h2>
-
-<form id="checkoutForm">
-  <input type="text" id="nama" placeholder="Nama" required><br><br>
-  <input type="email" id="email" placeholder="Email" required><br><br>
-  <input type="file" id="bukti"><br><br>
-
-  <button type="submit" style="padding:10px 20px;">
-    Saya sudah bayar & ambil ebook
-  </button>
-</form>
-
-<p id="status"></p>
 
 <script src="/assets/js/checkout.js"></script>
 
