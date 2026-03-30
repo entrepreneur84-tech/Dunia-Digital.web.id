@@ -2,21 +2,66 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Download Ebook</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+  text-align: center;
+  padding: 60px;
+}
+
+.box {
+  max-width: 400px;
+  margin: auto;
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  background: #22c55e;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+</style>
+
 </head>
 
-<body style="text-align:center; font-family:Arial; padding:50px;">
+<body>
 
-<h2>✅ Pembayaran Diproses</h2>
-<p>Klik tombol di bawah untuk download ebook:</p>
+<div class="box">
+<h2>✅ Pembayaran Berhasil</h2>
+<p>Ebook sedang disiapkan...</p>
 
-<br>
+<p id="countdown">Download dalam 3 detik...</p>
 
-<a href="https://api.dunia-digital.web.id/download">
-<button style="padding:15px 25px; font-size:16px;">
-📥 Download Ebook
-</button>
-</a>
+<button onclick="download()">Download Sekarang</button>
+</div>
+
+<script>
+function download() {
+  window.location.href = "https://api.dunia-digital.web.id/download";
+}
+
+let detik = 3;
+let interval = setInterval(() => {
+  detik--;
+  document.getElementById("countdown").innerText = "Download dalam " + detik + " detik...";
+
+  if(detik <= 0){
+    clearInterval(interval);
+    download();
+  }
+},1000);
+</script>
 
 </body>
 </html>
