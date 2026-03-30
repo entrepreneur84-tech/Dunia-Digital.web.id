@@ -1,396 +1,240 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Toko Ebook | Dunia Digital</title>
-
-<link rel="stylesheet" href="/assets/css/style.css">
+<title>Toko Ebook Premium</title>
 
 <style>
-
-.store-container{
-max-width:1200px;
-margin:60px auto;
-padding:20px;
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  margin: 0;
 }
 
-.store-title{
-text-align:center;
-margin-bottom:40px;
-font-size:32px;
+.header {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 25px;
 }
 
-.product-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px;
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px;
 }
 
-.product-card{
-background:white;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-transition:0.3s;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
-.product-card:hover{
-transform:translateY(-8px);
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  position: relative;
 }
 
-.product-card img{
-width:100%;
-height:280px;
-object-fit:cover;
+.card:hover {
+  transform: translateY(-5px);
 }
 
-.product-info{
-padding:15px;
-text-align:center;
+.card img {
+  width: 100%;
+  border-radius: 10px;
 }
 
-.product-title{
-font-weight:bold;
-margin-bottom:8px;
+.card h3 {
+  font-size: 15px;
 }
 
-.product-price{
-color:#e60023;
-font-weight:bold;
-margin-bottom:10px;
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px;
+  background: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.buy-button{
-display:inline-block;
-padding:10px 18px;
-background:#111;
-color:white;
-border-radius:6px;
-font-size:14px;
+.soon {
+  background: orange;
 }
 
-.buy-button:hover{
-background:#333;
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 8px;
+  font-size: 11px;
+  border-radius: 6px;
 }
 
+.payment-box {
+  display: none;
+  margin-top: 40px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 12px;
+  width: 100%;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.note {
+  font-size: 13px;
+  color: #666;
+  margin-top: 10px;
+}
 </style>
 
 </head>
-
 <body>
 
-
-<header>
-
-<h1>Dunia Digital</h1>
-
-<nav>
-
-<a href="/">Home</a>
-<a href="/pages/store/store.html">Store</a>
-<a href="/pages/kontak.html">Kontak</a>
-
-</nav>
-
-</header>
-
-
-
-<div class="store-container">
-
-<h2 class="store-title">
-Koleksi Ebook Premium
-</h2>
-
-
-<div class="product-grid">
-
-
-<div class="product-card">
-
-<img src="/img/ebooks/quantum-zikir.png">
-
-<div class="product-info">
-
-<div class="product-title">
-Quantum Zikir
+<div class="header">
+  <h2>📚 Ebook Premium Digital</h2>
+  <p>Akses instan setelah pembayaran</p>
 </div>
 
-<div class="product-price">
-Rp199.000
-</div>
+<div class="container">
 
-<a href="/pages/store/checkout.html?product=quantum-zikir"
-class="buy-button">
+<div class="grid" id="produkList"></div>
 
-Beli Ebook
+<div id="paymentBox" class="payment-box">
+<h3 id="produkDipilih"></h3>
 
-</a>
+<p><b>Transfer ke:</b></p>
+
+<p><b>SeaBank</b><br>
+Ahmad Barizi<br>
+901981495649</p>
+
+<p><b>Bank Jago</b><br>
+Ahmad Barizi<br>
+109896731184</p>
+
+<hr>
+
+<input type="text" id="nama" placeholder="Nama kamu">
+<input type="text" id="wa" placeholder="Nomor WhatsApp">
+<textarea id="bukti" placeholder="Link bukti transfer (opsional)"></textarea>
+
+<button onclick="kirimWA()">Saya sudah bayar</button>
+
+<p class="note">
+🔒 Data kamu aman • Tidak ada spam  
+⚡ Ebook langsung bisa diakses
+</p>
 
 </div>
 
 </div>
 
+<script>
+const produk = [
+"1 Cara Jitu Berdamai dengan Diri",
+"2 The Art of Surrender",
+"3 Quantum Zikir",
+"4 The Radiance Within",
+"5 Rahasia Menemukan Kode Sumber Realitas",
+"6 The Dzikir of Supreme Power",
+"7 Pasrah Itu Zikir",
+"8 Tauhid Quantum",
+"9 Quantum Ruh (Qolbu)",
+"10 The Untouchable",
+"11 Quantum Nur",
+"12 Membongkar Potensi Diri Tanpa Batas",
+"13 Powerful Dhikr Based Holistic Healing",
+"14 Zero Points Zikir",
+"15 Membongkar Realitas Hologram",
+"16 Navigasi Cahaya",
+"17 Ksatria Spiritual",
+"18 Menguak Potensi Diri Tanpa Batas",
+"19 Quantum Syukur",
+"20 Low Of Spiritual Attraction",
+"21 Samudra Tanpa Batas",
+"22 FIQIH TASAWUF MODERN"
+];
 
+const comingSoon = [
+"23 Hakikat Quantum Ihsan",
+"24 Manunggal",
+"25 Rahasia Mengenal Jatidiri"
+];
 
-<div class="product-card">
+let selectedProduk = "";
 
-<img src="/img/ebooks/tauhid-quantum.png">
+const container = document.getElementById("produkList");
 
-<div class="product-info">
+// PRODUK READY
+produk.forEach((item, i) => {
+  container.innerHTML += `
+  <div class="card">
+    <img src="/asset/img/buku%20elektronik/${i+1}.png">
+    <h3>${item}</h3>
+    <div class="btn" onclick="beli('${item}')">Beli</div>
+  </div>`;
+});
 
-<div class="product-title">
-Tauhid Quantum
-</div>
+// PRODUK COMING SOON
+comingSoon.forEach((item, i) => {
+  container.innerHTML += `
+  <div class="card">
+    <div class="badge">COMING SOON</div>
+    <img src="/asset/img/buku%20elektronik/${i+23}.png">
+    <h3>${item}</h3>
+    <div class="btn soon">Segera Hadir</div>
+  </div>`;
+});
 
-<div class="product-price">
-Rp199.000
-</div>
-
-<a href="/pages/store/checkout.html?product=tauhid-quantum"
-class="buy-button">
-
-Beli Ebook
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<div class="product-card">
-
-<img src="/img/ebooks/quantum-nur.png">
-
-<div class="product-info">
-
-<div class="product-title">
-Quantum Nur
-</div>
-
-<div class="product-price">
-Rp199.000
-</div>
-
-<a href="/pages/store/checkout.html?product=quantum-nur"
-class="buy-button">
-
-Beli Ebook
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<div class="product-card">
-
-<img src="/img/ebooks/quantum-ruh.png">
-
-<div class="product-info">
-
-<div class="product-title">
-Quantum Ruh
-</div>
-
-<div class="product-price">
-Rp199.000
-</div>
-
-<a href="/pages/store/checkout.html?product=quantum-ruh"
-class="buy-button">
-
-Beli Ebook
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<div class="product-card">
-
-<img src="/img/ebooks/quantum-syukur.png">
-
-<div class="product-info">
-
-<div class="product-title">
-Quantum Syukur
-</div>
-
-<div class="product-price">
-Rp199.000
-</div>
-
-<a href="/pages/store/checkout.html?product=quantum-syukur"
-class="buy-button">
-
-Beli Ebook
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<div class="product-card">
-
-<img src="/img/ebooks/zero-point-zikir.png">
-
-<div class="product-info">
-
-<div class="product-title">
-Zero Point Zikir
-</div>
-
-<div class="product-price">
-Rp199.000
-</div>
-
-<a href="/pages/store/checkout.html?product=zero-point-zikir"
-class="buy-button">
-
-Beli Ebook
-
-</a>
-
-</div>
-
-</div>
-
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Koleksi Ebook Premium</title><style>
-
-body{
-font-family:Arial, sans-serif;
-background:#f5f6f8;
-margin:0;
-padding:0;
+function beli(namaProduk) {
+  selectedProduk = namaProduk;
+  document.getElementById("produkDipilih").innerText = "Produk: " + namaProduk;
+  document.getElementById("paymentBox").style.display = "block";
+  window.scrollTo(0, document.body.scrollHeight);
 }
 
-.header{
-text-align:center;
-padding:40px 20px;
+function kirimWA() {
+  let nama = document.getElementById("nama").value;
+  let wa = document.getElementById("wa").value;
+  let bukti = document.getElementById("bukti").value;
+
+  let pesan = `Halo Admin,%0A
+Saya sudah transfer%0A
+Produk: ${selectedProduk}%0A
+Nama: ${nama}%0A
+WA: ${wa}%0A
+Bukti: ${bukti}`;
+
+  window.location.href = "https://wa.me/6385175313909?text=" + pesan;
+
+  setTimeout(() => {
+    window.location.href = "/pages/store/success.html";
+  }, 2000);
 }
-
-.header h1{
-font-size:28px;
-}
-
-.ebook-grid{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:20px;
-padding:20px;
-}
-
-.ebook-card{
-background:white;
-border-radius:10px;
-padding:15px;
-text-align:center;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-transition:0.3s;
-}
-
-.ebook-card:hover{
-transform:translateY(-5px);
-}
-
-.ebook-card img{
-width:100%;
-border-radius:6px;
-}
-
-.ebook-title{
-font-size:14px;
-margin:10px 0;
-font-weight:bold;
-}
-
-.buy-btn{
-display:inline-block;
-padding:8px 14px;
-background:#25D366;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-size:13px;
-}
-
-.buy-btn:hover{
-background:#1ebe5d;
-}
-
-/* WhatsApp Floating */
-
-.wa-float{
-position:fixed;
-bottom:20px;
-right:20px;
-width:60px;
-height:60px;
-z-index:999;
-}
-
-.wa-float img{
-width:60px;
-}
-
-</style></head><body><div class="header"><h1>Koleksi Lengkap Ebook Premium</h1><p>Pilih ebook spiritual yang ingin Anda pelajari</p></div><div class="ebook-grid"><div class="ebook-card"><img src="/assets/img/ebooks/quantum-zikir.png"><div class="ebook-title">Quantum Zikir</div><a class="buy-btn"
-href="https://wa.me/6285175313909?text=Saya%20ingin%20membeli%20ebook%20Quantum%20Zikir"
-target="_blank">
-
-Beli via WhatsApp
-
-</a></div><div class="ebook-card"><img src="/assets/img/ebooks/tauhid-quantum.png"><div class="ebook-title">Tauhid Quantum</div><a class="buy-btn"
-href="https://wa.me/6285175313909?text=Saya%20ingin%20membeli%20ebook%20Tauhid%20Quantum"
-target="_blank">
-
-Beli via WhatsApp
-
-</a></div><div class="ebook-card"><img src="/assets/img/ebooks/quantum-nur.png"><div class="ebook-title">Quantum Nur</div><a class="buy-btn"
-href="https://wa.me/6285175313909?text=Saya%20ingin%20membeli%20ebook%20Quantum%20Nur"
-target="_blank">
-
-Beli via WhatsApp
-
-</a></div><div class="ebook-card"><img src="/assets/img/ebooks/quantum-ruh.png"><div class="ebook-title">Quantum Ruh</div><a class="buy-btn"
-href="https://wa.me/6285175313909?text=Saya%20ingin%20membeli%20ebook%20Quantum%20Ruh"
-target="_blank">
-
-Beli via WhatsApp
-
-</a></div></div><a href="https://wa.me/6285175313909" class="wa-float" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"></a></body>
-</html>
-
-</div>
-
-</div>
-
-
-
-<footer style="text-align:center;padding:40px">
-
-© 2026 Dunia Digital.Inc
-
-</footer>
-
+</script>
 
 </body>
 </html>
