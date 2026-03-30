@@ -1,39 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Beli Ebook Premium</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
 
-<h2>Beli Ebook Premium</h2>
+<h1>🔥 Akses Ebook Premium Sekarang</h1>
+<p>Dapatkan insight yang bisa langsung kamu praktekkan.</p>
 
-<p>Silakan transfer ke salah satu rekening berikut:</p>
+<hr>
 
-<div>
+<h2>💳 Pembayaran Transfer</h2>
+
+<div style="border:1px solid #ddd; padding:15px; border-radius:10px;">
   <h3>SeaBank</h3>
-  <p>Bank: SeaBank / Bank Kesejahteraan Ekonomi</p>
-  <p>Atas Nama: AHMAD BARIZI</p>
-  <p>No. Rekening: <b>901981495649</b></p>
-  <p>Kode Bank: 535</p>
+  <p>a.n <b>AHMAD BARIZI</b></p>
+  <p><b>901981495649</b></p>
+  <button onclick="copyRek('901981495649')">Salin</button>
 </div>
 
 <br>
 
-<div>
+<div style="border:1px solid #ddd; padding:15px; border-radius:10px;">
   <h3>Bank Jago</h3>
-  <p>Bank: Bank Jago</p>
-  <p>Atas Nama: Ahmad Barizi</p>
-  <p>No. Rekening: <b>109896731184</b></p>
-  <p>Kode Bank: 542</p>
+  <p>a.n <b>Ahmad Barizi</b></p>
+  <p><b>109896731184</b></p>
+  <button onclick="copyRek('109896731184')">Salin</button>
 </div>
 
-<hr>
-<p style="color: green;">
-✔ Pembayaran diverifikasi cepat  
-✔ Ebook langsung bisa didownload setelah konfirmasi
+<p style="color:green;">
+✔ Transfer → isi form → langsung download  
+✔ Proses cepat & otomatis
 </p>
 
-<p><b>Setelah transfer, isi form di bawah ini:</b></p>
-<button onclick="copyRek('901981495649')">Salin Rekening SeaBank</button>
-<button onclick="copyRek('109896731184')">Salin Rekening Jago</button>
+<hr>
+
+<h2>✅ Konfirmasi Pembayaran</h2>
+
+<form id="checkoutForm">
+  <input type="text" id="nama" placeholder="Nama" required><br><br>
+  <input type="email" id="email" placeholder="Email" required><br><br>
+  <input type="file" id="bukti"><br><br>
+
+  <button type="submit" style="padding:10px 20px;">
+    Saya sudah bayar & ambil ebook
+  </button>
+</form>
+
+<p id="status"></p>
+
+<script src="/assets/js/checkout.js"></script>
 
 <script>
 function copyRek(nomor) {
   navigator.clipboard.writeText(nomor);
-  alert("Nomor rekening berhasil disalin");
+  alert("Nomor rekening disalin");
 }
 </script>
+
+</body>
+</html>
