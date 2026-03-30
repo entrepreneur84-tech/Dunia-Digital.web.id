@@ -1,73 +1,32 @@
-const params = new URLSearchParams(window.location.search)
+const form = document.getElementById("checkoutForm");
 
-const productId = params.get("product")
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-loadProduct()
+  const nama = document.getElementById("nama").value;
+  const email = document.getElementById("email").value;
+  const status = document.getElementById("status");
 
-async function loadProduct(){
+  status.innerText = "Memproses...";
 
- const res = await fetch("/api/products")
- const products = await res.json()
+  try {
+    await fetch("https://api.dunia-digital.store/order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ nama, email })
+    });
 
- const product = products.find(p => p.id === productId)
+    status.className = "status success";
+    status.innerText = "Berhasil! Mengalihkan...";
 
- const info = document.getElementById("product-info")
+    setTimeout(() => {
+      window.location.href = "/pages/store/success.html";
+    }, 1500);
 
- info.innerHTML = `
-
- <h2>${product.title}</h2>
-
- <p>
-
- Harga Promo
- <b>Rp${formatPrice(product.pricePromo)}</b>
-
- </p>
-
- `
-
-}
-
-document
-.getElementById("checkout-form")
-.addEventListener("submit",createOrder)
-
-
-async function createOrder(e){
-
- e.preventDefault()
-
- const name =
- document.getElementById("name").value
-
- const email =
- document.getElementById("email").value
-
- const res = await fetch("/api/orders",{
-
-  method:"POST",
-
-  headers:{
-   "Content-Type":"application/json"
-  },
-
-  body:JSON.stringify({
-   name,
-   email,
-   productId
-  })
-
- })
-
- const data = await res.json()
-
- window.location.href =
- "/pages/success.html?order=" + data.orderId
-
-}
-
-function formatPrice(num){
-
- return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".")
-
-}
+  } catch (error) {
+    status.className = "status error";
+    status.innerText = "Terjadi kesalahan. Coba lagi.";
+  }
+});
