@@ -1,0 +1,17 @@
+
+{
+  "site_name": "Dunia Digital",
+  "author": "Ahmad Barizi",
+  "email": "admin@dunia-digital.web.id",
+  "whatsapp": "6285175313909",
+
+  "payment": {
+    "bank_1": "Seabank",
+    "name_1": "AHMAD BARIZI",
+    "account_1": "901981495649",
+
+    "bank_2": "Bank Jago",
+    "name_2": "Ahmad Barizi",
+    "account_2": "109896731184"
+  }
+}
