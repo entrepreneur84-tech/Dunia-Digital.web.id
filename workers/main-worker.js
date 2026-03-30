@@ -32,9 +32,11 @@ Email: ${data.email}`;
     // DOWNLOAD PROTECTED
     if (url.pathname === "/download") {
 
-      return fetch("https://your-domain.com/assets/ebook/ebook-premium.pdf");
-    }
+  const referer = request.headers.get("referer") || "";
 
-    return new Response("Not found", { status: 404 });
+  if (!referer.includes("dunia-digital.web.id")) {
+    return new Response("Akses ditolak", { status: 403 });
   }
-};
+
+  return fetch("https://dunia-digital.web.id/assets/ebook/ebook-premium.pdf");
+}
