@@ -22,5 +22,18 @@
 </div>
 
 <hr>
+<p style="color: green;">
+✔ Pembayaran diverifikasi cepat  
+✔ Ebook langsung bisa didownload setelah konfirmasi
+</p>
 
 <p><b>Setelah transfer, isi form di bawah ini:</b></p>
+<button onclick="copyRek('901981495649')">Salin Rekening SeaBank</button>
+<button onclick="copyRek('109896731184')">Salin Rekening Jago</button>
+
+<script>
+function copyRek(nomor) {
+  navigator.clipboard.writeText(nomor);
+  alert("Nomor rekening berhasil disalin");
+}
+</script>
