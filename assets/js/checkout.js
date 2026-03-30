@@ -10,7 +10,7 @@ form.addEventListener("submit", async (e) => {
   status.innerText = "Memproses...";
 
   try {
-    await fetch("https://api.dunia-digital.store/order", {
+    await fetch("https://api.dunia-digital.web.id/order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
