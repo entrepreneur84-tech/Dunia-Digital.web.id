@@ -3,42 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Toko Ebook Premium</title>
+<title>Dunia Digital Store</title>
 
 <style>
 body {
   font-family: Arial, sans-serif;
-  background: #f5f7fa;
+  background: #0f172a;
   margin: 0;
+  color: #fff;
 }
 
 .header {
-  background: #111;
-  color: #fff;
   text-align: center;
   padding: 25px;
+}
+
+.header h1 {
+  margin: 0;
 }
 
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 30px;
+  padding: 20px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
 .card {
-  background: #fff;
+  background: #1e293b;
   border-radius: 12px;
   padding: 15px;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
   transition: 0.3s;
-  position: relative;
 }
 
 .card:hover {
@@ -51,100 +52,86 @@ body {
 }
 
 .card h3 {
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .btn {
-  display: inline-block;
   margin-top: 10px;
   padding: 10px;
-  background: #007bff;
-  color: #fff;
+  background: #22c55e;
   border-radius: 8px;
   cursor: pointer;
 }
 
-.soon {
-  background: orange;
-}
-
-.badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: red;
-  color: white;
-  padding: 5px 8px;
-  font-size: 11px;
-  border-radius: 6px;
-}
-
-.payment-box {
+.payment {
   display: none;
   margin-top: 40px;
-  background: #fff;
+  background: #1e293b;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 input, textarea {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
+  border-radius: 6px;
+  border: none;
 }
 
 button {
   margin-top: 10px;
   padding: 12px;
   width: 100%;
-  background: green;
-  color: white;
+  background: #22c55e;
   border: none;
   border-radius: 8px;
+  color: white;
+  cursor: pointer;
 }
 
 .note {
   font-size: 13px;
-  color: #666;
+  color: #9ca3af;
   margin-top: 10px;
 }
 </style>
-
 </head>
+
 <body>
 
 <div class="header">
-  <h2>📚 Ebook Premium Digital</h2>
-  <p>Akses instan setelah pembayaran</p>
+  <h1>DUNIA DIGITAL STORE</h1>
+  <p>Ebook Premium • Akses Instan</p>
 </div>
 
 <div class="container">
 
 <div class="grid" id="produkList"></div>
 
-<div id="paymentBox" class="payment-box">
+<div id="paymentBox" class="payment">
 <h3 id="produkDipilih"></h3>
 
 <p><b>Transfer ke:</b></p>
 
-<p><b>SeaBank</b><br>
+<p>SeaBank<br>
 Ahmad Barizi<br>
 901981495649</p>
 
-<p><b>Bank Jago</b><br>
+<p>Bank Jago<br>
 Ahmad Barizi<br>
 109896731184</p>
 
 <hr>
 
-<input type="text" id="nama" placeholder="Nama kamu">
-<input type="text" id="wa" placeholder="Nomor WhatsApp">
+<input type="text" id="nama" placeholder="Nama">
+<input type="text" id="wa" placeholder="WhatsApp">
 <textarea id="bukti" placeholder="Link bukti transfer (opsional)"></textarea>
 
 <button onclick="kirimWA()">Saya sudah bayar</button>
 
 <p class="note">
-🔒 Data kamu aman • Tidak ada spam  
+🔒 Aman • Tanpa spam  
 ⚡ Ebook langsung bisa diakses
 </p>
 
@@ -154,64 +141,46 @@ Ahmad Barizi<br>
 
 <script>
 const produk = [
-"1 Cara Jitu Berdamai dengan Diri",
-"2 The Art of Surrender",
-"3 Quantum Zikir",
-"4 The Radiance Within",
-"5 Rahasia Menemukan Kode Sumber Realitas",
-"6 The Dzikir of Supreme Power",
-"7 Pasrah Itu Zikir",
-"8 Tauhid Quantum",
-"9 Quantum Ruh (Qolbu)",
-"10 The Untouchable",
-"11 Quantum Nur",
-"12 Membongkar Potensi Diri Tanpa Batas",
-"13 Powerful Dhikr Based Holistic Healing",
-"14 Zero Points Zikir",
-"15 Membongkar Realitas Hologram",
-"16 Navigasi Cahaya",
-"17 Ksatria Spiritual",
-"18 Menguak Potensi Diri Tanpa Batas",
-"19 Quantum Syukur",
-"20 Low Of Spiritual Attraction",
-"21 Samudra Tanpa Batas",
-"22 FIQIH TASAWUF MODERN"
+{nama:"Cara Jitu Berdamai dengan Diri", img:"cara-jitu-berdamai-dgn-diri.png"},
+{nama:"The Art of Surrender", img:"the-art-of-surrender.png"},
+{nama:"Quantum Zikir", img:"quantum-zikir.png"},
+{nama:"The Radiance Within", img:"the-radiance-within.png"},
+{nama:"Rahasia Menemukan Kode Sumber Realitas", img:"rahasia-menemukan-kode.png"},
+{nama:"The Dzikir of Supreme Power", img:"the-dzikir-of-supreme-power.png"},
+{nama:"Pasrah Itu Zikir", img:"pasrah-itu-dzikir.png"},
+{nama:"Tauhid Quantum", img:"tauhid-quantum.png"},
+{nama:"Quantum Ruh (Qolbu)", img:"kuantum-ruh.png"},
+{nama:"The Untouchable", img:"the-untouchable.png"},
+{nama:"Quantum Nur", img:"quantum-nur.png"},
+{nama:"Membongkar Potensi Diri Tanpa Batas", img:"membongkar-potensi.png"},
+{nama:"Powerful Dhikr Based Holistic Healing", img:"penyembuhan-holistik.png"},
+{nama:"Zero Points Zikir", img:"titik-nol-dzikir.png"},
+{nama:"Membongkar Realitas Hologram", img:"mengungkap-realitas.png"},
+{nama:"Navigasi Cahaya", img:"navigasi-cahaya.png"},
+{nama:"Ksatria Spiritual", img:"ksatria-spiritual.png"},
+{nama:"Menguak Potensi Diri Tanpa Batas", img:"menguak-potensi.png"},
+{nama:"Quantum Syukur", img:"kuantum-syukur.png"},
+{nama:"Low Of Spiritual Attraction", img:"low-of-spiritual-attraction.png"},
+{nama:"Samudra Tanpa Batas", img:"samudra-tanpa-batas.png"},
+{nama:"FIQIH TASAWUF MODERN", img:"fiqih-tasawuf.png"}
 ];
 
-const comingSoon = [
-"23 Hakikat Quantum Ihsan",
-"24 Manunggal",
-"25 Rahasia Mengenal Jatidiri"
-];
-
-let selectedProduk = "";
+let selected = "";
 
 const container = document.getElementById("produkList");
 
-// PRODUK READY
-produk.forEach((item, i) => {
+produk.forEach((item) => {
   container.innerHTML += `
   <div class="card">
-    <img src="/asset/img/buku%20elektronik/${i+1}.png">
-    <h3>${item}</h3>
-    <div class="btn" onclick="beli('${item}')">Beli</div>
+    <img src="/asset/img/buku%20elektronik/${item.img}">
+    <h3>${item.nama}</h3>
+    <div class="btn" onclick="beli('${item.nama}')">Beli</div>
   </div>`;
 });
 
-// PRODUK COMING SOON
-comingSoon.forEach((item, i) => {
-  container.innerHTML += `
-  <div class="card">
-    <div class="badge">COMING SOON</div>
-    <img src="/asset/img/buku%20elektronik/${i+23}.png">
-    <h3>${item}</h3>
-    <div class="btn soon">Segera Hadir</div>
-  </div>`;
-});
-
-function beli(namaProduk) {
-  selectedProduk = namaProduk;
-  document.getElementById("produkDipilih").innerText = "Produk: " + namaProduk;
+function beli(nama) {
+  selected = nama;
+  document.getElementById("produkDipilih").innerText = "Produk: " + nama;
   document.getElementById("paymentBox").style.display = "block";
   window.scrollTo(0, document.body.scrollHeight);
 }
@@ -223,7 +192,7 @@ function kirimWA() {
 
   let pesan = `Halo Admin,%0A
 Saya sudah transfer%0A
-Produk: ${selectedProduk}%0A
+Produk: ${selected}%0A
 Nama: ${nama}%0A
 WA: ${wa}%0A
 Bukti: ${bukti}`;
