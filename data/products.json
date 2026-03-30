@@ -1,12 +1,246 @@
-
 [
   {
+    "id": "cara-jitu-berdamai-dengan-diri",
+    "slug": "cara-jitu-berdamai-dengan-diri",
+    "title": "Cara Jitu Berdamai dengan Diri",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Self Healing",
+    "cover": "/assets/img/covers/cara-jitu-berdamai.jpg",
+    "file": "/ebooks/cara-jitu-berdamai.pdf",
+    "featured": true,
+    "bestseller": true,
+    "status": "active",
+    "short_description": "Panduan praktis untuk berdamai dengan diri sendiri dan menemukan ketenangan batin.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "the-art-of-surrender",
+    "slug": "the-art-of-surrender",
+    "title": "The Art of Surrender",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Spiritual Growth",
+    "cover": "/assets/img/covers/the-art-of-surrender.jpg",
+    "file": "/ebooks/the-art-of-surrender.pdf",
+    "featured": true,
+    "status": "active",
+    "short_description": "Seni pasrah yang mengubah hidup menjadi lebih tenang dan lebih kuat.",
+    "created_at": "2026-03-30"
+  },
+
+  {
     "id": "quantum-zikir",
+    "slug": "quantum-zikir",
     "title": "Quantum Zikir",
     "author": "Ahmad Barizi",
-    "price": 99000,
-    "cover": "/assets/img/covers/quantum-zikir.jpg",
+    "price": 199000,
+    "discount_price": 99000,
     "category": "Spiritual Quantum",
-    "description": "Panduan spiritual modern untuk membuka kesadaran melalui dzikir yang mendalam."
+    "cover": "/assets/img/covers/quantum-zikir.jpg",
+    "file": "/ebooks/quantum-zikir.pdf",
+    "featured": true,
+    "bestseller": true,
+    "status": "active",
+    "short_description": "Membuka kesadaran spiritual melalui dzikir yang lebih dalam dan modern.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "the-radiance-within",
+    "slug": "the-radiance-within",
+    "title": "The Radiance Within",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Spiritual Awareness",
+    "cover": "/assets/img/covers/the-radiance-within.jpg",
+    "file": "/ebooks/the-radiance-within.pdf",
+    "featured": true,
+    "status": "active",
+    "short_description": "Menemukan cahaya dalam diri untuk kehidupan yang lebih bermakna.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "rahasia-kode-sumber-realitas",
+    "slug": "rahasia-kode-sumber-realitas",
+    "title": "Rahasia Menemukan Kode Sumber Realitas",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Spiritual Advanced",
+    "cover": "/assets/img/covers/kode-sumber-realitas.jpg",
+    "file": "/ebooks/kode-sumber-realitas.pdf",
+    "featured": true,
+    "status": "active",
+    "short_description": "Membuka pemahaman mendalam tentang realitas dan kesadaran manusia.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "the-dzikir-of-supreme-power",
+    "slug": "the-dzikir-of-supreme-power",
+    "title": "The Dzikir of Supreme Power",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Spiritual Power",
+    "cover": "/assets/img/covers/dzikir-supreme-power.jpg",
+    "file": "/ebooks/dzikir-supreme-power.pdf",
+    "featured": true,
+    "status": "active",
+    "short_description": "Mengungkap kekuatan dzikir untuk perubahan hidup yang luar biasa.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "pasrah-itu-zikir",
+    "slug": "pasrah-itu-zikir",
+    "title": "Pasrah Itu Zikir",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Spiritual Awareness",
+    "cover": "/assets/img/covers/pasrah-itu-zikir.jpg",
+    "file": "/ebooks/pasrah-itu-zikir.pdf",
+    "featured": true,
+    "bestseller": true,
+    "status": "active",
+    "short_description": "Memahami makna pasrah sebagai bentuk dzikir yang paling dalam.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "tauhid-quantum",
+    "slug": "tauhid-quantum",
+    "title": "Tauhid Quantum",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Spiritual Quantum",
+    "cover": "/assets/img/covers/tauhid-quantum.jpg",
+    "file": "/ebooks/tauhid-quantum.pdf",
+    "featured": true,
+    "bestseller": true,
+    "status": "active",
+    "short_description": "Memahami tauhid dengan pendekatan kesadaran modern.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "quantum-ruh",
+    "slug": "quantum-ruh",
+    "title": "Quantum Ruh (Qolbu)",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Spiritual Quantum",
+    "cover": "/assets/img/covers/quantum-ruh.jpg",
+    "file": "/ebooks/quantum-ruh.pdf",
+    "featured": true,
+    "status": "active",
+    "short_description": "Memahami rahasia ruh dan hati dalam kehidupan spiritual.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "quantum-nur",
+    "slug": "quantum-nur",
+    "title": "Quantum Nur",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Spiritual Quantum",
+    "cover": "/assets/img/covers/quantum-nur.jpg",
+    "file": "/ebooks/quantum-nur.pdf",
+    "featured": true,
+    "status": "active",
+    "short_description": "Memahami cahaya spiritual dalam diri manusia.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "membongkar-potensi-diri",
+    "slug": "membongkar-potensi-diri",
+    "title": "Membongkar Potensi Diri Tanpa Batas",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Self Development",
+    "cover": "/assets/img/covers/potensi-diri.jpg",
+    "file": "/ebooks/potensi-diri.pdf",
+    "featured": true,
+    "status": "active",
+    "short_description": "Panduan membuka potensi diri secara maksimal.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "fiqih-tasawuf-modern",
+    "slug": "fiqih-tasawuf-modern",
+    "title": "FIQIH TASAWUF MODERN",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Tasawuf",
+    "cover": "/assets/img/covers/fiqih-tasawuf-modern.jpg",
+    "file": "/ebooks/fiqih-tasawuf-modern.pdf",
+    "featured": true,
+    "bestseller": true,
+    "status": "active",
+    "short_description": "Menggabungkan fiqih dan tasawuf dalam kehidupan modern.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "hakikat-quantum-ihsan",
+    "slug": "hakikat-quantum-ihsan",
+    "title": "Hakikat Quantum Ihsan",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Coming Soon",
+    "cover": "/assets/img/covers/hakikat-ihsan.jpg",
+    "file": "",
+    "featured": false,
+    "status": "coming_soon",
+    "short_description": "Segera hadir: memahami ihsan dalam perspektif spiritual modern.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "manunggal",
+    "slug": "manunggal",
+    "title": "Manunggal",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Coming Soon",
+    "cover": "/assets/img/covers/manunggal.jpg",
+    "file": "",
+    "featured": false,
+    "status": "coming_soon",
+    "short_description": "Segera hadir: perjalanan spiritual menuju kesadaran tertinggi.",
+    "created_at": "2026-03-30"
+  },
+
+  {
+    "id": "rahasia-mengenal-jatidiri",
+    "slug": "rahasia-mengenal-jatidiri",
+    "title": "Rahasia Mengenal Jatidiri",
+    "author": "Ahmad Barizi",
+    "price": 199000,
+    "discount_price": 99000,
+    "category": "Coming Soon",
+    "cover": "/assets/img/covers/jatidiri.jpg",
+    "file": "",
+    "featured": false,
+    "status": "coming_soon",
+    "short_description": "Segera hadir: memahami siapa diri kita sebenarnya.",
+    "created_at": "2026-03-30"
   }
 ]
