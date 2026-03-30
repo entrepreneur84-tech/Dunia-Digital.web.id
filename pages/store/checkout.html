@@ -2,46 +2,54 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Beli Ebook Premium</title>
+  <title>Dunia Digital Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f7fa;
+      background: #0f172a;
       margin: 0;
       padding: 20px;
+      color: #fff;
     }
 
     .container {
       max-width: 500px;
       margin: auto;
-      background: #fff;
+      background: #111827;
       padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
 
     h1 {
       text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      color: #9ca3af;
     }
 
     .bank-box {
-      border: 1px solid #ddd;
+      background: #1f2937;
       padding: 15px;
       border-radius: 10px;
       margin-bottom: 15px;
     }
 
     button {
-      background: #000;
+      background: linear-gradient(135deg, #22c55e, #06b6d4);
       color: #fff;
       padding: 12px;
       border: none;
       border-radius: 8px;
       width: 100%;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
+      font-weight: bold;
     }
 
     input {
@@ -49,13 +57,14 @@
       padding: 10px;
       margin-bottom: 12px;
       border-radius: 6px;
-      border: 1px solid #ccc;
+      border: none;
     }
 
     .note {
       font-size: 13px;
-      color: #777;
+      color: #9ca3af;
       margin-bottom: 10px;
+      text-align: center;
     }
 
     .status {
@@ -63,13 +72,23 @@
       text-align: center;
     }
 
-    .success {
-      color: green;
+    .success { color: #22c55e; }
+    .error { color: #ef4444; }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 15px;
     }
 
-    .error {
-      color: red;
+    .logo img {
+      width: 110px;
     }
+
+    .wa-btn {
+      background: #25D366;
+      margin-top: 10px;
+    }
+
   </style>
 </head>
 
@@ -77,8 +96,13 @@
 
 <div class="container">
 
-  <h1>🔥 Akses Ebook Premium</h1>
-  <p>Dapatkan insight praktis yang bisa langsung kamu gunakan.</p>
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="/assets/img/logo.png">
+  </div>
+
+  <h1>DUNIA DIGITAL STORE</h1>
+  <p>Ebook Premium • Akses Instan</p>
 
   <h3>💳 Transfer ke:</h3>
 
@@ -96,9 +120,8 @@
     <button onclick="copyRek('109896731184')">Salin Rekening</button>
   </div>
 
-  <p style="color:green;">
+  <p style="color:#22c55e;">
     ✔ Transfer → isi form → langsung download  
-    ✔ Proses cepat & otomatis
   </p>
 
   <hr>
@@ -120,6 +143,18 @@
   </form>
 
   <p id="status" class="status"></p>
+
+  <!-- EMAIL -->
+  <p style="font-size:13px; margin-top:15px;">
+    Bantuan: <b>barizilumajang@gmail.com</b>
+  </p>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/6285175313909" target="_blank">
+    <button class="wa-btn">
+      💬 Hubungi WhatsApp
+    </button>
+  </a>
 
 </div>
 
