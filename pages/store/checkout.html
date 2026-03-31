@@ -1,171 +1,110 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Dunia Digital Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      margin: 0;
-      padding: 20px;
-      color: #fff;
-    }
+<title>Checkout Ebook Premium | Dunia Digital</title>
 
-    .container {
-      max-width: 500px;
-      margin: auto;
-      background: #111827;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
 
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    p {
-      text-align: center;
-      color: #9ca3af;
-    }
-
-    .bank-box {
-      background: #1f2937;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    button {
-      background: linear-gradient(135deg, #22c55e, #06b6d4);
-      color: #fff;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      width: 100%;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: bold;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 12px;
-      border-radius: 6px;
-      border: none;
-    }
-
-    .note {
-      font-size: 13px;
-      color: #9ca3af;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .status {
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    .success { color: #22c55e; }
-    .error { color: #ef4444; }
-
-    .logo {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    .logo img {
-      width: 110px;
-    }
-
-    .wa-btn {
-      background: #25D366;
-      margin-top: 10px;
-    }
-
-  </style>
 </head>
-
 <body>
 
-<div class="container">
+<!-- ================= NAVBAR ================= -->
 
-  <!-- LOGO -->
-  <div class="logo">
-    <img src="/assets/img/logo.png">
+<header class="navbar">
+  <div class="nav-container">
+
+    <div class="logo">
+      <a href="/">DuniaDigital</a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="/">Home</a>
+      <a href="/pages/store/index.html" class="active">Ebook Premium</a>
+      <a href="/pages/blog/index.html">Blog</a>
+      <a href="/pages/tentang.html">Tentang</a>
+      <a href="/pages/kontak.html">Kontak</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ================= CHECKOUT ================= -->
+
+<section class="checkout-section">
+
+  <div class="checkout-container">
+
+    <div class="checkout-left">
+
+      <h1 class="checkout-title">Checkout Ebook Premium</h1>
+
+      <div id="product-info" class="product-checkout-card"></div>
+
+      <form class="checkout-form">
+
+        <h3>Data Pembeli</h3>
+
+        <input type="text" placeholder="Nama Lengkap" required>
+        <input type="email" placeholder="Email Aktif (untuk download ebook)" required>
+        <input type="text" placeholder="No WhatsApp" required>
+
+        <h3>Metode Pembayaran</h3>
+
+        <div class="payment-box">
+          <p>Transfer Bank / QRIS</p>
+          <small>Setelah pembayaran, ebook akan dikirim otomatis.</small>
+        </div>
+
+        <button type="submit" class="btn-checkout">
+          Lanjutkan Pembayaran
+        </button>
+
+      </form>
+
+    </div>
+
+    <div class="checkout-right">
+
+      <div class="checkout-summary">
+        <h3>Ringkasan Pembelian</h3>
+
+        <div id="checkout-summary"></div>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <h1>DUNIA DIGITAL STORE</h1>
-  <p>Ebook Premium • Akses Instan</p>
+</section>
 
-  <h3>💳 Transfer ke:</h3>
+<!-- ================= FOOTER ================= -->
 
-  <div class="bank-box">
-    <b>SeaBank</b><br>
-    a.n AHMAD BARIZI<br>
-    <b>901981495649</b><br><br>
-    <button onclick="copyRek('901981495649')">Salin Rekening</button>
-  </div>
+<footer class="footer">
+  <div class="footer-container">
 
-  <div class="bank-box">
-    <b>Bank Jago</b><br>
-    a.n Ahmad Barizi<br>
-    <b>109896731184</b><br><br>
-    <button onclick="copyRek('109896731184')">Salin Rekening</button>
-  </div>
+    <div class="footer-logo">DuniaDigital</div>
 
-  <p style="color:#22c55e;">
-    ✔ Transfer → isi form → langsung download  
-  </p>
+    <div class="footer-links">
+      <a href="/pages/privacy.html">Privacy Policy</a>
+      <a href="/pages/terms.html">Terms & Conditions</a>
+      <a href="/pages/kontak.html">Kontak</a>
+    </div>
 
-  <hr>
-
-  <h3>✅ Konfirmasi Pembayaran</h3>
-
-  <form id="checkoutForm">
-    <input type="text" id="nama" placeholder="Nama" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="file" id="bukti">
-
-    <p class="note">
-      🔒 Aman & tanpa spam • ⚡ Akses langsung setelah klik
+    <p class="footer-copy">
+      © 2026 DuniaDigital.web.id - All Rights Reserved
     </p>
 
-    <button type="submit">
-      Saya sudah bayar & ambil ebook
-    </button>
-  </form>
+  </div>
+</footer>
 
-  <p id="status" class="status"></p>
-
-  <!-- EMAIL -->
-  <p style="font-size:13px; margin-top:15px;">
-    Bantuan: <b>barizilumajang@gmail.com</b>
-  </p>
-
-  <!-- WHATSAPP -->
-  <a href="https://wa.me/6285175313909" target="_blank">
-    <button class="wa-btn">
-      💬 Hubungi WhatsApp
-    </button>
-  </a>
-
-</div>
+<!-- ================= SCRIPT ================= -->
 
 <script src="/assets/js/checkout.js"></script>
-
-<script>
-function copyRek(nomor) {
-  navigator.clipboard.writeText(nomor);
-  alert("Nomor rekening disalin");
-}
-</script>
 
 </body>
 </html>
