@@ -313,3 +313,90 @@ body {
   }
 
 }
+/* ================= SUCCESS PAGE ================= */
+
+.success-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.success-container {
+  max-width: 700px;
+  margin: auto;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: #6c5ce7;
+  color: white;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.success-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.success-subtitle {
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* DOWNLOAD BOX */
+
+.download-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.05);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  text-align: left;
+}
+
+.download-card img {
+  width: 120px;
+  border-radius: 10px;
+}
+
+.download-info h3 {
+  margin-bottom: 8px;
+}
+
+.download-info p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.download-price {
+  font-weight: 600;
+  color: #6c5ce7;
+  margin-bottom: 12px;
+}
+
+.btn-download {
+  display: inline-block;
+  background: #6c5ce7;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn-back-store {
+  display: inline-block;
+  margin-top: 30px;
+  color: #6c5ce7;
+  text-decoration: none;
+  font-weight: 500;
+   }
