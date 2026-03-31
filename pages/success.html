@@ -3,103 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pembelian Sukses | Dunia Digital</title>
+
+<title>Pembayaran Berhasil | Dunia Digital</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
-<style>
-.success-container{
-max-width:800px;
-margin:80px auto;
-padding:40px;
-background:white;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-text-align:center;
-}
-.success-title{
-font-size:28px;
-margin-bottom:20px;
-color:#1a7f37;
-}
-.success-message{
-font-size:16px;
-margin-bottom:30px;
-line-height:1.5;
-color:#333;
-}
-.bank-info{
-text-align:left;
-background:#f7f7f7;
-padding:20px;
-border-radius:10px;
-margin:20px 0;
-font-size:15px;
-}
-.bank-info b{
-color:#111;
-}
-.cta-button{
-display:inline-block;
-margin-top:20px;
-padding:16px 30px;
-background:#111;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-size:16px;
-transition:0.25s;
-}
-.cta-button:hover{
-background:#333;
-transform:translateY(-2px);
-}
-.note{
-margin-top:20px;
-font-size:13px;
-color:#666;
-}
-</style>
+
 </head>
 <body>
 
-<header style="text-align:center;padding:20px 0;background:#111;color:white;">
-<h1>Dunia Digital</h1>
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+  <div class="nav-container">
+
+    <div class="logo">
+      <a href="/">DuniaDigital</a>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="/">Home</a>
+      <a href="/pages/store/index.html">Ebook Premium</a>
+      <a href="/pages/blog/index.html">Blog</a>
+      <a href="/pages/tentang.html">Tentang</a>
+      <a href="/pages/kontak.html">Kontak</a>
+    </nav>
+
+  </div>
 </header>
 
-<div class="success-container">
-<h2 class="success-title">🎉 Pembelian Sukses!</h2>
-<p class="success-message">
-Terima kasih telah membeli bundle ebook premium Dunia Digital.<br>
-Silakan lakukan pembayaran melalui salah satu rekening di bawah ini jika belum transfer.
-</p>
+<!-- ================= SUCCESS ================= -->
 
-<div class="bank-info">
-<h3>Transfer Bank Seabank / Bank Kesejahteraan Ekonomi</h3>
-<p><b>Atas Nama:</b> AHMAD BARIZI<br>
-<b>Nomor Rekening:</b> 901981495649<br>
-<b>Kode Bank:</b> 535<br>
-<b>Swift:</b> SSPIIDJA</p>
-</div>
+<section class="success-section">
 
-<div class="bank-info">
-<h3>Bank Jago / Wallet lain</h3>
-<p><b>Atas Nama:</b> Ahmad Barizi<br>
-<b>Nomor Rekening:</b> 109896731184<br>
-<b>Kode Bank:</b> 542<br>
-<b>Swift/BIC:</b> ARTOIDJA</p>
-<p>Walaupun transfer via bank lain atau wallet apa saja tetap diterima.</p>
-</div>
+  <div class="success-container">
 
-<p class="note">
-Setiap ebook memiliki watermark nama pembeli.<br>
-Dilarang mendistribusikan ulang tanpa izin.
-</p>
+    <div class="success-icon">✓</div>
 
-<a class="cta-button" href="/pages/store/">Kembali ke Toko</a>
-</div>
+    <h1 class="success-title">Pembayaran Berhasil</h1>
 
-<footer style="text-align:center;padding:30px;background:#222;color:#ccc;">
-<p>© 2026 Dunia Digital</p>
+    <p class="success-subtitle">
+      Terima kasih. Ebook premium kamu sudah siap untuk didownload.
+    </p>
+
+    <div id="download-box" class="download-box"></div>
+
+    <a href="/pages/store/index.html" class="btn-back-store">
+      Kembali ke Store
+    </a>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-logo">DuniaDigital</div>
+
+    <div class="footer-links">
+      <a href="/pages/privacy.html">Privacy Policy</a>
+      <a href="/pages/terms.html">Terms & Conditions</a>
+      <a href="/pages/kontak.html">Kontak</a>
+    </div>
+
+    <p class="footer-copy">
+      © 2026 DuniaDigital.web.id - All Rights Reserved
+    </p>
+
+  </div>
 </footer>
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="/assets/js/success.js"></script>
 
 </body>
 </html>
