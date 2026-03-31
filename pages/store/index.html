@@ -1,84 +1,100 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Dunia Digital Store</title><style>
-body{
-  font-family: Arial;
-  background:#0f172a;
-  color:white;
-  margin:0;
-}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-h1{
-  text-align:center;
-  padding:30px;
-}
+<title>Ebook Premium Spiritual Modern | Dunia Digital</title>
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-  padding:20px;
-}
+<!-- Google Font Premium -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-.card{
-  background:#1e293b;
-  border-radius:15px;
-  padding:15px;
-  text-align:center;
-  transition:0.3s;
-}
+<!-- Main CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
 
-.card:hover{
-  transform:scale(1.05);
-}
+</head>
+<body>
 
-.card img{
-  width:100%;
-  border-radius:10px;
-}
+<!-- ================= NAVBAR ================= -->
 
-.btn{
-  margin-top:10px;
-  padding:10px;
-  background:#22c55e;
-  border:none;
-  border-radius:8px;
-  color:white;
-  cursor:pointer;
-}
+<header class="navbar">
+  <div class="nav-container">
 
-</style></head><body><h1>📚 Dunia Digital Store</h1><div class="grid" id="produk-list"></div><script>
-
-const produk = [
-{nama:"Quantum Zikir", img:"quantum-zikir.png"},
-{nama:"The Art of Surrender", img:"the-art-of-surrender.png"},
-{nama:"Tauhid Quantum", img:"tauhid-quantum.png"},
-{nama:"Quantum Nur", img:"quantum-nur.png"},
-{nama:"The Radiance Within", img:"the-radiance-within.png"},
-{nama:"Pasrah Itu Zikir", img:"pasrah-itu-dzikir.png"},
-{nama:"Zero Points Zikir", img:"titik-nol-dzikir.png"},
-{nama:"FIQIH TASAWUF MODERN", img:"fiqih-tasawuf.png"}
-];
-
-// 🔥 GANTI PATH DI SINI SESUAI FOLDER KAMU
-const BASE_IMG = "assets/img/"; 
-
-const container = document.getElementById("produk-list");
-
-produk.forEach(p => {
-  container.innerHTML += `
-    <div class="card">
-      <img src="${BASE_IMG}${p.img}" alt="${p.nama}">
-      <h3>${p.nama}</h3>
-      <button class="btn" onclick="beli('${p.nama}')">Beli</button>
+    <div class="logo">
+      <a href="/">DuniaDigital</a>
     </div>
-  `;
-});
 
-function beli(nama){
-  window.location.href = "https://wa.me/6285175313909?text=Saya ingin beli ebook: " + encodeURIComponent(nama);
-}
+    <nav class="nav-menu">
+      <a href="/">Home</a>
+      <a href="/pages/store/index.html" class="active">Ebook Premium</a>
+      <a href="/pages/blog/index.html">Blog</a>
+      <a href="/pages/tentang.html">Tentang</a>
+      <a href="/pages/kontak.html">Kontak</a>
+    </nav>
 
-</script></body>
+  </div>
+</header>
+
+<!-- ================= HERO STORE ================= -->
+
+<section class="store-hero">
+  <div class="store-hero-content">
+
+    <h1 class="store-title">EBOOK PREMIUM SPIRITUAL MODERN</h1>
+
+    <p class="store-subtitle">
+      Kumpulan ebook eksklusif tentang kesadaran spiritual, dzikir modern, self healing, dan pengembangan diri tingkat lanjut.
+    </p>
+
+  </div>
+</section>
+
+<!-- ================= STORE CONTAINER ================= -->
+
+<section class="store-section">
+
+  <div class="store-container">
+
+    <div class="store-header">
+      <h2 class="store-heading">Semua Ebook Premium</h2>
+
+      <p class="store-description">
+        Semua ebook di halaman ini adalah versi premium dengan kualitas materi tingkat lanjut.
+      </p>
+    </div>
+
+    <!-- PRODUCT GRID (AUTO LOAD DARI JSON) -->
+    <div id="product-list" class="product-grid"></div>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-logo">
+      DuniaDigital
+    </div>
+
+    <div class="footer-links">
+      <a href="/pages/privacy.html">Privacy Policy</a>
+      <a href="/pages/terms.html">Terms & Conditions</a>
+      <a href="/pages/kontak.html">Kontak</a>
+    </div>
+
+    <p class="footer-copy">
+      © 2026 DuniaDigital.web.id - All Rights Reserved
+    </p>
+
+  </div>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="/assets/js/store.js"></script>
+
+</body>
 </html>
